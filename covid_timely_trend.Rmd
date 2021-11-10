@@ -1,0 +1,29 @@
+---
+title: "Trend in Number of COVID-19 Cases in the US"
+author: "Anyu Zhu"
+date: "11/9/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+This page is about trend in the number of COVID-19 cases in the US
+
+```{r}
+library(tidyverse)
+library(plotly)
+library(rvest)
+```
+
+Import data
+```{r}
+covid_time = read_csv("data/covid_daily_cases.csv", skip = 2) %>% 
+  janitor::clean_names() %>% 
+  separate(date, into = c("month","day","year")) %>% 
+  mutate(month = factor(month, levels = month.abb)) %>% 
+  select(year, month, day, new_cases) %>% 
+  group_by(year, month) %>% 
+  arrange(year, month, day)
+```
+
