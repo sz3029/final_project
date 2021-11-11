@@ -14,16 +14,68 @@ This page is about trend in the number of COVID-19 cases in the US
 library(tidyverse)
 library(plotly)
 library(rvest)
+library(ggplot2)
+library(lubridate)
 ```
 
 Import data
 ```{r}
-covid_time = read_csv("data/covid_daily_cases.csv", skip = 2) %>% 
-  janitor::clean_names() %>% 
+covid_cum = read_csv("data/covid_cumulative_cases.csv", skip = 2) %>% 
+  janitor::clean_names()
+
+covid_day = read_csv("data/covid_daily_cases.csv", skip = 2) %>% 
+  janitor::clean_names()
+
+covid_daily = left_join(covid_day, covid_cum, by = "date") %>% 
+  select(date, new_cases, total_cases) %>% 
   separate(date, into = c("month","day","year")) %>% 
   mutate(month = factor(month, levels = month.abb)) %>% 
-  select(year, month, day, new_cases) %>% 
   group_by(year, month) %>% 
-  arrange(year, month, day)
+  arrange(year, month, day) %>% 
+  mutate(date = make_date(year, month, day)) %>% 
+  arrange(date)
+  
+covid_monthly = covid_daily %>% 
+  select(-day) %>% 
+  summarize(monthly = sum(new_cases))
+
+covid_seasonal = covid_monthly %>% 
+  mutate(quarter = recode(month,
+    "Jan" = "Q1",
+    "Feb" = "Q1",
+    "Mar" = "Q1",
+    "Apr" = "Q2",
+    "May" = "Q2",
+    "Jun" = "Q2",
+    "Jul" = "Q3",
+    "Aug" = "Q3",
+    "Sep" = "Q3",
+    "Oct" = "Q4",
+    "Nov" = "Q4",
+    "Dec" = "Q4"
+  )) %>% 
+  group_by(year, quarter) %>% 
+  summarize(quarterly = sum(monthly)) %>% 
+  mutate(date = paste(year, "-", quarter))
+```
+
+Plots
+Daily
+```{r}
+daily_fig = plot_ly(covid_daily) 
+
+daily_fig %>% 
+  add_trace(x = ~date, y = ~new_cases, type = "bar", yaxis="y", name = "new") %>% 
+  add_trace(x = ~date, y = ~total_cases, type = "scatter", mode = "lines", yaxis = "y2", name = "cumulative") %>% 
+  layout(yaxis=list(title = "daily new cases", side="left"),
+         yaxis2=list(title = "cumulative cases", side="right",overlaying="y"),
+         showlegend=TRUE)
+```
+
+
+Quarterly (to correspond with the consumption data)
+```{r}
+covid_seasonal %>% 
+  plot_ly(x = ~date, y = ~quarterly, type = "bar") 
 ```
 
