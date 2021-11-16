@@ -1,0 +1,63 @@
+---
+title: "Trend in Personal Consumption in the US"
+author: "Yijing Tao"
+date: "11/14/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+This page is about trend in personal consumption in the US
+
+```{r}
+library(tidyverse)
+library(plotly)
+library(rvest)
+library(ggplot2)
+library(lubridate)
+```
+
+Import data
+
+```{r}
+consumption_product = readxl::read_excel("./data/consumption_product.xlsx") %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    x2019_q1 : x2021_q3,
+    names_to = "time",
+    names_prefix = "x",
+    values_to = "consumption"
+  ) 
+
+consumption_function = readxl::read_excel("./data/consumption_function.xlsx") %>% 
+  janitor::clean_names() %>% 
+    pivot_longer(
+    x2019_q1 : x2021_q3,
+    names_to = "time",
+    names_prefix = "x",
+    values_to = "consumption"
+  ) 
+
+consumption_function_conclude = consumption_function %>% 
+  filter(functions %in% c("Goods","Services","Household consumption expenditures7","Final consumption expenditures of nonprofit institutions serving households (NPISHs)1"))
+consumption_function_conclude_fig = plot_ly(consumption_function_conclude)
+```
+
+changing tendency of personal consumption of different kinds of products
+```{r}
+consumption_product %>% 
+  plot_ly(x = ~time, y = ~consumption, type = "bar", yaxis="y", color = ~products)
+```
+
+changing tendency of personal consumption of different kinds of functions
+
+```{r}
+consumption_function %>% 
+  plot_ly(x = ~time, y = ~consumption, type = "bar", yaxis="y", color = ~functions)
+```
+
+```{r}
+consumption_function_conclude %>% 
+plot_ly(x = ~time, y = ~consumption, type = "scatter", mode = "lines", yaxis="y", color = ~functions)
+```

@@ -1,0 +1,63 @@
+"Table 2.3.5U. Personal Consumption Expenditures by Major Type of Product and by Major Function"
+"[Millions of dollars; quarters and months are seasonally adjusted at annual rates]" 
+"Bureau of Economic Analysis" 
+"Last Revised on: October 28, 2021 - Next Release Date November 24, 2021"
+"Line","","2019","2019","2019","2019","2020","2020","2020","2020","2021","2021","2021"
+"Line","","Q1","Q2","Q3","Q4","Q1","Q2","Q3","Q4","Q1","Q2","Q3"
+"","Personal consumption expenditures by major type of product (From NIPA table 2.3.x):","","","","","","","","","","",""
+"1","        Personal consumption expenditures (PCE)",14155552,14375722,14529480,14653949,14439089,12989729,14293832,14467611,15005444,15681699,15946248
+"2","Goods",4382806,4479375,4512708,4540784,4530935,4349912,4867188,4867251,5245025,5529790,5494157
+"3","    Durable goods",1473292,1509231,1531434,1539183,1484907,1468253,1753295,1759179,1957840,2092153,1984391
+"4","        Motor vehicles and parts",500073,512560,518995,526552,481961,485209,595791,602099,674905,758055,655596
+"5","        Furnishings and durable household equipment",351812,359974,364473,364537,365707,361205,419261,415356,461914,473689,469525
+"6","        Recreational goods and vehicles",406800,419504,428585,428815,428724,457986,509485,508671,559362,580828,573443
+"7","        Other durable goods",214607,217193,219381,219279,208514,163854,228757,233053,261659,279581,285826
+"8","    Nondurable goods",2909515,2970143,2981274,3001600,3046028,2881659,3113894,3108072,3287185,3437637,3509766
+"9","        Food and beverages purchased for off-premises consumption",1013441,1027365,1041340,1041498,1125137,1152114,1159491,1149962,1201534,1223364,1246388
+"10","        Clothing and footwear",393358,398285,400000,401018,366262,293634,394242,395605,436819,476952,479991
+"11","        Gasoline and other energy goods",323855,350140,332828,343650,305160,188522,245433,247914,300287,345451,378458
+"12","        Other nondurable goods",1178860,1194353,1207107,1215435,1249469,1247389,1314729,1314592,1348545,1391871,1404929
+"13","Services",9772746,9896347,10016772,10113165,9908154,8639817,9426643,9600360,9760419,10151909,10452091
+"14","    Household consumption expenditures (for services)",9336650,9459052,9571467,9672303,9387654,8062770,8932091,9108956,9281694,9684841,9984527
+"15","        Housing and utilities",2534726,2554133,2585343,2611833,2622579,2667698,2682553,2699745,2727182,2753433,2789051
+"16","        Health care",2408726,2449708,2469921,2504266,2406893,2000289,2369192,2457229,2464208,2534433,2579679
+"17","        Transportation services",479631,492203,502172,507255,467287,291235,342457,352785,356800,417315,461005
+"18","        Recreation services",573716,582492,582808,594003,541712,303673,405678,414984,442457,490547,515485
+"19","        Food services and accommodations",986910,1006812,1019355,1020003,933567,616784,829765,826074,888345,1028749,1082174
+"20","        Financial services and insurance",1156285,1166554,1176984,1186518,1193935,1168700,1200473,1222023,1244898,1256390,1277308
+"21","        Other services",1196655,1207151,1234884,1248425,1221681,1014391,1101973,1136116,1157803,1203974,1279824
+"22","    Final consumption expenditures of nonprofit institutions serving households (NPISHs)1",436096,437295,445306,440862,520500,577046,494552,491404,478725,467067,467565
+"23","        Gross output of nonprofit institutions2",1625067,1637800,1650359,1661093,1668094,1585346,1640154,1685469,1672731,1708519,1744431
+"24","        Less: Receipts from sales of goods and services by nonprofit institutions3",1188971,1200505,1205054,1220230,1147594,1008300,1145602,1194065,1194006,1241452,1276867
+"","Addenda:","","","","","","","","","","",""
+"25","    PCE excluding food and energy4",12573714,12763443,12915569,13027462,12784011,11401230,12645084,12825706,13251424,13859864,14062454
+"26","    Energy goods and services5",568397,584914,572571,584989,529941,436384,489257,491943,552486,598471,637406
+"27","    Market-based PCE6",12288303,12490219,12621958,12729262,12465521,11063509,12332369,12471787,12988473,13608041,13812139
+"28","    Market-based PCE excluding food and energy6",10706935,10878424,11008541,11103276,10810946,9475516,10684131,10830394,11234971,11786727,11928868
+"","Personal consumption expenditures by major function (From NIPA table 2.5.x):","","","","","","","","","","",""
+"29","            Personal consumption expenditures",14155552,14375722,14529480,14653949,14439089,12989729,14293832,14467611,15005444,15681699,15946248
+"30","Household consumption expenditures7",13719456,13938427,14084174,14213086,13918589,12412682,13799280,13976207,14526719,15214631,15478683
+"31","    Food and beverages purchased for off-premises consumption",1013441,1027365,1041340,1041498,1125137,1152114,1159491,1149962,1201534,1223364,1246388
+"32","    Clothing, footwear, and related services",409766,415079,416744,417860,382912,306332,408579,410083,452045,492666,496575
+"33","    Housing, utilities, and fuels",2555742,2575128,2606156,2632803,2640597,2685245,2701190,2717610,2748964,2776530,2812221
+"34","    Furnishings, household equipment, and routine household maintenance",588433,600128,607868,608547,615736,608904,680628,675597,738749,757368,755856
+"35","    Health",3012818,3059913,3088226,3134537,3056751,2615329,3023612,3120849,3118294,3209370,3259559
+"36","    Transportation",1282544,1333908,1333181,1356487,1236391,947419,1165044,1184932,1310210,1497723,1471889
+"37","    Communication",277106,276777,277282,275617,274623,266958,274729,281615,288783,294987,298825
+"38","    Recreation",1233136,1260403,1271692,1280850,1232210,1041373,1214856,1218994,1324150,1405026,1426499
+"39","    Education",303961,307019,309727,312697,313453,281375,291878,285891,291372,300689,307846
+"40","    Food services and accommodations",986910,1006812,1019355,1020003,933567,616784,829765,826074,888345,1028749,1082174
+"41","    Financial services and insurance",1156285,1166554,1176984,1186518,1193935,1168700,1200473,1222023,1244898,1256390,1277308
+"42","    Other goods and services",912246,915875,936635,943294,915724,750501,859330,879505,923509,965138,999874
+"43","    Net foreign travel and expenditures abroad by U.S. residents",-12932,-6534,-1014,2377,-2447,-28351,-10296,3072,-4135,6631,43670
+"44","Final consumption expenditures of nonprofit institutions serving households (NPISHs)1",436096,437295,445306,440862,520500,577046,494552,491404,478725,467067,467565
+"45","    Gross output of nonprofit institutions2",1625067,1637800,1650359,1661093,1668094,1585346,1640154,1685469,1672731,1708519,1744431
+"46","    Less: Receipts from sales of goods and services by nonprofit institutions3",1188971,1200505,1205054,1220230,1147594,1008300,1145602,1194065,1194006,1241452,1276867
+"Legend / Footnotes:"
+"1. Net expenses of NPISHs, defined as their gross operating expenses less primary sales to households."
+"2. Gross output is net of unrelated sales, secondary sales, and sales to business, to government, and to the rest of the world; excludes own-account investment (construction and software)."
+"3. Excludes unrelated sales, secondary sales, and sales to business, to government, and to the rest of the world; includes membership dues and fees."
+"4. Food consists of food and beverages purchased for off-premises consumption; food services, which include purchased meals and beverages, are not classified as food."
+"5. Consists of gasoline and other energy goods and of electricity and gas services."
+"6. Market-based PCE is a supplemental measure that is based on household expenditures for which there are observable price measures.It excludes most imputed transactions (for example, financial services furnished without payment) and the final consumption expenditures of nonprofit institutions serving households."
+"7. Consists of household purchases of goods and services from business, government, nonprofit institutions, and the rest of the world."
