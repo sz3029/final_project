@@ -1,0 +1,86 @@
+---
+title: "Personal Consumption Expenditures by State"
+author: "Jibei Zheng"
+date: "11/18/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(readxl)
+library(maps)
+library(mapproj)
+
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.asp = .6,
+  out.width = "120%"
+)
+
+theme_set(theme_minimal())
+
+#options(
+#  ggplot2.continuous.colour = "viridis",
+#  ggplot2.continuous.fill = "viridis"
+#)
+#
+#scale_colour_discrete = scale_colour_viridis_d
+#scale_fill_discrete = scale_fill_viridis_d
+```
+
+Load data
+
+```{r, message = FALSE}
+raw_df = 
+  read_excel("data/pce_by_state.xlsx", sheet = "Table 1", range = "A4:F63", col_names = FALSE)
+
+colnames(raw_df) = c("state", "2018", "2019", "2020", "2019_change", "2020_change")
+```
+
+Clean data
+
+```{r}
+pce_state_df = 
+  raw_df %>% 
+  filter(!(state %in% c("United States", "New England", "Mideast", "Great Lakes", "Plains", "Southeast", "Southwest", "Rocky Mountain", "Far West"))) %>% 
+  select(-"2019_change", -"2020_change") %>% 
+  pivot_longer(
+    "2018":"2020",
+    names_to = "year",
+    values_to = "pce"
+  ) %>% 
+  mutate(
+    year = as.numeric(year),
+    state = str_to_lower(state)
+  )
+```
+
+Draw map
+
+```{r, warning = FALSE}
+usa_tbl = 
+  map_data("state") %>% 
+  as_tibble()
+
+pce_state_df %>% 
+  filter(year == "2020") %>% 
+  right_join(usa_tbl, by = c("state" = "region")) %>% 
+  ggplot(aes(x = long, y = lat, group = subregion)) +
+  geom_map(
+    aes(map_id = state),
+    map = usa_tbl
+  ) +
+  coord_map("ortho", orientation = c(39, -98, 0)) +
+  geom_polygon(aes(group = group, fill = pce), color = "black") +
+  scale_fill_gradient2(low = "white", mid = "skyblue2", high = "skyblue4", midpoint = 800000) +
+  labs(
+    title = "Per Capita Personal Consumption Expenditures by State, 2020",
+    x = "",
+    y = ""
+  )
+```
+
