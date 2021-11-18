@@ -21,7 +21,7 @@ library(lubridate)
 Import data
 
 ```{r}
-consumption_product = readxl::read_excel("./data/consumption_product.xlsx") %>% 
+consumption_product = readxl::read_excel("data/consumption_product.xlsx") %>% 
   janitor::clean_names() %>% 
   pivot_longer(
     x2019_q1 : x2021_q3,
@@ -32,32 +32,76 @@ consumption_product = readxl::read_excel("./data/consumption_product.xlsx") %>%
 
 consumption_function = readxl::read_excel("./data/consumption_function.xlsx") %>% 
   janitor::clean_names() %>% 
+  filter(as.numeric(line) <= 28) %>% 
     pivot_longer(
     x2019_q1 : x2021_q3,
     names_to = "time",
     names_prefix = "x",
     values_to = "consumption"
-  ) 
+  ) %>% 
+  mutate(functions = recode(functions, `Household consumption expenditures (for services)` = "household",
+                           `Final consumption expenditures of nonprofit institutions serving households (NPISHs)1` = "nonprofit consumption"))
 
-consumption_function_conclude = consumption_function %>% 
-  filter(functions %in% c("Goods","Services","Household consumption expenditures7","Final consumption expenditures of nonprofit institutions serving households (NPISHs)1"))
-consumption_function_conclude_fig = plot_ly(consumption_function_conclude)
+general_1 = consumption_function %>% 
+  filter(functions %in% c("Goods","Services"))
+
+fig_1 = plot_ly(general_1, x = ~time, y = ~consumption, type = "scatter", mode = "lines", color = ~functions)
 ```
 
-changing tendency of personal consumption of different kinds of products
+## 1st level
 ```{r}
-consumption_product %>% 
-  plot_ly(x = ~time, y = ~consumption, type = "bar", yaxis="y", color = ~products)
+general_1 = consumption_function %>% 
+  filter(functions %in% c("Goods","Services"))
+
+fig_1 = plot_ly(general_1, x = ~time, y = ~consumption, type = "scatter", mode = "lines", color = ~functions)
+
+fig_1
 ```
 
-changing tendency of personal consumption of different kinds of functions
-
+## 2nd level
 ```{r}
+general_2 = consumption_function %>% 
+  filter(functions %in% c("Durable goods","Nondurable goods","household","nonprofit consumption")) %>% 
+  select(-line) %>% 
+  pivot_wider(names_from = functions, values_from = consumption) %>% 
+  janitor::clean_names()
+
+subfig_1 = plot_ly(general_2, x = ~time, y = ~durable_goods, type = "bar", name = "Durable Goods") %>% 
+  add_trace(y = ~nondurable_goods, name = "Nondurable Goods") %>% 
+  layout(yaxis = list(title = "Consumption"), barmode = "stack")
+
+subfig_2 = plot_ly(general_2, x = ~time, y = ~household, type = "bar", name = "Household") %>% 
+  add_trace(y = ~nonprofit_consumption, name = "Nonprofit Consumption") %>% 
+  layout(yaixs = list(title = "Consumption"), barmode = "stack")
+
+subfig_1
+subfig_2
+```
+
+## 3rd level
+```{r}
+# durable goods
 consumption_function %>% 
-  plot_ly(x = ~time, y = ~consumption, type = "bar", yaxis="y", color = ~functions)
+  filter(functions %in% c("Motor vehicles and parts","Furnishings and durable household equipment","Recreational goods and vehicles","Other durable goods")) %>% 
+  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
+  layout(legend = list(orientation = 'h'))
+
+# nondurable goods
+consumption_function %>% 
+  filter(functions %in% c("Food and beverages purchased for off-premises consumption","Clothing and footwear","Gasoline and other energy goods","Other nondurable goods")) %>% 
+  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
+  layout(legend = list(orientation = 'h'))
+
+# household consumption
+consumption_function %>% 
+  filter(functions %in% c("Housing and utilities","Health care","Transportation services","Recreation services","Food services and accommodations","Financial services and insurance","Other services")) %>% 
+  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
+  layout(legend = list(orientation = 'h'))
+
+# nonprofit serving household
+consumption_function %>% 
+  filter(functions %in% c("Gross output of nonprofit institutions2","Less: Receipts from sales of goods and services by nonprofit institutions3")) %>% 
+  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
+  layout(legend = list(orientation = 'h'))
 ```
 
-```{r}
-consumption_function_conclude %>% 
-plot_ly(x = ~time, y = ~consumption, type = "scatter", mode = "lines", yaxis="y", color = ~functions)
-```
