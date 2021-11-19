@@ -16,18 +16,8 @@ library(readxl)
 knitr::opts_chunk$set(
   fig.width = 6,
   fig.asp = .6,
-  out.width = "120%"
+  out.width = "90%"
 )
-
-theme_set(theme_minimal())
-
-#options(
-#  ggplot2.continuous.colour = "viridis",
-#  ggplot2.continuous.fill = "viridis"
-#)
-#
-#scale_colour_discrete = scale_colour_viridis_d
-#scale_fill_discrete = scale_fill_viridis_d
 ```
 
 Load data
@@ -59,16 +49,10 @@ pce_state_df =
 Draw map
 
 ```{r, warning = FALSE}
-usa_tbl = 
-  map_data("state") %>% 
-  as_tibble()
-
 pce_state_df =
   pce_state_df %>% 
   filter(year == "2020")
-```
 
-```{r}
 us = usmap::us_map()
 
 us_val =
