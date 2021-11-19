@@ -41,11 +41,6 @@ consumption_function = readxl::read_excel("./data/consumption_function.xlsx") %>
   ) %>% 
   mutate(functions = recode(functions, `Household consumption expenditures (for services)` = "household",
                            `Final consumption expenditures of nonprofit institutions serving households (NPISHs)1` = "nonprofit consumption"))
-
-general_1 = consumption_function %>% 
-  filter(functions %in% c("Goods","Services"))
-
-fig_1 = plot_ly(general_1, x = ~time, y = ~consumption, type = "scatter", mode = "lines", color = ~functions)
 ```
 
 ## 1st level
@@ -103,5 +98,23 @@ consumption_function %>%
   filter(functions %in% c("Gross output of nonprofit institutions2","Less: Receipts from sales of goods and services by nonprofit institutions3")) %>% 
   plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
   layout(legend = list(orientation = 'h'))
+```
+
+## Combine consumption and covid
+```{r}
+covid_seasonal = read_csv("covid_seasonal.csv") %>% 
+  rename(time = date) %>% 
+  select(time, quarterly)
+
+consumption_seasonal = general_1 %>% 
+  select(-line)
+
+covid_consumption = left_join(consumption_seasonal, covid_seasonal, by = "time")
+
+joint_plot = plot_ly(covid_consumption, x = ~time) %>% 
+  add_trace(y = ~consumption, type = "scatter", mode = "lines", color = ~functions) %>% 
+  add_trace(y = ~quarterly, type = "bar", name = "Covid Cases")
+
+joint_plot
 ```
 
