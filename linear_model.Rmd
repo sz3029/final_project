@@ -1,0 +1,15 @@
+---
+title: "Regression Model for Comsumption Prediction"
+author: "Shihui Zhu"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+TO DOs:
+* linear model: consumption ~ time, COVID-19
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
