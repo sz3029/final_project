@@ -12,8 +12,6 @@ output:
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(readxl)
-library(maps)
-library(mapproj)
 
 knitr::opts_chunk$set(
   fig.width = 6,
@@ -55,7 +53,6 @@ pce_state_df =
   ) %>% 
   mutate(
     year = as.numeric(year),
-    state = str_to_lower(state)
   )
 ```
 
@@ -66,21 +63,44 @@ usa_tbl =
   map_data("state") %>% 
   as_tibble()
 
-pce_state_df %>% 
-  filter(year == "2020") %>% 
-  right_join(usa_tbl, by = c("state" = "region")) %>% 
-  ggplot(aes(x = long, y = lat, group = subregion)) +
-  geom_map(
-    aes(map_id = state),
-    map = usa_tbl
+pce_state_df =
+  pce_state_df %>% 
+  filter(year == "2020")
+```
+
+```{r}
+us = usmap::us_map()
+
+us_val =
+  us %>% 
+  left_join(pce_state_df, by = c("full" = "state"))
+
+us_centroids = 
+  us_val %>% 
+  group_by(full) %>% 
+  summarise(centroid.x = mean(range(x)), 
+            centroid.y = mean(range(y)),
+            label = unique(toupper(str_sub(full,1,2))),
+            pce = unique(pce))
+
+us_val %>% 
+  ggplot() +
+  geom_polygon(
+    aes(x,y, group = group, fill = pce), 
+    color = "black",
+    size = .1
   ) +
-  coord_map("ortho", orientation = c(39, -98, 0)) +
-  geom_polygon(aes(group = group, fill = pce), color = "black") +
+  geom_text(
+    data = us_centroids, 
+    aes(centroid.x, centroid.y, label = paste(label, "\n", pce)),
+    size = 2
+  ) +
   scale_fill_gradient2(low = "white", mid = "skyblue2", high = "skyblue4", midpoint = 800000) +
   labs(
     title = "Per Capita Personal Consumption Expenditures by State, 2020",
     x = "",
     y = ""
-  )
+  ) +
+  theme_void()
 ```
 
