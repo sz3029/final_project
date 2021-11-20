@@ -12,6 +12,7 @@ output:
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(readxl)
+library(usmap)
 
 knitr::opts_chunk$set(
   fig.width = 6,

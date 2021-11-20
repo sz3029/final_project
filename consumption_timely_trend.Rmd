@@ -98,6 +98,12 @@ consumption_function %>%
   filter(functions %in% c("Gross output of nonprofit institutions2","Less: Receipts from sales of goods and services by nonprofit institutions3")) %>% 
   plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
   layout(legend = list(orientation = 'h'))
+
+
+
+
+
+
 ```
 
 ## Combine consumption and covid
@@ -112,9 +118,11 @@ consumption_seasonal = general_1 %>%
 covid_consumption = left_join(consumption_seasonal, covid_seasonal, by = "time")
 
 joint_plot = plot_ly(covid_consumption, x = ~time) %>% 
-  add_trace(y = ~consumption, type = "scatter", mode = "lines", color = ~functions) %>% 
-  add_trace(y = ~quarterly, type = "bar", name = "Covid Cases")
+  add_trace(y = ~consumption, type = "scatter", mode = "lines", color = ~functions, yaixs = "y") %>% 
+  add_trace(y = ~quarterly, type = "bar", name = "Covid Cases", yaxis = "y2")  %>% 
+  layout(yaxis=list(title = "consumption expenditure", side="left"),
+         yaxis2=list(title = "covid cases", side="right",overlaying="y"),
+         showlegend=TRUE)
 
 joint_plot
 ```
-
