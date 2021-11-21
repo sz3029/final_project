@@ -11,5 +11,46 @@ TO DOs:
 * linear model: consumption ~ time, COVID-19
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# Reproducibility
+set.seed(1)
+
+# This chunk loads all the packages used in this homework
+library(tidyverse)
+library(viridis)
+library(ggridges)
+library(patchwork)
+
+library(readxl)
+
+# General figure set up
+knitr::opts_chunk$set(
+  # display the code in github doc
+  echo = TRUE,
+  # hide warning messages
+  warning = FALSE,
+  message = FALSE,
+  # set the figure to be 8 x 6, and the proportion it takes to be 95%
+  fig.width = 10,
+  fig.height = 8, 
+  out.width = "90%"
+)
+
+# setting a global options for continuous data color family and a different format to set discrete data to have a color family
+options(
+  ggplot2.countinuous.colour = "viridis",
+  ggplot2.countinuous.fill = "viridis"
+)
+
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+
+# have a minimal theme and legends at the bottom
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
+
+Data tidying
+
+```{r}
+
+```
+
