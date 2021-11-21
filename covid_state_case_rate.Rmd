@@ -109,4 +109,85 @@ plot_df %>%
 
 ```
 
+## Part 2
+
+This data frame is the covid case rate per 100000 till Dec.31.2020.
+
+```{r, message=FALSE}
+# read data function
+read_data_function = function(file_df) {
+  
+  state_df = 
+    read_csv(file_df, skip = 2)
+  
+  return(state_df)
+}
+
+# create a data frame containing all participants
+state_2020 =
+  tibble(
+    files = list.files("./data/state_covid_separate")
+  ) %>% 
+  mutate(
+    path = map(.x = files, ~paste("./data/state_covid_separate", ., sep = "/"))
+  ) %>%                                                             # add path
+  mutate(
+    observations = map(path, read_data_function))
+```
+
+Then I unnest the data frame and filter the cases on Dec.31.2020
+
+```{r}
+state_2020_tidy =
+  state_2020 %>% 
+  unnest(cols = "observations") %>% 
+  janitor::clean_names() %>% 
+  filter(date == "Dec 31 2020") %>%
+  select(state, total_cases, total_case_rate_per_100k)
+```
+
+Make map plot.
+
+```{r}
+plot_2020_df = left_join(state_2020_tidy, all_state, by = c("state" = "full"))
+
+centroids_2020 = 
+  plot_2020_df %>% 
+  group_by(state) %>% 
+  summarise(centroid.x = mean(range(x)), 
+            centroid.y = mean(range(y)),
+            label = unique(toupper(str_sub(state,1,2))),
+            total_case_rate_per_100k = unique(total_case_rate_per_100k))
+```
+
+
+```{r}
+plot_2020_df %>% 
+  group_by(state) %>% 
+  ggplot() +
+  geom_polygon(aes(x, y, group = group, fill = total_case_rate_per_100k)) +
+  geom_text(
+    data = centroids_2020, 
+    aes(centroid.x, centroid.y, label = paste(label, "\n", total_case_rate_per_100k)),
+    size = 1
+  ) +
+  labs(title = "COVID-19 Case Rate by State/Territory (cases per 100,000) 2020", fill = "Cases Rate Per 100,000") +
+  # hide ticks on x and y axis
+  scale_y_continuous(breaks = c()) + 
+  scale_x_continuous(breaks = c()) +
+  scale_fill_gradient2(low = "white", mid = "skyblue2", high = "skyblue4", midpoint = 6000) +
+  # theme refer from RPubs
+  theme(panel.background = element_rect(fill = "grey"),
+        plot.background = element_rect(fill = "grey"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.ticks = element_blank(),
+        panel.border =  element_blank(),
+        plot.title = element_text(
+          size = 15, hjust = 0.5, family = "Times",colour = "white"),
+        legend.title = element_text(
+          hjust = 0.4 ,vjust = 0.3, size = 10,family = "Times"),
+        legend.text = element_text( hjust = 0.4 ,vjust = 2, size = 8,family = "Times"))
+
+```
 
