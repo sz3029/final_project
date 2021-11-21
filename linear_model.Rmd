@@ -48,9 +48,16 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
-Data tidying
+## Data tidying
 
 ```{r}
-
+pce_4720 = read_excel("data/pce_1947_2020.xlsx") %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    x2019_q1 : x2021_q3,
+    names_to = "time",
+    names_prefix = "x",
+    values_to = "consumption"
+  ) 
 ```
 
