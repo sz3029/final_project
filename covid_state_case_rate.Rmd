@@ -1,28 +1,33 @@
 ---
 title: "The association between covid and state in US"
 author: "Yujin Zhang"
-output: github_document
+output: 
+  html_document:
+      toc: true
+      toc_float: true
 ---
 
-This is an R markdown document about covid vs. state data analysis
+This page shows the plots of covid case rate per 100k by state since the epidemic.
 
 ```{r}
 library(tidyverse)
 library(naniar)
+
 library(usmap)
-library(plotly)
+library(ggplot2)
 
 knitr::opts_chunk$set(
-  fig.width = 6,
-  fig.asp = .6,
+  fig.width = 8,
+  fig.asp = .8,
   out.width = "90%"
 )
 ```
 
-## Part 1
-In this part I input the CDC covid cases data by state with time period till Thu Nov 18 2021.
+## Total Covid Case Rate Per 100k By State
 
-The data generated: Thu Nov 18 2021 22:02:06 GMT-0500 (EST)
+First, let's input the CDC covid cases data by state with total time period till Thu Nov 18 2021.
+
+[The data generated: Thu Nov 18 2021 22:02:06 GMT-0500 (EST)]
 
 ```{r}
 # input data table for Total Cases by State/Territory
@@ -31,7 +36,7 @@ covid_total_by_state =
   janitor::clean_names()
 ```
 
-For the missing data, the original dataset fill it with "N/A", so I will replace it with NA and change the variable to numeric.
+For the missing data, the original dataset fill it with "N/A", so we replace it with NA and change the variable to numeric.
 
 ```{r}
 # figure out the missing data in data frame
@@ -50,9 +55,9 @@ covid_total_by_state_tidy =
   
 ```
 
-In the following steps, I will make a choropleth map plot to show the total covid cases by state in US.
+Let's make a choropleth map plot to show the total covid cases by state in US.
 
-First create a new dataset for plot.
+1. Create a new dataset for plot.
 
 ```{r}
 # load geographic coordinates of each US state
@@ -63,7 +68,7 @@ all_state = usmap::us_map() %>%
 plot_df = left_join(covid_total_by_state_tidy, all_state, by = c("region" = "full"))
 ```
 
-Add state abbreviations to the map figure.
+2. Add state abbreviations to the map figure.
 
 ```{r}
 us_centroids = 
@@ -76,7 +81,7 @@ us_centroids =
 
 ```
 
-Now, let's draw the plot.
+3. Draw the plot.
 
 ```{r}
 plot_df %>% 
@@ -86,7 +91,7 @@ plot_df %>%
   geom_text(
     data = us_centroids, 
     aes(centroid.x, centroid.y, label = paste(label, "\n", case_rate_per_100000)),
-    size = 1
+    size = 2
   ) +
   labs(title = "COVID-19 Case Rate by State/Territory (cases per 100,000)", fill = "Cases Rate Per 100,000") +
   # hide ticks on x and y axis
@@ -109,9 +114,9 @@ plot_df %>%
 
 ```
 
-## Part 2
+## Total Covid Case Rate Per 100k By State in 2020
 
-This data frame is the covid case rate per 100000 till Dec.31.2020.
+The following data frame is the covid case rate per 100k till Dec.31.2020.
 
 ```{r, message=FALSE}
 # read data function
@@ -135,7 +140,7 @@ state_2020 =
     observations = map(path, read_data_function))
 ```
 
-Then I unnest the data frame and filter the cases on Dec.31.2020
+Let's unnest the data frame and filter the cases on Dec.31.2020
 
 ```{r}
 state_2020_tidy =
@@ -169,7 +174,7 @@ plot_2020_df %>%
   geom_text(
     data = centroids_2020, 
     aes(centroid.x, centroid.y, label = paste(label, "\n", total_case_rate_per_100k)),
-    size = 1
+    size = 2
   ) +
   labs(title = "COVID-19 Case Rate by State/Territory (cases per 100,000) 2020", fill = "Cases Rate Per 100,000") +
   # hide ticks on x and y axis
