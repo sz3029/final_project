@@ -16,6 +16,17 @@ library(plotly)
 library(rvest)
 library(ggplot2)
 library(lubridate)
+library(patchwork)
+
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
 ```
 
 Import data
@@ -75,35 +86,27 @@ subfig_2
 
 ## 3rd level
 ```{r}
-# durable goods
-consumption_function %>% 
+durable_goods = 
+  consumption_function %>% 
   filter(functions %in% c("Motor vehicles and parts","Furnishings and durable household equipment","Recreational goods and vehicles","Other durable goods")) %>% 
   plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
-  layout(legend = list(orientation = 'h'))
+  layout(legend = list(orientation = 'h', x = 0, y = -0.2))
 
-# nondurable goods
-consumption_function %>% 
+nondurable_goods = 
+  consumption_function %>% 
   filter(functions %in% c("Food and beverages purchased for off-premises consumption","Clothing and footwear","Gasoline and other energy goods","Other nondurable goods")) %>% 
   plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
-  layout(legend = list(orientation = 'h'))
+  layout(legend = list(orientation = 'h', x = 0, y = -0.2))
 
-# household consumption
-consumption_function %>% 
+household_consumption =
+  consumption_function %>% 
   filter(functions %in% c("Housing and utilities","Health care","Transportation services","Recreation services","Food services and accommodations","Financial services and insurance","Other services")) %>% 
   plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
-  layout(legend = list(orientation = 'h'))
+  layout(legend = list(orientation = 'h', x = 0, y = -0.2))
 
-# nonprofit serving household
-consumption_function %>% 
-  filter(functions %in% c("Gross output of nonprofit institutions2","Less: Receipts from sales of goods and services by nonprofit institutions3")) %>% 
-  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
-  layout(legend = list(orientation = 'h'))
-
-
-
-
-
-
+durable_goods
+nondurable_goods
+household_consumption
 ```
 
 ## Combine consumption and covid
