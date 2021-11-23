@@ -118,7 +118,8 @@ Let's take a brief look at the changes of variables over time
 ```{r}
 fig_1 <- pce_4720_formatted %>%
   plot_ly(x = ~time, y = ~millions_of_dollars, type = "scatter", mode = "lines", color = ~variable) %>%
-  layout(title = "<b> Spaghetti Plot for Personal Income and Dispositions v.s. PCE <b>", yaixs = list(title = "<i> Millions of Dollars <i>"), barmode = "stack", legend = list(title = list(text = '<b> Dispositions </b>')))
+  layout(title = "<b> Spaghetti Plot for Personal Income and Dispositions v.s. PCE <b>", yaixs = list(title = "<i> Millions of Dollars <i>"), barmode = "stack", legend = list(title = list(text = '<b> Dispositions </b>'))) %>% 
+  layout(legend = list(orientation = 'h', x = 0, y = -0.2))
 
 fig_1
 ```
@@ -128,7 +129,8 @@ A log graph will be more informative
 ```{r log}
 fig_2 <- pce_4720_formatted %>%
   plot_ly(x = ~time, y = ~log(millions_of_dollars), type = "scatter", mode = "lines", color = ~variable) %>%
-  layout(title = "<b> Spaghetti Plot for log(Personal Income and Dispositions) v.s. PCE </b>", yaixs = list(title = "log(Millions of Dollars)"), barmode = "stack", legend = list(title = list(text = '<i> Dispositions </i>')))
+  layout(title = "<b> Spaghetti Plot for log(Personal Income and Dispositions) v.s. PCE </b>", yaixs = list(title = "log(Millions of Dollars)"), barmode = "stack", legend = list(title = list(text = '<i> Dispositions </i>'))) %>% 
+  layout(legend = list(orientation = 'h', x = 0, y = -0.2))
 
 fig_2
 ```
