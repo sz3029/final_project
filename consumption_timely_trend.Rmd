@@ -1,21 +1,24 @@
 ---
-title: "Trend in Personal Consumption in the US"
-author: "Yijing Tao"
-date: "11/14/2021"
+title: "Consumer Behaviors in Pandemic"
 output: 
   html_document:
     toc: true
     toc_float: true
+    code_folding: hide
 ---
 
 This page is about trend in personal consumption in the US
 
 TODO: 
 Add labels/titles;
+
+Change colors;
+
 Calculate percentage; Add animated Radar Area Chart; 
+
 Add description.
 
-```{r}
+```{r setup, include = FALSE}
 library(tidyverse)
 library(plotly)
 library(rvest)
@@ -34,9 +37,9 @@ scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 ```
 
-Import data
+## Import data
 
-```{r}
+```{r, message = FALSE}
 consumption_product = readxl::read_excel("data/consumption_product.xlsx") %>% 
   janitor::clean_names() %>% 
   pivot_longer(
@@ -57,20 +60,36 @@ consumption_function = readxl::read_excel("./data/consumption_function.xlsx") %>
   ) %>% 
   mutate(functions = recode(functions, `Household consumption expenditures (for services)` = "household",
                            `Final consumption expenditures of nonprofit institutions serving households (NPISHs)1` = "nonprofit consumption"))
-```
 
-## 1st level
-```{r}
 general_1 = consumption_function %>% 
   filter(functions %in% c("Goods","Services"))
 
-fig_1 = plot_ly(general_1, x = ~time, y = ~consumption, type = "scatter", mode = "lines", color = ~functions)
+covid_seasonal = read_csv("covid_seasonal.csv") %>% 
+  rename(time = date) %>% 
+  select(time, quarterly)
 
-fig_1
+consumption_seasonal = general_1 %>% 
+  select(-line)
+
+covid_consumption = left_join(consumption_seasonal, covid_seasonal, by = "time")
+```
+
+## General
+
+```{r, message = FALSE, warning = FALSE}
+joint_plot = plot_ly(covid_consumption, x = ~time) %>% 
+  add_trace(y = ~consumption, type = "scatter", mode = "lines", color = ~functions, yaixs = "y") %>% 
+  add_trace(y = ~quarterly, type = "bar", name = "Covid Cases", yaxis = "y2")  %>% 
+  layout(yaxis=list(title = "consumption expenditure", side="left"),
+         yaxis2=list(title = "covid cases", side="right",overlaying="y"),
+         showlegend=TRUE)
+
+joint_plot
 ```
 
 ## 2nd level
-```{r}
+
+```{r, warning = FALSE}
 general_2 = consumption_function %>% 
   filter(functions %in% c("Durable goods","Nondurable goods","household","nonprofit consumption")) %>% 
   select(-line) %>% 
@@ -81,8 +100,8 @@ subfig_1 = plot_ly(general_2, x = ~time, y = ~durable_goods, type = "bar", name 
   add_trace(y = ~nondurable_goods, name = "Nondurable Goods") %>% 
   layout(yaxis = list(title = "Consumption"), barmode = "stack")
 
-subfig_2 = plot_ly(general_2, x = ~time, y = ~household, type = "bar", name = "Household") %>% 
-  add_trace(y = ~nonprofit_consumption, name = "Nonprofit Consumption") %>% 
+subfig_2 = plot_ly(general_2, x = ~time, y = ~household, type = "bar", name = "Household", colors = "Dark2") %>% 
+  add_trace(y = ~nonprofit_consumption, name = "Nonprofit Consumption", colors = "Dark2") %>% 
   layout(yaixs = list(title = "Consumption"), barmode = "stack")
 
 subfig_1
@@ -90,7 +109,8 @@ subfig_2
 ```
 
 ## 3rd level
-```{r}
+
+```{r, message = FALSE, warning = FALSE}
 durable_goods = 
   consumption_function %>% 
   filter(functions %in% c("Motor vehicles and parts","Furnishings and durable household equipment","Recreational goods and vehicles","Other durable goods")) %>% 
@@ -112,7 +132,11 @@ household_consumption =
 durable_goods
 nondurable_goods
 household_consumption
+```
 
+## radar charts (TODO)
+
+```{r, message = FALSE, warning = FALSE}
 
 fig <- plot_ly(
     type = 'scatterpolar',
@@ -143,23 +167,3 @@ fig <- fig %>%
 fig
 ```
 
-## Combine consumption and covid
-```{r}
-covid_seasonal = read_csv("covid_seasonal.csv") %>% 
-  rename(time = date) %>% 
-  select(time, quarterly)
-
-consumption_seasonal = general_1 %>% 
-  select(-line)
-
-covid_consumption = left_join(consumption_seasonal, covid_seasonal, by = "time")
-
-joint_plot = plot_ly(covid_consumption, x = ~time) %>% 
-  add_trace(y = ~consumption, type = "scatter", mode = "lines", color = ~functions, yaixs = "y") %>% 
-  add_trace(y = ~quarterly, type = "bar", name = "Covid Cases", yaxis = "y2")  %>% 
-  layout(yaxis=list(title = "consumption expenditure", side="left"),
-         yaxis2=list(title = "covid cases", side="right",overlaying="y"),
-         showlegend=TRUE)
-
-joint_plot
-```
