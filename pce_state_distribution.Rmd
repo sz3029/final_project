@@ -67,7 +67,7 @@ g <- list(
 fig <- plot_geo(pce_state_20_df, locationmode = 'USA-states')
 fig <- fig %>% add_trace(
     z = ~pce, text = ~state, locations = ~code,
-    color = ~pce, colors = 'Blues'
+    color = ~pce, colorscale = list(c(0, 0.4, 1), c("#ecf6ff", "478fcc", "#004a88"))
   )
 fig <- fig %>% colorbar(title = "PCE")
 fig <- fig %>% layout(
@@ -83,15 +83,15 @@ us = usmap::us_map()
 
 us_val =
   us %>% 
-  left_join(pce_state_df, by = c("full" = "state"))
+  left_join(pce_state_20_df, by = c("full" = "state"))
 
 us_centroids = 
   us_val %>% 
   group_by(full) %>% 
   summarise(centroid.x = mean(range(x)), 
             centroid.y = mean(range(y)),
-            label = unique(toupper(str_sub(full,1,2))),
-            pce = unique(pce))
+            label = abbr,
+            pce = pce)
 
 state_plot =
   us_val %>% 
