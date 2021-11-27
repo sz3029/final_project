@@ -85,6 +85,14 @@ joint_plot = plot_ly(covid_consumption, x = ~time) %>%
 joint_plot
 ```
 
+The lowest point actually did not happen as expected at the peak of the pandemic. In the second quarter of 2020, when cases start to rise, personal protective equipment were in a shortage, no effective treatment plans/vaccines are available, the total expenditure of consumption in the US reached to its lowest. 
+
+Consumption expenditures of services experienced a steeper change than expenditures of goods due to the shutdown of businesses, the quarantine and the lock down policies etc. 
+
+Even though cases keep rising, as 
+
+The total consumption expenditure is even larger by now comparing with that before the pandemic. This can be partially explained by inflation and government's stimulus plan. 
+
 ## Consumption of Goods
 
 ```{r, message = FALSE, warning = FALSE}
