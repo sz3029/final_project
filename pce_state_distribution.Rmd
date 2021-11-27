@@ -13,6 +13,7 @@ output:
 library(tidyverse)
 library(readxl)
 library(usmap)
+library(plotly)
 
 knitr::opts_chunk$set(
   fig.width = 6,
@@ -36,6 +37,9 @@ Clean data
 pce_state_df = 
   raw_df %>% 
   filter(!(state %in% c("United States", "New England", "Mideast", "Great Lakes", "Plains", "Southeast", "Southwest", "Rocky Mountain", "Far West"))) %>% 
+  mutate(
+    code = c("CT", "ME", "MA", "NH", "RI", "VT", "DE", "DC", "MD", "NJ", "NY", "PA", "IL", "IN", "MI", "OH", "WI", "IA", "KS", "MN", "MO", "NE", "ND", "SD", "AL", "AR", "FL", "GA", "KY", "LA", "MS", "NC", "SC", "TN", "VA", "WV", "AZ", "NM", "OK", "TX", "CO", "ID", "MT", "UT", "WY", "AK", "CA", "HI", "NV", "OR", "WA")
+  ) %>% 
   select(-"2019_change", -"2020_change") %>% 
   pivot_longer(
     "2018":"2020",
@@ -50,10 +54,31 @@ pce_state_df =
 Draw map
 
 ```{r, warning = FALSE}
-pce_state_df =
+pce_state_20_df =
   pce_state_df %>% 
   filter(year == "2020")
 
+g <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)
+fig <- plot_geo(pce_state_20_df, locationmode = 'USA-states')
+fig <- fig %>% add_trace(
+    z = ~pce, text = ~state, locations = ~code,
+    color = ~pce, colors = 'Blues'
+  )
+fig <- fig %>% colorbar(title = "PCE")
+fig <- fig %>% layout(
+    title = 'Per Capita Personal Consumption Expenditures by State, 2020)',
+    geo = g
+  )
+
+fig
+```
+
+```{r, include = FALSE}
 us = usmap::us_map()
 
 us_val =
@@ -68,7 +93,8 @@ us_centroids =
             label = unique(toupper(str_sub(full,1,2))),
             pce = unique(pce))
 
-us_val %>% 
+state_plot =
+  us_val %>% 
   ggplot() +
   geom_polygon(
     aes(x,y, group = group, fill = pce), 
@@ -87,5 +113,7 @@ us_val %>%
     y = ""
   ) +
   theme_void()
+
+ggplotly(state_plot)
 ```
 
