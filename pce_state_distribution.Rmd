@@ -56,22 +56,43 @@ Draw map
 ```{r, warning = FALSE}
 pce_state_20_df =
   pce_state_df %>% 
-  filter(year == "2020")
+  filter(year == "2020") %>% 
+  mutate(text = paste(state, "\n", "PCE:",pce))
 
-g <- list(
+g = list(
   scope = 'usa',
-  projection = list(type = 'albers usa'),
-  showlakes = TRUE,
-  lakecolor = toRGB('white')
+  projection = list(type = 'albers usa')
 )
-fig <- plot_geo(pce_state_20_df, locationmode = 'USA-states')
-fig <- fig %>% add_trace(
-    z = ~pce, text = ~state, locations = ~code,
-    color = ~pce, colorscale = list(c(0, 0.4, 1), c("#ecf6ff", "478fcc", "#004a88"))
+
+fig = plot_geo(pce_state_20_df, locationmode = 'USA-states')
+
+fig = 
+  fig %>% 
+  add_trace(
+    type = "scattergeo",
+    locations = ~code,
+    text = ~code,
+    mode = "text",
+    textfont = list(color = rgb(0,0,0), size = 8),
+    hoverinfo = "none"
+  ) %>% 
+  add_trace(
+    z = ~pce, 
+    locations = ~code,
+    text = ~text,
+    color = ~pce, 
+    colorscale = list(c(0, 0.4, 1), c("#ecf6ff", "478fcc", "#004a88")),
+    hoverinfo = "text"
   )
-fig <- fig %>% colorbar(title = "PCE")
-fig <- fig %>% layout(
-    title = 'Per Capita Personal Consumption Expenditures by State, 2020)',
+
+fig = 
+  fig %>% 
+  colorbar(title = "PCE", thickness = 20)
+
+fig = 
+  fig %>% 
+  layout(
+    title = 'Total Personal Consumption Expenditures by State, 2020',
     geo = g
   )
 
