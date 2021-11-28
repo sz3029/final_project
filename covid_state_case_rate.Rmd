@@ -13,8 +13,7 @@ This page shows the plots of covid case rate per 100k by state since the epidemi
 library(tidyverse)
 library(naniar)
 
-library(usmap)
-library(ggplot2)
+library(plotly)
 
 knitr::opts_chunk$set(
   fig.width = 8,
@@ -51,68 +50,60 @@ covid_total_by_state_tidy =
     case_rate_per_100000 = as.numeric(case_rate_per_100000)
          ) %>% 
   rename(region = "state_territory") %>% 
-  select(region, case_rate_per_100000)
+  select(region, case_rate_per_100000) %>% 
+  mutate(region = recode(region, "New York*" = "New York"))
   
 ```
 
 Let's make a choropleth map plot to show the total covid cases by state in US.
 
-1. Create a new dataset for plot.
+1. Load the usa postal code dataset.
 
 ```{r}
-# load geographic coordinates of each US state
-all_state = usmap::us_map() %>% 
-  relocate(full)
+postal_code = 
+  read_csv("./data/us_postal_code.csv") %>% 
+  janitor::clean_names()
 
-# combine two dataset
-plot_df = left_join(covid_total_by_state_tidy, all_state, by = c("region" = "full"))
-```
-
-2. Add state abbreviations to the map figure.
-
-```{r}
-us_centroids = 
-  plot_df %>% 
-  group_by(region) %>% 
-  summarise(centroid.x = mean(range(x)), 
-            centroid.y = mean(range(y)),
-            label = unique(toupper(str_sub(region,1,2))),
-            case_rate_per_100000 = unique(case_rate_per_100000))
+# 
+plot_df = 
+  left_join(postal_code, covid_total_by_state_tidy, by = c("state" = "region")) %>% 
+  relocate(code)
 
 ```
 
-3. Draw the plot.
+
+2.. Draw the plotly.
 
 ```{r}
-plot_df %>% 
-  group_by(region) %>% 
-  ggplot() +
-  geom_polygon(aes(x, y, group = group, fill = case_rate_per_100000)) +
-  geom_text(
-    data = us_centroids, 
-    aes(centroid.x, centroid.y, label = paste(label, "\n", case_rate_per_100000)),
-    size = 2
-  ) +
-  labs(title = "COVID-19 Case Rate by State/Territory (cases per 100,000)", fill = "Cases Rate Per 100,000") +
-  # hide ticks on x and y axis
-  scale_y_continuous(breaks = c()) + 
-  scale_x_continuous(breaks = c()) +
-  scale_fill_gradient2(low = "white", mid = "skyblue2", high = "skyblue4", midpoint = 10000) +
-  # theme refer from RPubs
-  theme(panel.background = element_rect(fill = "grey"),
-        plot.background = element_rect(fill = "grey"),
-        axis.title.x = element_blank(),
-        axis.title.y = element_blank(),
-        axis.ticks = element_blank(),
-        panel.border =  element_blank(),
-        plot.title = element_text(
-          size = 15, hjust = 0.5, family = "Times",colour = "white"),
-        legend.title = element_text(
-          hjust = 0.4 ,vjust = 0.3, size = 10,family = "Times"),
-        legend.text = element_text( hjust = 0.4 ,vjust = 2, size = 8,family = "Times"))
+# specify some map projection/options
+g = list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)
+
+plot_df$hover = with(plot_df, paste(
+  state, '<br>')
+  )
+
+map_plotly1 = 
+  plot_geo(plot_df, locationmode = 'USA-states') %>% 
+  add_trace(
+    z = ~case_rate_per_100000, text = ~hover, locations = ~code,
+    color = ~case_rate_per_100000, colors = 'Purples'
+  ) %>% 
+  colorbar(title = "Case Rate Per 100K") %>% 
+  layout(
+    title = "COVID-19 Case Rate by State/Territory (cases per 100,000)",
+    geo = g
+  )
 
 
 ```
+
+`r map_plotly1`
+
 
 ## Total Covid Case Rate Per 100k By State in 2020
 
@@ -154,45 +145,35 @@ state_2020_tidy =
 Make map plot.
 
 ```{r}
-plot_2020_df = left_join(state_2020_tidy, all_state, by = c("state" = "full"))
+plot_2020_df = left_join(state_2020_tidy, postal_code, by = "state")
 
-centroids_2020 = 
-  plot_2020_df %>% 
-  group_by(state) %>% 
-  summarise(centroid.x = mean(range(x)), 
-            centroid.y = mean(range(y)),
-            label = unique(toupper(str_sub(state,1,2))),
-            total_case_rate_per_100k = unique(total_case_rate_per_100k))
 ```
 
 
 ```{r}
-plot_2020_df %>% 
-  group_by(state) %>% 
-  ggplot() +
-  geom_polygon(aes(x, y, group = group, fill = total_case_rate_per_100k)) +
-  geom_text(
-    data = centroids_2020, 
-    aes(centroid.x, centroid.y, label = paste(label, "\n", total_case_rate_per_100k)),
-    size = 2
-  ) +
-  labs(title = "COVID-19 Case Rate by State/Territory (cases per 100,000) 2020", fill = "Cases Rate Per 100,000") +
-  # hide ticks on x and y axis
-  scale_y_continuous(breaks = c()) + 
-  scale_x_continuous(breaks = c()) +
-  scale_fill_gradient2(low = "white", mid = "skyblue2", high = "skyblue4", midpoint = 6000) +
-  # theme refer from RPubs
-  theme(panel.background = element_rect(fill = "grey"),
-        plot.background = element_rect(fill = "grey"),
-        axis.title.x = element_blank(),
-        axis.title.y = element_blank(),
-        axis.ticks = element_blank(),
-        panel.border =  element_blank(),
-        plot.title = element_text(
-          size = 15, hjust = 0.5, family = "Times",colour = "white"),
-        legend.title = element_text(
-          hjust = 0.4 ,vjust = 0.3, size = 10,family = "Times"),
-        legend.text = element_text( hjust = 0.4 ,vjust = 2, size = 8,family = "Times"))
+# specify some map projection/options
+g = list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)
 
+plot_2020_df$hover = with(plot_2020_df, paste(
+  state, '<br>', "Total case", total_cases, "<br>")
+  )
+
+map_plotly2 = 
+  plot_geo(plot_2020_df, locationmode = 'USA-states') %>% 
+  add_trace(
+    z = ~total_case_rate_per_100k, text = ~hover, locations = ~code,
+    color = ~total_case_rate_per_100k, colors = 'Purples'
+  ) %>% 
+  colorbar(title = "Case Rate Per 100K") %>% 
+  layout(
+    title = "2020 COVID-19 Case Rate by State/Territory (cases per 100,000)",
+    geo = g
+  )
 ```
 
+`r map_plotly2`
