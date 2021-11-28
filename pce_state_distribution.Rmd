@@ -22,18 +22,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-Load data
 
 ```{r, message = FALSE}
 raw_df = 
   read_excel("data/pce_by_state.xlsx", sheet = "Table 1", range = "A4:F63", col_names = FALSE)
 
 colnames(raw_df) = c("state", "pce_2018", "pce_2019", "pce_2020", "change_2019", "change_2020")
-```
 
-Clean data
-
-```{r}
 pce_state_df_1 = 
   raw_df %>% 
   filter(!(state %in% c("United States", "New England", "Mideast", "Great Lakes", "Plains", "Southeast", "Southwest", "Rocky Mountain", "Far West"))) %>% 
@@ -43,13 +38,12 @@ pce_state_df_1 =
   mutate(
     text_2020 = paste(state, "\n", "PCE:", pce_2020),
     text_2019 = paste(state, "\n", "PCE:", pce_2019),
-    text_change_2020 = paste(state, "\n", "Percent change:", change_2020)
+    text_change_2020 = paste(state, "\n", "Percent change:", change_2020),
+    text_change_2019 = paste(state, "\n", "Percent change:", change_2019)
   )
 ```
 
-Draw map
-
-
+State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia.
 
 ```{r, warning = FALSE}
 g = list(
@@ -74,16 +68,42 @@ fig_1 =
     color = ~change_2020, 
     colorscale = list(c(0, 0.3, 0.5, 1), c("#004c8c", "65a6db", "a4c6e6", "#f5faff")),
     hoverinfo = "text",
-    colorbar = list(title = "PCE growth rates", thickness = 20, x = 1, y = 0.8),
+    colorbar = list(title = "PCE growth rates(%)", thickness = 20, x = 1, y = 0.8),
     visible = T
   ) %>% 
+  add_trace(
+    z = ~change_2019, 
+    locations = ~code,
+    text = ~text_change_2019,
+    color = ~change_2019, 
+    colorscale = list(c(0, 0.3, 0.5, 1), c("#004c8c", "65a6db", "a4c6e6", "#f5faff")),
+    hoverinfo = "text",
+    colorbar = list(title = "PCE growth rates(%)", thickness = 20, x = 1, y = 0.8),
+    visible = F
+  ) %>%
   layout(
-    title = 'Personal Consumption Expenditures by State: Percent Change, 2019-2020',
-    geo = g
+    title = 'Personal Consumption Expenditures by State: Percent Change',
+    geo = g,
+    updatemenus = list(
+      list(
+        type = 'buttons',
+        x = 0.1,
+        y = 0.95,
+        buttons = list(
+          list(method = "restyle",
+               args = list("visible", list(T, T, F)),
+               label = '2019-2020'),
+          
+          list(method = "restyle",
+               args = list("visible", list(T, F, T)),
+               label = '2018-2019')
+        )))
   )
 
 fig_1
 ```
+
+Across all states and the District of Columbia, per capita PCE was $42,635. Per capita PCE by state ranged from a high of $52,001 in Massachusetts to a low of $32,358 in Mississippi. Per capita PCE in the District of Columbia was $65,169.
 
 ```{r}
 fig_2 = 
@@ -138,6 +158,8 @@ fig_2 =
 
 fig_2
 ```
+
+
 
 
 
