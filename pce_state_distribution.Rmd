@@ -13,9 +13,10 @@ output:
 library(tidyverse)
 library(readxl)
 library(usmap)
+library(plotly)
 
 knitr::opts_chunk$set(
-  fig.width = 6,
+  fig.width = 8,
   fig.asp = .6,
   out.width = "90%"
 )
@@ -27,65 +28,155 @@ Load data
 raw_df = 
   read_excel("data/pce_by_state.xlsx", sheet = "Table 1", range = "A4:F63", col_names = FALSE)
 
-colnames(raw_df) = c("state", "2018", "2019", "2020", "2019_change", "2020_change")
+colnames(raw_df) = c("state", "pce_2018", "pce_2019", "pce_2020", "change_2019", "change_2020")
 ```
 
 Clean data
 
 ```{r}
-pce_state_df = 
+pce_state_df_1 = 
   raw_df %>% 
   filter(!(state %in% c("United States", "New England", "Mideast", "Great Lakes", "Plains", "Southeast", "Southwest", "Rocky Mountain", "Far West"))) %>% 
-  select(-"2019_change", -"2020_change") %>% 
-  pivot_longer(
-    "2018":"2020",
-    names_to = "year",
-    values_to = "pce"
+  mutate(
+    code = c("CT", "ME", "MA", "NH", "RI", "VT", "DE", "DC", "MD", "NJ", "NY", "PA", "IL", "IN", "MI", "OH", "WI", "IA", "KS", "MN", "MO", "NE", "ND", "SD", "AL", "AR", "FL", "GA", "KY", "LA", "MS", "NC", "SC", "TN", "VA", "WV", "AZ", "NM", "OK", "TX", "CO", "ID", "MT", "UT", "WY", "AK", "CA", "HI", "NV", "OR", "WA")
   ) %>% 
   mutate(
-    year = as.numeric(year),
+    text_2020 = paste(state, "\n", "PCE:", pce_2020),
+    text_2019 = paste(state, "\n", "PCE:", pce_2019),
+    text_change_2020 = paste(state, "\n", "Percent change:", change_2020)
   )
 ```
 
 Draw map
 
+
+
 ```{r, warning = FALSE}
-pce_state_df =
-  pce_state_df %>% 
-  filter(year == "2020")
+g = list(
+  scope = 'usa',
+  projection = list(type = 'albers usa')
+)
 
-us = usmap::us_map()
+fig_1 = 
+  plot_geo(pce_state_df_1, locationmode = 'USA-states') %>% 
+  add_trace(
+    type = "scattergeo",
+    locations = ~code,
+    text = ~code,
+    mode = "text",
+    textfont = list(color = rgb(0,0,0), size = 10),
+    hoverinfo = "none"
+  ) %>% 
+  add_trace(
+    z = ~change_2020, 
+    locations = ~code,
+    text = ~text_change_2020,
+    color = ~change_2020, 
+    colorscale = list(c(0, 0.3, 0.5, 1), c("#004c8c", "65a6db", "a4c6e6", "#f5faff")),
+    hoverinfo = "text",
+    colorbar = list(title = "PCE growth rates", thickness = 20, x = 1, y = 0.8),
+    visible = T
+  ) %>% 
+  layout(
+    title = 'Personal Consumption Expenditures by State: Percent Change, 2019-2020',
+    geo = g
+  )
 
-us_val =
-  us %>% 
-  left_join(pce_state_df, by = c("full" = "state"))
+fig_1
+```
 
-us_centroids = 
-  us_val %>% 
-  group_by(full) %>% 
-  summarise(centroid.x = mean(range(x)), 
-            centroid.y = mean(range(y)),
-            label = unique(toupper(str_sub(full,1,2))),
-            pce = unique(pce))
+```{r}
+fig_2 = 
+  plot_geo(pce_state_df_1, locationmode = 'USA-states') %>% 
+  add_trace(
+    type = "scattergeo",
+    locations = ~code,
+    text = ~code,
+    mode = "text",
+    textfont = list(color = rgb(0,0,0), size = 10),
+    hoverinfo = "none"
+  ) %>% 
+  add_trace(
+    z = ~pce_2020, 
+    locations = ~code,
+    text = ~text_2020,
+    color = ~pce_2020, 
+    colorscale = list(c(0, 0.06, 0.3, 1), c("#004c8c", "65a6db", "a4c6e6", "#f5faff")),
+    hoverinfo = "text",
+    colorbar = list(title = "PCE", thickness = 20, x = 1, y = 0.8),
+    visible = T
+  ) %>% 
+  add_trace(
+    z = ~pce_2019, 
+    locations = ~code,
+    text = ~text_2019,
+    color = ~pce_2019, 
+    colorscale = list(c(0, 0.06, 0.3, 1), c("#004c8c", "69abe1", "a7caeb", "#fafdff")),
+    hoverinfo = "text",
+    colorbar = list(title = "PCE", thickness = 20, x = 1, y = 0.8),
+    visible = F
+  ) %>% 
+  layout(
+    title = 'Total Personal Consumption Expenditures by State',
+    geo = g,
+    updatemenus = list(
+      list(
+        type = 'buttons',
+        x = 0.1,
+        y = 0.95,
+        buttons = list(
+          list(method = "restyle",
+               args = list("visible", list(T, T, F)),
+               label = '2020'),
+          
+          list(method = "restyle",
+               args = list("visible", list(T, F, T)),
+               label = '2019')
+        ))),
+    annotations = list(list(text = "Year", x = 0, y = 1, showarrow = FALSE))
+  )
 
-us_val %>% 
-  ggplot() +
-  geom_polygon(
-    aes(x,y, group = group, fill = pce), 
-    color = "black",
-    size = .1
-  ) +
-  geom_text(
-    data = us_centroids, 
-    aes(centroid.x, centroid.y, label = paste(label, "\n", pce)),
-    size = 2
-  ) +
-  scale_fill_gradient2(low = "white", mid = "skyblue2", high = "skyblue4", midpoint = 800000) +
-  labs(
-    title = "Per Capita Personal Consumption Expenditures by State, 2020",
-    x = "",
-    y = ""
-  ) +
-  theme_void()
+fig_2
+```
+
+
+
+```{r, include = FALSE}
+## us = usmap::us_map()
+## 
+## us_val =
+##   us %>% 
+##   left_join(pce_state_20_df, by = c("full" = "state"))
+## 
+## us_centroids = 
+##   us_val %>% 
+##   group_by(full) %>% 
+##   summarise(centroid.x = mean(range(x)), 
+##             centroid.y = mean(range(y)),
+##             label = abbr,
+##             pce = pce)
+## 
+## state_plot =
+##   us_val %>% 
+##   ggplot() +
+##   geom_polygon(
+##     aes(x,y, group = group, fill = pce), 
+##     color = "black",
+##     size = .1
+##   ) +
+##   geom_text(
+##     data = us_centroids, 
+##     aes(centroid.x, centroid.y, label = paste(label, "\n", pce)),
+##     size = 2
+##   ) +
+##   scale_fill_gradient2(low = "white", mid = "skyblue2", high = "skyblue4", midpoint = 800000) +
+##   labs(
+##     title = "Per Capita Personal Consumption Expenditures by State, 2020",
+##     x = "",
+##     y = ""
+##   ) +
+##   theme_void()
+## 
+## ggplotly(state_plot)
 ```
 
