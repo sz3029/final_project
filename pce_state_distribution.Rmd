@@ -41,9 +41,23 @@ pce_state_df_1 =
     text_change_2020 = paste(state, "\n", "Percent change:", change_2020),
     text_change_2019 = paste(state, "\n", "Percent change:", change_2019)
   )
+
+personal_df = 
+  read_excel("data/pce_by_state.xlsx", sheet = "Table 4", range = "A4:G63", col_names = FALSE)
+
+colnames(personal_df) = c("state", "personal_pce_2020", "housing", "health", "food", "gasoline", "other")
+
+pce_state_df_1 = 
+  left_join(pce_state_df_1, personal_df, by = "state") %>% 
+  mutate(
+    population = pce_2020 / personal_pce_2020,
+    personal_pce_2019 = round(pce_2019 / population),
+    text_personal_2020 = paste(state, "\n", "Personal PCE:", personal_pce_2020),
+    text_personal_2019 = paste(state, "\n", "Personal PCE:", personal_pce_2019)
+  )
 ```
 
-State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia.
+State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia. PCE increased in only four states, Idaho, Utah, Montana, and Arkansas.
 
 ```{r, warning = FALSE}
 g = list(
@@ -66,7 +80,7 @@ fig_1 =
     locations = ~code,
     text = ~text_change_2020,
     color = ~change_2020, 
-    colorscale = list(c(0, 0.3, 0.5, 1), c("#004c8c", "65a6db", "a4c6e6", "#f5faff")),
+    colorscale = list(c(0, 0.85, 1), c("#c44934", "#ffffff", "#83c5fd")),
     hoverinfo = "text",
     colorbar = list(title = "PCE growth rates(%)", thickness = 20, x = 1, y = 0.8),
     visible = T
@@ -76,7 +90,7 @@ fig_1 =
     locations = ~code,
     text = ~text_change_2019,
     color = ~change_2019, 
-    colorscale = list(c(0, 0.3, 0.5, 1), c("#004c8c", "65a6db", "a4c6e6", "#f5faff")),
+    colorscale = list(c(0, 1), c("#f5faff", "#0863b0")),
     hoverinfo = "text",
     colorbar = list(title = "PCE growth rates(%)", thickness = 20, x = 1, y = 0.8),
     visible = F
@@ -103,7 +117,61 @@ fig_1 =
 fig_1
 ```
 
-Across all states and the District of Columbia, per capita PCE was $42,635. Per capita PCE by state ranged from a high of $52,001 in Massachusetts to a low of $32,358 in Mississippi. Per capita PCE in the District of Columbia was $65,169.
+Across all states and the District of Columbia, per capita PCE was $42,635. Per capita PCE by state ranged from a high of $52,001 in Massachusetts to a low of $32,358 in Mississippi. Per capita PCE in the District of Columbia was $65,169. 
+
+```{r}
+fig_3 = 
+  plot_geo(pce_state_df_1, locationmode = 'USA-states') %>% 
+  add_trace(
+    type = "scattergeo",
+    locations = ~code,
+    text = ~code,
+    mode = "text",
+    textfont = list(color = rgb(0,0,0), size = 10),
+    hoverinfo = "none"
+  ) %>% 
+  add_trace(
+    z = ~personal_pce_2020, 
+    locations = ~code,
+    text = ~text_personal_2020,
+    color = ~personal_pce_2020, 
+    colorscale = list(c(0, 0.3, 0.5, 1), c("#f5faff", "72b5f1", "176fba", "#004c8c")),
+    hoverinfo = "text",
+    colorbar = list(title = "PCE", thickness = 20, x = 1, y = 0.8),
+    visible = T
+  ) %>% 
+  add_trace(
+    z = ~personal_pce_2019, 
+    locations = ~code,
+    text = ~text_personal_2019,
+    color = ~personal_pce_2019, 
+    colorscale = list(c(0, 0.26, 0.48, 1), c("#f5faff", "72b5f1", "176fba", "#004c8c")),
+    hoverinfo = "text",
+    colorbar = list(title = "PCE", thickness = 20, x = 1, y = 0.8),
+    visible = F
+  ) %>% 
+  layout(
+    title = 'Per Capita Personal Consumption Expenditures by State',
+    geo = g,
+    updatemenus = list(
+      list(
+        type = 'buttons',
+        x = 0.1,
+        y = 0.95,
+        buttons = list(
+          list(method = "restyle",
+               args = list("visible", list(T, T, F)),
+               label = '2020'),
+          
+          list(method = "restyle",
+               args = list("visible", list(T, F, T)),
+               label = '2019')
+        ))),
+    annotations = list(list(text = "Year", x = 0, y = 1, showarrow = FALSE))
+  )
+
+fig_3
+```
 
 ```{r}
 fig_2 = 
@@ -121,7 +189,7 @@ fig_2 =
     locations = ~code,
     text = ~text_2020,
     color = ~pce_2020, 
-    colorscale = list(c(0, 0.06, 0.3, 1), c("#004c8c", "65a6db", "a4c6e6", "#f5faff")),
+    colorscale = list(c(0, 0.1, 0.5, 1), c("#f5faff", "72b5f1", "176fba", "#005196")),
     hoverinfo = "text",
     colorbar = list(title = "PCE", thickness = 20, x = 1, y = 0.8),
     visible = T
@@ -131,7 +199,7 @@ fig_2 =
     locations = ~code,
     text = ~text_2019,
     color = ~pce_2019, 
-    colorscale = list(c(0, 0.06, 0.3, 1), c("#004c8c", "69abe1", "a7caeb", "#fafdff")),
+    colorscale = list(c(0, 0.09, 0.43, 1), c("#f5faff", "72b5f1", "176fba", "#004c8c")),
     hoverinfo = "text",
     colorbar = list(title = "PCE", thickness = 20, x = 1, y = 0.8),
     visible = F
@@ -159,8 +227,13 @@ fig_2 =
 fig_2
 ```
 
+Expenditures on food services and accommodations, recreation services, and health care were the leading contributors to the decrease nationally.
 
+Food services and accommodations decreased 20.5 percent nationally and was the largest contributor to decreases in the District of Columbia and 27 states including Hawaii and New York; it was the second largest contributor to decreases in 11 states.
 
+Recreation services decreased 28.6 percent nationally and was the largest contributor to decreases in 4 states including California.
+
+Health care decreased 6.1 percent nationally and was the largest contributor to decreases in 12 states including Alaska.
 
 
 ```{r, include = FALSE}
