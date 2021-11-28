@@ -111,6 +111,10 @@ subfig_1 = plot_ly(general_2, x = ~time, y = ~durable_goods, type = "bar", name 
 subfig_1
 ```
 
+The proportion of the nondurable goods such as food, drinks and clothing etc. increased after the second quarter of 2020, the time when the cases are rising. This indicates that people are more willing to spend income on the nonduarble goods instead of spending them on buying the durable goods such as cars and house. 
+
+This might result from the work-from-home policy which many companies are still keeping even after the outbreak of COVID-19. For example, people need to prepare food for themselves since many of the restaurants are no longer serving, and they don't need to drive that much so many of them don't buy the new cars as frequent as they used to.
+
 ### Durable Goods
 
 ```{r, message = FALSE, warning = FALSE}
@@ -137,6 +141,17 @@ nondurable_goods %>%
          legend = list(orientation = 'h', x = 0, y = -0.2))
 ```
 
+There is a lowest point of the value of consumption expenditure in all kind of goods consumption in the second quarter of 2020, when the COVID-19 outbroke, and after that, the consumption gradually grow up. From the lowest point we can infer that people were influenced a lot because of the pandemic, many of them might have lost their job in this period, so they don't have enough money to consume as what they did before.
+
+`Motor vehicles and parts` increases fastest after the trough, from which we can infer that people go out even more frequently after the pandemic than before the pandemic. We can call it `revenge travel`, which means people will become more willing to get out of the room after being trapped at home for a long time due to the pandemic, this could also help to explain why there is a consumption trough in the second quarter in 2020 in `Gasoline and other energy goods`. 
+
+`Furnishngs and durable household equipment` was reduced in the pandemic but not as much as `Motor vehicles and parts`. That's because many people lost their jobs and didn't have enough income to buy new furnishing and other durable equipment that they already have. Moreover, many of the furnising stores shut down in the pandemic.
+
+`Recrational goods and vehicles`(which mainly include goods for fun such as pc games) increased in the pandemic because spending more time at home without seeing their friends make people spent more time on playing computer games, which will make them more willing to pay for these online games in order to make themselves less lonely.
+
+`Clothing and foodwear` consumption reduces rapidly in the pandemic because people began to work from home, and didn't need to go outside to meet other people. So they could just stay in their own room wearing the slippers and pajamas, didn't need to buy that much new clothes and shoes. 
+
+There is a little peak in the second quarter in 2020 on the trend of food and beverages consumption. We can infer that people spent more time and money on buying food and ate more since they spent more time at home and could only make food by themselves.
 
 ## Consumption of Services 
 
@@ -163,6 +178,17 @@ household_consumption %>%
          legend = list(orientation = 'h', x = 0, y = -0.2))
 ```
 
+There is a trough in all kinds of housing service except `housing and utilities` and `finantial service and insurance`.
+
+Because of the covid, the hospital didn't have enough ability to cure all of the patients, and also, most of US people need to work at home, which kept many people away from the hospital--there are not enough doctors and space for new patients, and those who work at home are less likely to get the illness such as cold.
+
+`Transpotation service` includes `motor vehicle repair fee, leasing fee and rental fee` and `fees for public transform`. So these fee rapidly reduced in the pandemic, since people didn't need to go out and use the transportation.
+
+`Food service and accommodations` reduced because most of the restaurant shut down in the pandemic. And people also don't need to eat outside because they work from home without going to the office and school.
+
+`Recration service` mainly includes the fees of the activities for fun such as sport, museum, gambling, package tour etc. Most of these activities need to be completed outdoor, which was impossible in the pandemic.
+
+Only the `housing and utilities`(which mainly includes housing rental and the fees for the resouces at home such as electricity and gas) and `finantial service and insurance` (which mainly includes life and health insurance anc commissions in banks) were not reduced in the pandemic and even slowly increased because people spend most of their time at home, and was impossible to use less life basic resource. And also, most of the service in the banks can be completed online now, so paying for the insurance and the commission was not influenced a lot in the pandemic.
 
 ## Consumption Structure Analysis
 
