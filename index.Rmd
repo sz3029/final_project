@@ -1,0 +1,46 @@
+---
+title: "Where Does the Money Go?"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
+---
+<style type="text/css">
+
+h1.title {
+  text-align: center;
+}
+
+</style>
+
+&nbsp;
+
+<center>
+<img src="./images/image.jpg" style="width:80%" class="center">
+<br>Image source: [Unsplash](https://unsplash.com/)
+</center>
+&nbsp;
+
+# About the Project
+
+
+
+&nbsp;
+
+# Website Overview
+
+
+
+# Additional Information
+
+
+
+**Collaborators:**
+<ul>
+<li>[Yujin Zhang]()</li>
+<li>[Yijing Tao]()</li>
+<li>[Jibei Zheng]()</li>
+<li>[Shihui Zhu]()</li>
+<li>[Anyu Zhu]()</li>
+</ul>

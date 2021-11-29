@@ -1,0 +1,25 @@
+name: "P8105 Final Project Website"
+output_dir: "."
+navbar:
+  title: "Home"
+  left:
+    - text: "Exploratory Data Analysis"
+      menu:
+        - text: "Covid-19"
+          href: covid_state_case_rate.html
+        - text: "Consumption Expenditure"
+          href: consumption_timely_trend.html
+    - text: "Regression Analyses"
+      href: linear_model.html
+    - text: "Interactive Maps"
+      href: pce_state_distribution.html
+  right:
+    - text: "Project Report"
+      href: proj_report.html
+    - icon: fa-youtube
+      href: https://www.youtube.com/
+    - icon: fa-github fa-lg
+      href: https://github.com/sz3029/final_project
+output:
+  html_document:
+    theme: flatly
