@@ -9,10 +9,6 @@ output:
 
 This page is about trend in personal consumption in the US
 
-TODO: 
-
-Data description
-
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(plotly)
@@ -36,7 +32,7 @@ scale_fill_discrete = scale_fill_viridis_d
 
 ## Import data
 
-```{r, message = FALSE}
+```{r message=FALSE, warning=FALSE}
 consumption_product = readxl::read_excel("data/consumption_product.xlsx") %>% 
   janitor::clean_names() %>% 
   pivot_longer(
@@ -69,7 +65,17 @@ consumption_seasonal = general_1 %>%
   select(-line)
 
 covid_consumption = left_join(consumption_seasonal, covid_seasonal, by = "time")
+
+name = colnames(consumption_function)
+col = ncol(consumption_function)
+row = (nrow(consumption_function) / 11) - 7
 ```
+
+Data description
+The `Consumption Function` data frame contains the amount of consumption of goods with different functions. There are `r name` in total `r col` coloumns in this data frame, and `r row` kinds of different functions in total.
+
+Data cleaning
+To clean the `Consumption Function`, we first used ‘janitor::clean_names()’ to get a uniform naming scheme. From there, we deleted unneeded rows (whose row numbers are greater than 28, since these rows are not showing the function of the goods), made a `time` variable that sorted the years and the quarter. We renamed `Household consumption expenditures (for services)` to `household`, and renamed `Final consumption expenditures of nonprofit institutions serving households (NPISHs)1` to `nonprofit consumption`, since the original names are too long. 
 
 ## Consumption and Covid
 
