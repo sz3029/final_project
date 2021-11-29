@@ -277,13 +277,13 @@ rmse_compute <- function(data){
 ```{r}
 rmse_19 <- boot_straps_19 %>%
   mutate(
-    rmse = map(strap, rmse_compute)
+    rmse = map_dbl(strap, rmse_compute)
   ) %>%
   select(rmse)
   
 rmse_20 <- boot_straps_20 %>%
   mutate(
-    rmse = map(strap, rmse_compute)
+    rmse = map_dbl(strap, rmse_compute)
   ) %>%
   select(rmse)          
 ```
@@ -291,10 +291,10 @@ rmse_20 <- boot_straps_20 %>%
 Perform test
 
 ```{r}
-
+t.test(rmse_19,rmse_20)
 ```
 
-
+We reject the null hypothesis and conclude that there is significant difference between our prediction of personal consumption expenditures for year 2019 and year 2020. 
 
 
 
