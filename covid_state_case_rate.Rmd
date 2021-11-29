@@ -2,6 +2,7 @@
 title: "The association between covid and state in US"
 output: 
   html_document:
+      code_folding: hide
       toc: true
       toc_float: true
 ---
@@ -75,7 +76,7 @@ plot_df =
 ```
 
 
-```{r, echo=FALSE}
+```{r}
 # specify some map projection/options
 g = list(
   scope = 'usa',
@@ -92,8 +93,11 @@ plot_df$hover = with(plot_df, paste(
 map_plotly1 = 
   plot_geo(plot_df, locationmode = 'USA-states') %>% 
   add_trace(
-    z = ~case_rate_per_100000, text = ~hover, locations = ~code,
-    color = ~case_rate_per_100000, colors = 'Purples'
+    z = ~case_rate_per_100000, 
+    text = ~hover, 
+    locations = ~code,
+    color = ~case_rate_per_100000, 
+    colorscale = list(c(0, 0.5, 1), c("#ffffff", "#83c5fd", "blue"))
   ) %>% 
   colorbar(title = "Case Rate Per 100K") %>% 
   layout(
@@ -156,7 +160,7 @@ plot_2020_df = left_join(state_2020_tidy, postal_code, by = "state")
 ```
 
 
-```{r, echo=FALSE}
+```{r}
 # specify some map projection/options
 g = list(
   scope = 'usa',
@@ -172,8 +176,11 @@ plot_2020_df$hover = with(plot_2020_df, paste(
 map_plotly2 = 
   plot_geo(plot_2020_df, locationmode = 'USA-states') %>% 
   add_trace(
-    z = ~total_case_rate_per_100k, text = ~hover, locations = ~code,
-    color = ~total_case_rate_per_100k, colors = 'Purples'
+    z = ~total_case_rate_per_100k, 
+    text = ~hover, 
+    locations = ~code,
+    color = ~total_case_rate_per_100k, 
+    colorscale = list(c(0, 0.5, 1), c("#ffffff", "#83c5fd", "blue"))
   ) %>% 
   colorbar(title = "Case Rate Per 100K") %>% 
   layout(
