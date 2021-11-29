@@ -5,11 +5,12 @@ output:
   html_document:
     toc: true
     toc_float: true
+    code_folding: hide
 ---
 
-For this project, we are insterested in exploring how the COVID-19 pandemic affect people's 
+COVID-19 pandemic has induced many economical problems. From the BEA published dataset in year 2021, we know that the personal income decreased \$216.2 billion, or 1.0 percent at a monthly rate, while consumer spending increased \$93.4 billion, or 0.6 percent, in September. The decrease in personal income primarily reflected the winding down of pandemic-related assistance programs (BEA, https://www.bea.gov/data/income-saving/personal-income).
 
-Personal income decreased \$216.2 billion, or 1.0 percent at a monthly rate, while consumer spending increased \$93.4 billion, or 0.6 percent, in September. The decrease in personal income primarily reflected the winding down of pandemic-related assistance programs. 
+For this project, we are interested in exploring how the COVID-19 pandemic affected people's income and therefore their personal consumption patterns (PCE). 
 
 ```{r setup, include=FALSE}
 # Reproducibility
@@ -56,29 +57,29 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
-## Data tidying
+## Model: Predict PCE based on multiple sources of personal income
 
-We are insterested in exploring the how the changes in the following variables in personal income might affect PCE:
+_Build Model_
 
-* Wages and salaries
-* Supplements to wages and salaries
-* Social Security
-* Medicare
-* Personal Current Taxes
+We are interested in exploring the how the changes in the following sources of personal income might affect PCE:
 
-v.s.
+* `Wages and salaries`: wages and salaries received from employers
+* `Supplements to wages and salaries`: supplemental payments received from employers
+* `Social Security`: benefits include old-age, survivors, and disability insurance benefits that are distributed from the federal old-age and survivors insurance trust fund and the disability insurance trust fund
+* `Medicare`: benefits include hospital and supplementary medical insurance benefits that are distributed from the federal hospital insurance trust fund and the supplementary medical insurance trust fund
+* `Personal Current Taxes`: total personal tax payment
+
+PCE: 
+
 * Personal consumption expenditures (on goods and services)
 
-We want to look at data from 1967Q1 to 2020Q4
+We want to look at data from 1967 Quarter 1 to 2020 Quarter 4:
 
-```{r split_label}
+```{r load, message=FALSE}
 format_function <- function(input) {
   str_c(str_split(input, 'q')[[1]][1], ' Quarter ', str_split(input, 'q')[[1]][2])
 }
-```
 
-
-```{r load, message=FALSE}
 pce_4720 <- read_excel("data/pce_1947_2020.xlsx", sheet = 'T20100-Q', 
                       range = 'A8:KM54') %>% 
   janitor::clean_names() %>%
@@ -109,9 +110,11 @@ pce_4720_formatted <- pce_4720 %>%
   mutate(
     time = map(.x = time, format_function)
   )
+
+head(pce_4720_formatted) %>% knitr::kable(caption = 'Example of the Data from BEA')
 ```
 
-## Overview 
+### Data Overview 
 
 Let's take a brief look at the changes of variables over time
 ```{r}
