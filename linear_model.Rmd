@@ -130,7 +130,7 @@ fig_1
 
 For all categories, there is a increasing trend as time proceeded. Note that there is both a drop for wages and salaries, and PCE at year 2020 Quarter 2. 
 
-We can also look at the time v.s. logarithm dollars graph. Clearly, there is a increasing trend as time proceeded.
+We can also look at the time v.s. logarithm dollars graph. Clearly, there is a increasing trend as time proceeded, and there is a drop for multiple source of incomes at year 2020. 
 
 ```{r log}
 fig_2 <- pce_4720_formatted %>%
@@ -143,9 +143,11 @@ fig_2 <- pce_4720_formatted %>%
 fig_2
 ```
 
-### Model
 
-We hypothesize that the We will fit a linear model using data from year 1967-2018, the "pre-pandemic" period. And then
+
+### Model fitting
+
+We hypothesize that for pre- and post-pandemic periods, the personal consumption expenditure pattern has changed with respect to personal income. To test this hypothesis, we will fit a linear model using data from year 1967-2018, the "pre-pandemic" period. And then
 
 Now let's look at data pre- v.s. post-COVID-19 Pandemic
 
