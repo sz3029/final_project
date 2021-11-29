@@ -15,7 +15,7 @@ navbar:
       href: pce_state_distribution.html
   right:
     - text: "Project Report"
-      href: proj_report.html
+      href: project_report.html
     - icon: fa-youtube
       href: https://www.youtube.com/
     - icon: fa-github fa-lg
