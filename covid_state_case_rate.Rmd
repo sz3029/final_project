@@ -1,15 +1,19 @@
 ---
 title: "The association between covid and state in US"
-author: "Yujin Zhang"
 output: 
   html_document:
       toc: true
       toc_float: true
 ---
 
-This page shows the plots of covid case rate per 100k by state since the epidemic.
+## Introduction
 
-```{r}
+January 17, 2020 CDC begins screening passengers on direct and connecting flights from Wuhan, China at San Francisco, California, New York City, New York, and Los Angeles, California and plans to expand screening to other major airports. January 20, 2020 CDC confirms the first U.S. laboratory-confirmed case of COVID-19 in the U.S. from samples taken on January 18 in Washington state.
+
+Dependent on a wide range of social diversion measures and state policy action indicators for COVID-19 testing and treatment, cases and deaths vary by state.
+
+
+```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(naniar)
 
@@ -22,22 +26,21 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Total Covid Case Rate Per 100k By State
+## The latest Covid Case Rate Per 100k By State
 
-First, let's input the CDC covid cases data by state with total time period till Thu Nov 18 2021.
+CDC COVID Data Tracker provides the covid cases data by state with total time period since the first covid case comfirmed till Thu Nov 18 2021.
 
-[The data generated: Thu Nov 18 2021 22:02:06 GMT-0500 (EST)]
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
 # input data table for Total Cases by State/Territory
 covid_total_by_state = 
   read_csv("./data/united_states_covid19_cases_deaths_and_testing_by_state.csv", skip = 2) %>% 
   janitor::clean_names()
 ```
 
-For the missing data, the original dataset fill it with "N/A", so we replace it with NA and change the variable to numeric.
 
-```{r}
+
+```{r, echo=FALSE, message=FALSE}
 # figure out the missing data in data frame
 na_strings = "N/A"
 
@@ -55,16 +58,16 @@ covid_total_by_state_tidy =
   
 ```
 
-Let's make a choropleth map plot to show the total covid cases by state in US.
 
-1. Load the usa postal code dataset.
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
+#Let's make a choropleth map plot to show the total covid cases by state in US.
+#Load the usa postal code dataset.
 postal_code = 
   read_csv("./data/us_postal_code.csv") %>% 
   janitor::clean_names()
 
-# 
+# join the data frames
 plot_df = 
   left_join(postal_code, covid_total_by_state_tidy, by = c("state" = "region")) %>% 
   relocate(code)
@@ -72,9 +75,7 @@ plot_df =
 ```
 
 
-2.. Draw the plotly.
-
-```{r}
+```{r, echo=FALSE}
 # specify some map projection/options
 g = list(
   scope = 'usa',
@@ -87,6 +88,7 @@ plot_df$hover = with(plot_df, paste(
   state, '<br>')
   )
 
+# make the plot
 map_plotly1 = 
   plot_geo(plot_df, locationmode = 'USA-states') %>% 
   add_trace(
@@ -101,15 +103,18 @@ map_plotly1 =
 
 
 ```
+This map shows the number of cases since the pandemic started for every 100,000 people, allowing you to compare areas with different population sizes.
+[The data generated: Thu Nov 18 2021 22:02:06 GMT-0500 (EST)]
 
 `r map_plotly1`
 
+The five regions with the highest incidence of new crowns are North Dakota, Alaska, Tennessee, Wyoming and South Dakota.
 
 ## Total Covid Case Rate Per 100k By State in 2020
 
-The following data frame is the covid case rate per 100k till Dec.31.2020.
+The following map shows the covid case rate per 100k in year 2020.  [The data generated: Dec.31.2020]
 
-```{r, message=FALSE}
+```{r, , echo=FALSE, message=FALSE}
 # read data function
 read_data_function = function(file_df) {
   
@@ -131,9 +136,10 @@ state_2020 =
     observations = map(path, read_data_function))
 ```
 
-Let's unnest the data frame and filter the cases on Dec.31.2020
 
-```{r}
+
+```{r, echo=FALSE}
+#Let's unnest the data frame and filter the cases on Dec.31.2020
 state_2020_tidy =
   state_2020 %>% 
   unnest(cols = "observations") %>% 
@@ -142,15 +148,15 @@ state_2020_tidy =
   select(state, total_cases, total_case_rate_per_100k)
 ```
 
-Make map plot.
 
-```{r}
+
+```{r, echo=FALSE}
 plot_2020_df = left_join(state_2020_tidy, postal_code, by = "state")
 
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 # specify some map projection/options
 g = list(
   scope = 'usa',
@@ -162,7 +168,7 @@ g = list(
 plot_2020_df$hover = with(plot_2020_df, paste(
   state, '<br>', "Total case", total_cases, "<br>")
   )
-
+#Make map plot.
 map_plotly2 = 
   plot_geo(plot_2020_df, locationmode = 'USA-states') %>% 
   add_trace(
@@ -177,3 +183,5 @@ map_plotly2 =
 ```
 
 `r map_plotly2`
+
+The five regions with the highest incidence of new crowns are North Dakota, South Dakota, Wisconsin, Iowa and SNebraska.
