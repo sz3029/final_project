@@ -10,7 +10,7 @@ The epidemic also affected the way people consumed; people worked from home and 
 
 To confirm our conjecture, our group wants to analyze the results of the change in consumption levels from the data sets.
 
-##Related Work
+## Related Work
 
 The following resources are samples of what inspired this project:
 
