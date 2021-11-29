@@ -116,29 +116,38 @@ head(pce_4720_formatted) %>% knitr::kable(caption = 'Example of the Data from BE
 
 ### Data Overview 
 
-Let's take a brief look at the changes of variables over time
+Let's take a brief look at the changes of incomes and PCE over time:
 ```{r}
 fig_1 <- pce_4720_formatted %>%
   plot_ly(x = ~time, y = ~millions_of_dollars, type = "scatter", mode = "lines", color = ~variable) %>%
-  layout(title = "<b> Spaghetti Plot for Personal Income and Dispositions v.s. PCE <b>", yaixs = list(title = "<i> Millions of Dollars <i>"), barmode = "stack", legend = list(title = list(text = '<b> Dispositions </b>'))) %>% 
+  layout(title = "<b> Spaghetti Plot for Personal Income and Dispositions v.s. PCE <b>") %>%
+  layout(yaxis = list(title = "<i> Millions of Dollars (M) <i>"), barmode = "stack", 
+         xaxis = list(title = "<i> Time <i>"),
+         legend = list(title = list(text = '<b> Dispositions </b>'))) %>% 
   layout(legend = list(orientation = 'h', x = 0, y = -0.2))
-
 fig_1
 ```
 
-A log graph will be more informative
+For all categories, there is a increasing trend as time proceeded. Note that there is both a drop for wages and salaries, and PCE at year 2020 Quarter 2. 
+
+We can also look at the time v.s. logarithm dollars graph. Clearly, there is a increasing trend as time proceeded, and there is a drop for multiple source of incomes at year 2020. 
 
 ```{r log}
 fig_2 <- pce_4720_formatted %>%
   plot_ly(x = ~time, y = ~log(millions_of_dollars), type = "scatter", mode = "lines", color = ~variable) %>%
-  layout(title = "<b> Spaghetti Plot for log(Personal Income and Dispositions) v.s. PCE </b>", yaixs = list(title = "log(Millions of Dollars)"), barmode = "stack", legend = list(title = list(text = '<i> Dispositions </i>'))) %>% 
+  layout(title = "<b> Spaghetti Plot for log(Personal Income and Dispositions) v.s. PCE </b>", yaxis = list(title = "<i> log(Dollars) <i>"), barmode = "stack", 
+         xaxis = list(title = "<i> Time <i>"),
+         legend = list(title = list(text = '<i> Dispositions </i>'))) %>% 
   layout(legend = list(orientation = 'h', x = 0, y = -0.2))
 
 fig_2
 ```
 
+Overall, all variables and PCE has a linear relationship with each other. 
 
-## Model
+### Model fitting
+
+We hypothesize that for pre- and post-pandemic periods, the personal consumption expenditure pattern has changed with respect to personal income. To test this hypothesis, we will fit a linear model using data from year 1967-2018, the "pre-pandemic" period. We will use this model to predict PCE outcomes for a per-pandemic year, 2019, and a post-pandemic year, 2020, respectively. To include the 
 
 Now let's look at data pre- v.s. post-COVID-19 Pandemic
 
