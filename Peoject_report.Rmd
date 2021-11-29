@@ -1,0 +1,23 @@
+---
+title: "Project Report"
+output:
+  html_document:
+      toc: true
+      toc_float: true
+---
+
+## Motivation
+
+The COVID-19 pandemic has drastically altered the everyday lives of billions of people, with potential impacts on consumption.
+
+The epidemic also affected the way people consumed; people worked from home and went out less due to restrictions on avoiding gatherings and dine-in restaurants. We believe this will lead to a collapse in consumption mainly in the services sector. However, consumption in entertainment, such as video games, may increase as a result of the significant increase in time spent at home, meaning that the decline in consumption of goods may be smaller.
+
+To confirm our conjecture, our group wants to analyze the results of the change in consumption levels from the dataset
+
+#Related Work
+
+The following resources are samples of what inspired this project:
+
+1."The decline and recovery of consumer spending in the US" Brookings, December 14, 2020 [link](https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/)
+
+2.""
