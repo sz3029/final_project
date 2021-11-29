@@ -11,7 +11,7 @@
 
 
 
-<title>Introduction</title>
+<title>Project Report</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -220,6 +223,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -227,6 +293,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -290,7 +366,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Introduction</h1>
+<h1 class="title toc-ignore">Project Report</h1>
 
 </div>
 
@@ -300,12 +376,12 @@ $(document).ready(function () {
 <p>Begin with the pandemic’s early stages in spring 2020, the COVID-19 pandemic has drastically altered the everyday lives of billions of people, with potential impacts on consumption.</p>
 <p>The epidemic also affected the way people consumed; people worked from home and went out less due to restrictions on avoiding gatherings and dine-in restaurants. We believe this will lead to a collapse in consumption mainly in the services sector. However, consumption in entertainment, such as video games, may increase as a result of the significant increase in time spent at home, meaning that the decline in consumption of goods may be smaller.</p>
 <p>To confirm our conjecture, our group wants to analyze the results of the change in consumption levels from the data sets.</p>
-</div>
-<div id="related-work" class="section level2">
-<h2>Related Work</h2>
+<div id="related-work" class="section level3">
+<h3>Related Work</h3>
 <p>The following resources are samples of what inspired this project:</p>
 <p>1.“The decline and recovery of consumer spending in the US” Brookings, December 14, 2020 <a href="https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/">link</a></p>
 <p>2.“Will New York renew mask mandate and COVID-19 restrictions? What to know as cases surge”, Democrat and Chronicle, November 18, 2021<a href="https://www.democratandchronicle.com/story/news/2021/11/18/new-york-renew-mask-mandate-and-covid-restrictions-what-know/8654736002/">link</a></p>
+</div>
 </div>
 <div id="initial-questions" class="section level2">
 <h2>Initial Questions</h2>
@@ -321,9 +397,14 @@ $(document).ready(function () {
 <h2>New Questions Identified During Analysis</h2>
 <p>PCE is also affected by the trend of personal incomes, and government’s laws to support and sustain businesses and individuals through the pandemic. In addition, we decided to also examine how the pandemic has impacted personal incomes and savings in U.S., and whether they matched the changing of PCE. In this process, we can obtain more comprehensive understanding of how the pandemic has influenced people’s economic conditions and behaviors in different aspects.</p>
 </div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -356,6 +437,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

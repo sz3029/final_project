@@ -1,6 +1,9 @@
 ---
-title: "Introduction"
-output: html_document
+title: "Project Report"
+output: 
+   html_document:
+      toc: true
+      toc_float: true
 ---
 ## Motivation
 
@@ -10,7 +13,7 @@ The epidemic also affected the way people consumed; people worked from home and 
 
 To confirm our conjecture, our group wants to analyze the results of the change in consumption levels from the data sets.
 
-## Related Work
+### Related Work
 
 The following resources are samples of what inspired this project:
 
@@ -36,3 +39,5 @@ Initially, as our project title indicates, we want to know about how the pandemi
 ## New Questions Identified During Analysis
 
 PCE is also affected by the trend of personal incomes, and government’s laws to support and sustain businesses and individuals through the pandemic. In addition, we decided to also examine how the pandemic has impacted personal incomes and savings in U.S., and whether they matched the changing of PCE. In this process, we can obtain more comprehensive understanding of how the pandemic has influenced people’s economic conditions and behaviors in different aspects.
+
+## Data
