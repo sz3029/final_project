@@ -213,11 +213,88 @@ rmse(smooth_mod, pce_2020)
 
 ## Testing on the difference
 
-**Hypothesize: there is significant difference between our model prediction for year 2019 and year 2020**
+**Hypothesize: there is significant difference between our model prediction for pre and post pandemic periods**
+
+Since there is not enough dataset for post pandemic, we need to bootstrap a set of new samples from year 2020 and 2021
 
 ```{r}
 # Bootstrapping? Testing on 1967-2016
 # include dataset from 2021q1, 2021q2, 2021q3
-# 
+pce_4720_raw <- read_excel("data/pce_1947_2020.xlsx", sheet = 'T20100-Q', 
+                      range = 'A8:KM54') %>% 
+  janitor::clean_names() %>%
+  select(x2, x1967q1:x2020q4) %>%
+  drop_na() %>%
+  # We only want to look at several variables:
+  filter(
+      x2 == 'Wages and salaries' |
+      x2 == 'Supplements to wages and salaries' |
+      x2 == 'Social security' |
+      x2 == 'Medicare' |
+      x2 == 'Less: Personal current taxes' |
+      x2 == 'Personal consumption expenditures'
+  ) %>%
+  rename(variable = x2)
+
+rownames(pce_4720_raw) <- pull(pce_4720_raw, variable)
+
+pce_4720_raw <- mutate(pce_4720_raw, variable = NULL)
+
+pce_4720_wide <- as.data.frame(t(as.matrix(pce_4720_raw))) %>%
+  janitor::clean_names() %>%
+  rename(personal_current_taxes = less_personal_current_taxes)
 ```
+
+Select samples data set
+
+```{r}
+pce_2019_df <- subset(pce_4720_wide, str_detect(rownames(pce_4720_wide), '2019'))
+pce_2020_df <- subset(pce_4720_wide, str_detect(rownames(pce_4720_wide), '2020'))
+```
+
+bootstrapping
+
+```{r}
+boot_straps_19 = 
+  pce_2019_df %>% 
+  modelr::bootstrap(n = 1000)
+
+boot_straps_20 = 
+  pce_2020_df %>% 
+  modelr::bootstrap(n = 1000)
+```
+
+Compute rmse
+
+```{r}
+rmse_compute <- function(data){
+  data <- as.data.frame(data)
+  return(rmse(smooth_mod, data))
+}
+```
+
+
+```{r}
+rmse_19 <- boot_straps_19 %>%
+  mutate(
+    rmse = map(strap, rmse_compute)
+  ) %>%
+  select(rmse)
+  
+rmse_20 <- boot_straps_20 %>%
+  mutate(
+    rmse = map(strap, rmse_compute)
+  ) %>%
+  select(rmse)          
+```
+
+Perform test
+
+```{r}
+
+```
+
+
+
+
 
