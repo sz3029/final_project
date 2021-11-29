@@ -59,7 +59,20 @@ covid_seasonal = covid_monthly %>%
   mutate(date = str_c(year, quarter, sep = "_"))
 
 write_csv(covid_seasonal, 'covid_seasonal.csv')
+
+row_cum = nrow(covid_cum)
+row_daily = nrow(covid_daily)
 ```
+
+## Data description
+The `covid_cumulative_cases` data frame contains the cumulative amount of the covid cases in United State as time wents by. There are `r row_cum` days observed in total.
+The `covid_day` data frame contains the amount of new covid cases in United State every day. There are `r row_daily` days observed in total.
+
+
+## Data cleaning
+We first used ‘janitor::clean_names()’ to get a uniform naming scheme. From there, we combine the new case data frame and the cumulative case data frame together and seperate the time points into `month`, `day` and `year`. Then we created a new variable named `date` that rewrite the date into the form of `YYYY-MM-DD`.
+In order to compare the covid case data and the comsumption data, we made a new data frame named `covid_seasonal` that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December). Then we write this data frame into a new .csv document.
+
 
 Plots
 Daily
