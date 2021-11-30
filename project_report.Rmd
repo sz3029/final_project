@@ -98,11 +98,16 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 
 ## Regression Analysis
 
-<p> Using the PCE and income data, we aimed to investigate how the COVID-19 pandemic influence people's spending patterns. We know that one's consumption is associate with one's income, so we built a MLR model for PCE expenditure using income data. Our variables of interest include `wages and salaries`, `supplements to wages and salaries`, `social security`, `medicare`, `personal current taxes`, and the outcome `PCE`. 
+<p> Using the personal consumption expenditure (PCE) and income data, we aimed to investigate how the COVID-19 pandemic influence people's spending patterns. We know that one's consumption is associate with one's income, so we built a MLR model from income data and made predictions for PCE. Our variables of interest include `wages and salaries`, `supplements to wages and salaries`, `social security`, `medicare`, `personal current taxes`, and the outcome `PCE`.
 
-<p> We then used multiple diagnostic methods to evaluate the goodness of fit of our model. The QQ-plot indicates the distribution of residuals are normal. The Scale-location plot shows that the residuals are spread equally along the range of predictors. And the residuals-leverage plot shows that no outlier is influential. Therefore, we concluded that the linear model fitted the pre-pandemic PCE data well. In order to show that there is a significant change in in-pandemic PCE which cannot be explained by income difference, we opted to explore the difference in the root mean square errors (RMSE) between the pre-pandemic and in-pandemic periods in dollars. 
+<p> We hypothesized that the PCE pattern has changed with respect to income for pre- v.s. in-pandemic periods. To test this hypothesis, we fitted a MLR model using data from year 1967-2018, the "pre-pandemic" period. We then used this model to predict for PCE outcomes for a pre-pandemic year, 2019, and a in-pandemic year, 2020, respectively. Then we compared if there is significant difference in the root mean square errors (RMSE) between the pre-pandemic and in-pandemic periods. If there is significant difference between them, we can conclude that there is enough evidence showing that the PCE patterns has changed during the pandemic and vice versa. 
 
-<p>
+<p> Our model fits the data well because our $R^2$ value is $> 99\%$. We then used multiple diagnostic methods to evaluate the model. The QQ-plot indicates the distribution of residuals are normal. The Scale-location plot shows that the residuals are spread equally along the range of predictors. And the residuals-leverage plot shows that no outlier is influential. Therefore, we were confident to proceed our analysis with the MLR model. 
+
+<p> Giving the MLR model and its predictions for PCE, we explored the difference in the root mean square errors (RMSE) of the model between the pre-pandemic and in-pandemic periods in dollars. To obtain a pool of RMSE data, we utilized bootstrapping method on data of year 2019 and 2020. The results were tested via the t-test, which indicated a significant difference between the RMSEs of the two years. This indicated that people's spending pattern has changed during the pandemic, and this change could not fully explain by variations of their incomes. 
+
+<p> Therefore, there is evidence showing that the COVID-19 pandemic has affected people's spending patterns. 
+
 
 ## Discussion
 
