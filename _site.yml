@@ -5,7 +5,7 @@ navbar:
   left:
     - text: "Exploratory Data Analysis"
       menu:
-        - text: "Covid-19"
+        - text: "Covid-19 in the US"
           href: covid_state_case_rate.html
         - text: "Consumption Expenditure"
           href: consumption_timely_trend.html
