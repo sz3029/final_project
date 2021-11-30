@@ -60,8 +60,6 @@ theme_set(theme_minimal() + theme(legend.position = "bottom"))
 
 ## Model: Predict PCE based on multiple sources of personal income
 
-_Build Model_
-
 We are interested in exploring the how the changes in the following sources of personal income might affect PCE:
 
 * `Wages and salaries`: wages and salaries received from employers
@@ -163,7 +161,7 @@ pce_4718_by_dis <-
 
 test1 <- lm(personal_consumption_expenditures ~ wages_and_salaries + social_security + supplements_to_wages_and_salaries + personal_current_taxes + medicare, data = pce_4718_by_dis)
 
-test1 %>% broom::tidy() %>% knitr::kable(digits = 3)
+test1 %>% broom::tidy() %>% knitr::kable(digits = 3, caption = "MLR model PCE v.s. income sources")
 ```
 
 We want to determine whether we should transform our variables for a better fit result or not. To check this, we will use Box-Cox transformation:
