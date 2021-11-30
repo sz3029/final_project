@@ -98,6 +98,11 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 
 ## Regression Analysis
 
+<p> Using the PCE and income data, we aimed to investigate how the COVID-19 pandemic influence people's spending patterns. We know that one's consumption is associate with one's income, so we built a MLR model for PCE expenditure using income data. Our variables of interest include `wages and salaries`, `supplements to wages and salaries`, `social security`, `medicare`, `personal current taxes`, and the outcome `PCE`. 
+
+<p> We then used multiple diagnostic methods to evaluate the goodness of fit of our model. The QQ-plot indicates the distribution of residuals are normal. The Scale-location plot shows that the residuals are spread equally along the range of predictors. And the residuals-leverage plot shows that no outlier is influential. Therefore, we concluded that the linear model fitted the pre-pandemic PCE data well. In order to show that there is a significant change in in-pandemic PCE which cannot be explained by income difference, we opted to explore the difference in the root mean square errors (RMSE) between the pre-pandemic and in-pandemic periods in dollars. 
+
+<p>
 
 ## Discussion
 

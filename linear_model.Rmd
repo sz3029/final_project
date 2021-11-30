@@ -164,7 +164,9 @@ test1 <- lm(personal_consumption_expenditures ~ wages_and_salaries + social_secu
 test1 %>% broom::tidy() %>% knitr::kable(digits = 3, caption = "MLR model PCE v.s. income sources")
 ```
 
-We want to determine whether we should transform our variables for a better fit result or not. To check this, we will use Box-Cox transformation:
+The adjusted $R^2$ value for the MLR model is `r summary(test1)$adj.r.squared`, meaning that the our model 'fits' the data well. 
+
+To further improve the model, we want to determine whether we should transform our variables for a better fit result or not. To check this, we will use Box-Cox transformation:
 
 ```{r}
 plot(test1)
