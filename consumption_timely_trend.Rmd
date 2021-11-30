@@ -123,9 +123,9 @@ durable_goods =
   filter(functions %in% c("Motor vehicles and parts","Furnishings and durable household equipment","Recreational goods and vehicles","Other durable goods")) 
 
 durable_goods %>% 
-  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
-  layout(title = "Decomposition of Consumption in Durable Goods",
-         legend = list(orientation = 'h', x = 0, y = -0.2))
+  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", line = list(simplyfy = F), color = ~functions) %>% 
+  layout(title = "Decomposition of Consumption in Durable Goods", 
+    legend = list(orientation = 'h', x = 0, y = -0.2)) 
 ```
 
 `Motor vehicles and parts` increases fastest after experiencing the bottom point, from which we can infer that people go out even more frequently after the pandemic than before the pandemic. 
