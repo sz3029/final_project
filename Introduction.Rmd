@@ -1,5 +1,5 @@
 ---
-title: "Project Report"
+title: "Introduction"
 output: html_document
 ---
 ## Motivation
@@ -17,48 +17,6 @@ The following resources are samples of what inspired this project:
 1."The decline and recovery of consumer spending in the US" Brookings, December 14, 2020 [link](https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/)
 
 2."Will New York renew mask mandate and COVID-19 restrictions? What to know as cases surge", Democrat and Chronicle, November 18, 2021[link](https://www.democratandchronicle.com/story/news/2021/11/18/new-york-renew-mask-mandate-and-covid-restrictions-what-know/8654736002/)
-
-## Data
-
-### Data Sources
-
-<p>• Personal Consumption Expenditures by Major Type of Product and by Major Function:
-
-https://www.bea.gov/data/consumer-spending/main
-
-<p>• Personal Consumption Expenditures by Major Type of Product and by Major Function, by State:
-
-https://www.bea.gov/data/consumer-spending/state
-
-<p>• Trends in Number of COVID-19 Cases and Deaths in the US Reported to CDC: 
-
-https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
-
-#### Variables of Interest
-
-**Consumption Function**
-<p>• `line`
-<p>• `functions`: the different functions of the goods.
-<p>• `time`: different quarters.
-<p>• `consumption`: the total amount of consumptions.
-
-**COVID Cumulative Cases**
-<p>• `state`
-<p>• `date`: the date when the data collected.
-<p>• `total_cases`: the amount to the cases diagnosed within and before the date.
-
-**COVID Daily Cases**
-<p>• `state`
-<p>• `date`: the date when the data collected.
-<p>• `total_cases`: the amount to the cases diagnosed within the date.
-
-## Data cleaning
-
-<P>  From `Consumption Function`, we deleted unneeded rows (whose row numbers are greater than 28, since these rows are not showing the function of the goods), made a `time` variable that sorted the years and the quarter. We renamed `Household consumption expenditures (for services)` to `household`, and renamed `Final consumption expenditures of nonprofit institutions serving households (NPISHs)1` to `nonprofit consumption`, since the original names are too long. 
-
-<P>  From `COVID Cumulative Cases`, we combine the new case data frame and the cumulative case data frame together and seperate the time points into `month`, `day` and `year`. Then we created a new variable named `date` that rewrite the date into the form of `YYYY-MM-DD`.
-
-<P>  In order to compare the covid case data and the comsumption data, we made a new data frame named `covid_seasonal` that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December). Then we write this data frame into a new .csv document.
 
 
 

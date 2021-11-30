@@ -13,8 +13,8 @@
 
 <title>Project Report</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -306,6 +306,56 @@ $(document).ready(function () {
 <p>The following resources are samples of what inspired this project:</p>
 <p>1.“The decline and recovery of consumer spending in the US” Brookings, December 14, 2020 <a href="https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/">link</a></p>
 <p>2.“Will New York renew mask mandate and COVID-19 restrictions? What to know as cases surge”, Democrat and Chronicle, November 18, 2021<a href="https://www.democratandchronicle.com/story/news/2021/11/18/new-york-renew-mask-mandate-and-covid-restrictions-what-know/8654736002/">link</a></p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<div id="data-sources" class="section level3">
+<h3>Data Sources</h3>
+<p>
+<p>• Personal Consumption Expenditures by Major Type of Product and by Major Function:</p>
+<p><a href="https://www.bea.gov/data/consumer-spending/main" class="uri">https://www.bea.gov/data/consumer-spending/main</a></p>
+<p>
+<p>• Personal Consumption Expenditures by Major Type of Product and by Major Function, by State:</p>
+<p><a href="https://www.bea.gov/data/consumer-spending/state" class="uri">https://www.bea.gov/data/consumer-spending/state</a></p>
+<p>
+<p>• Trends in Number of COVID-19 Cases and Deaths in the US Reported to CDC:</p>
+<p><a href="https://covid.cdc.gov/covid-data-tracker/#trends_dailycases" class="uri">https://covid.cdc.gov/covid-data-tracker/#trends_dailycases</a></p>
+<div id="variables-of-interest" class="section level4">
+<h4>Variables of Interest</h4>
+<strong>Consumption Function</strong>
+<p>
+• <code>line</code>
+<p>
+• <code>functions</code>: the different functions of the goods.
+<p>
+• <code>time</code>: different quarters.
+<p>
+<p>• <code>consumption</code>: the total amount of consumptions.</p>
+<strong>COVID Cumulative Cases</strong>
+<p>
+• <code>state</code>
+<p>
+• <code>date</code>: the date when the data collected.
+<p>
+<p>• <code>total_cases</code>: the amount to the cases diagnosed within and before the date.</p>
+<strong>COVID Daily Cases</strong>
+<p>
+• <code>state</code>
+<p>
+• <code>date</code>: the date when the data collected.
+<p>
+<p>• <code>total_cases</code>: the amount to the cases diagnosed within the date.</p>
+</div>
+</div>
+</div>
+<div id="data-cleaning" class="section level2">
+<h2>Data cleaning</h2>
+<P>
+<p>From <code>Consumption Function</code>, we deleted unneeded rows (whose row numbers are greater than 28, since these rows are not showing the function of the goods), made a <code>time</code> variable that sorted the years and the quarter. We renamed <code>Household consumption expenditures (for services)</code> to <code>household</code>, and renamed <code>Final consumption expenditures of nonprofit institutions serving households (NPISHs)1</code> to <code>nonprofit consumption</code>, since the original names are too long.</p>
+<P>
+<p>From <code>COVID Cumulative Cases</code>, we combine the new case data frame and the cumulative case data frame together and seperate the time points into <code>month</code>, <code>day</code> and <code>year</code>. Then we created a new variable named <code>date</code> that rewrite the date into the form of <code>YYYY-MM-DD</code>.</p>
+<P>
+<p>In order to compare the covid case data and the comsumption data, we made a new data frame named <code>covid_seasonal</code> that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December). Then we write this data frame into a new .csv document.</p>
 </div>
 <div id="initial-questions" class="section level2">
 <h2>Initial Questions</h2>
