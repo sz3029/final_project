@@ -1,5 +1,5 @@
 ---
-title: "Consumer Behaviors in Pandemic"
+title: "Analysis of Consumer Behaviors in Pandemic"
 output: 
   html_document:
     toc: true
@@ -7,7 +7,6 @@ output:
     code_folding: hide
 ---
 
-This page is about trend in personal consumption in the US
 
 ```{r setup, include = FALSE}
 library(tidyverse)
@@ -30,9 +29,7 @@ scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 ```
 
-## Import data
-
-```{r message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 consumption_product = readxl::read_excel("data/consumption_product.xlsx") %>% 
   janitor::clean_names() %>% 
   pivot_longer(
