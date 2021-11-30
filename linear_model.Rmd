@@ -10,7 +10,7 @@ output:
 
 COVID-19 pandemic has induced many economical problems. From the BEA published dataset in year 2021, we know that the personal income decreased \$216.2 billion, or 1.0 percent at a monthly rate, while consumer spending increased \$93.4 billion, or 0.6 percent, in September. The decrease in personal income primarily reflected the winding down of pandemic-related assistance programs (BEA, https://www.bea.gov/data/income-saving/personal-income).
 
-For this project, we are interested in exploring how the COVID-19 pandemic affected people's income and therefore their personal consumption patterns (PCE). 
+For this project, we are interested in exploring how the COVID-19 pandemic affected people's personal consumption (PCE) patterns. We know that one's consumption is associate with one's income, so we will build a model for PCE expenditure using income data and we want to show that there is significant change in PCE during the pandemic that cannot be explained by the income model, which works in pre-pandemic periods. 
 
 ```{r setup, include=FALSE}
 # Reproducibility
