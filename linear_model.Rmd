@@ -31,6 +31,7 @@ library(readxl)
 library(modelr)
 library(mgcv)
 
+
 # General figure set up
 knitr::opts_chunk$set(
   # display the code in github doc
@@ -71,7 +72,7 @@ We are interested in exploring the how the changes in the following sources of p
 
 PCE: 
 
-* Personal consumption expenditures (on goods and services)
+* `Personal consumption expenditures` (on goods and services)
 
 We want to look at data from 1967 Quarter 1 to 2020 Quarter 4:
 
@@ -128,11 +129,11 @@ fig_1 <- pce_4720_formatted %>%
 fig_1
 ```
 
-For all categories, there is a increasing trend as time proceeded. Note that there is both a drop for wages and salaries, and PCE at year 2020 Quarter 2. 
+For all categories, there is a exponentially increasing trend as time proceeds. Note that there is a drop for incomes and PCE at year 2020. 
 
-We can also look at the time v.s. logarithm dollars graph. Clearly, there is a increasing trend as time proceeded, and there is a drop for multiple source of incomes at year 2020. 
+We can also look at the time v.s. logarithm dollars graph. Clearly, there is a increasing trend as time proceeded, and there is a drop for multiple source of incomes at year 2020.
 
-```{r log}
+```{r}
 fig_2 <- pce_4720_formatted %>%
   plot_ly(x = ~time, y = ~log(millions_of_dollars), type = "scatter", mode = "lines", color = ~variable) %>%
   layout(title = "<b> Spaghetti Plot for log(Personal Income and Dispositions) v.s. PCE </b>", yaxis = list(title = "<i> log(Dollars) <i>"), barmode = "stack", 
@@ -143,15 +144,13 @@ fig_2 <- pce_4720_formatted %>%
 fig_2
 ```
 
-Overall, all variables and PCE has a linear relationship with each other. 
-
 ### Model fitting
 
-We hypothesize that for pre- and post-pandemic periods, the personal consumption expenditure pattern has changed with respect to personal income. To test this hypothesis, we will fit a linear model using data from year 1967-2018, the "pre-pandemic" period. We will use this model to predict PCE outcomes for a per-pandemic year, 2019, and a post-pandemic year, 2020, respectively. To include the 
+We hypothesize that the personal consumption expenditure pattern has changed with respect to personal income for pre- v.s. in-pandemic periods. 
 
-Now let's look at data pre- v.s. post-COVID-19 Pandemic
+To test this hypothesis, we will fit a linear model using data from year 1967-2018, the "pre-pandemic" period. We will then use this model to predict for PCE outcomes for a pre-pandemic year, 2019, and a in-pandemic year, 2020, respectively. Then we will compare if there is significant difference between the root mean square errors (RMSE) between the pre-pandemic and in-pandemic periods. If there is significant difference between them, we can conclude that there is enough evidence showing that the personal consumption expenditures patterns has changed during the pandemic. 
 
-### Fit a multivariable model based on pre-COVID-19 Pandemic
+_Fit a MLR model using data from 1967 - 2018 (pre-COVID-19 pandemic)_
 ```{r model}
 pce_4718_by_dis <-
   pce_4720 %>%
@@ -161,28 +160,28 @@ pce_4718_by_dis <-
     values_from = millions_of_dollars
   ) %>%
   janitor::clean_names()
-  
 
-smooth_mod = mgcv::gam(
-  log(personal_consumption_expenditures) ~ s(log(wages_and_salaries)) + 
-    s(log(social_security)) + s(log(supplements_to_wages_and_salaries)) + s(log(personal_current_taxes)) + s(log(medicare)), 
-  data = pce_4718_by_dis)
+test1 <- lm(personal_consumption_expenditures ~ wages_and_salaries + social_security + supplements_to_wages_and_salaries + personal_current_taxes + medicare, data = pce_4718_by_dis)
 
-summary(smooth_mod)
+test1 %>% broom::tidy() %>% knitr::kable(digits = 3)
 ```
 
-## Model Evaluation
+We want to determine whether we should transform our variables for a better fit result or not. To check this, we will use Box-Cox transformation:
 
 ```{r}
-smooth_mod %>% broom::tidy()
-smooth_mod.fit <- mgcViz::getViz(smooth_mod)
-qqplot <- mgcViz::qq(smooth_mod.fit, method = "simul1", a.qqpoi = list("shape" = 1), a.ablin = list("linetype" = 2))
-qqplot
+plot(test1)
+MASS::boxcox(test1)
 ```
 
-Now let's predict the PCE using our model
+The QQ-plot indicates the distribution of residuals are normal. The Scale-location plot shows that the residuals are spread equally along the range of predictors. And the residuals-leverage plot shows that no outlier is influential.
 
-```{r, collapse=TRUE}
+Therefore, the relationships between income sources and PCE are best approximated by linear function. We can use MLR model in the following analysis. 
+
+_Prediction_
+
+We will predict the PCE for year 2019 and year 2020 using our MLR model:
+
+```{r pred}
 pce_2019 <-
   pce_4720 %>%
   filter(
@@ -194,15 +193,11 @@ pce_2019 <-
   ) %>%
   janitor::clean_names()
   
-pce_2019_pred <- predict.gam(smooth_mod,pce_2019)
-pce_2019_pred
-log(pce_2019$personal_consumption_expenditures)
+pce_2019_pred <- predict(test1,pce_2019)
 
 #RMSQ
-rmse(smooth_mod, pce_2019)
-```
+rmse19 <- rmse(test1, pce_2019)
 
-```{r, collapse=TRUE}
 pce_2020 <-
   pce_4720 %>%
   filter(
@@ -214,23 +209,24 @@ pce_2020 <-
   ) %>%
   janitor::clean_names()
   
-pce_2020_pred <- predict.gam(smooth_mod,pce_2020)
-pce_2020_pred
-log(pce_2020$personal_consumption_expenditures)
+pce_2020_pred <- predict(test1,pce_2020)
 
 #RMSQ
-rmse(smooth_mod, pce_2020)
+rmse20 <- rmse(test1, pce_2020)
 ```
 
-## Testing on the difference
+* RMSE of year 2019 prediction, in dollars: `r rmse19`
 
-**Hypothesize: there is significant difference between our model prediction for pre and post pandemic periods**
+* RMSE of year 2020 prediction, in dollars: `r rmse20`
 
-Since there is not enough dataset for post pandemic, we need to bootstrap a set of new samples from year 2020 and 2021
+### Testing on the difference
 
-```{r}
-# Bootstrapping? Testing on 1967-2016
-# include dataset from 2021q1, 2021q2, 2021q3
+**Hypothesize: there is significant difference between our model prediction of PCEs for pre- and in-pandemic periods (year 2019, year 2020)**
+
+We need to perform a paired t-test to evaluate if there is difference between the two RMSE. To do this, we need to bootstrap a set of 1000 samples from each year first.
+
+```{r bootstrap}
+# Bootstrapping
 pce_4720_raw <- read_excel("data/pce_1947_2020.xlsx", sheet = 'T20100-Q', 
                       range = 'A8:KM54') %>% 
   janitor::clean_names() %>%
@@ -254,18 +250,11 @@ pce_4720_raw <- mutate(pce_4720_raw, variable = NULL)
 pce_4720_wide <- as.data.frame(t(as.matrix(pce_4720_raw))) %>%
   janitor::clean_names() %>%
   rename(personal_current_taxes = less_personal_current_taxes)
-```
 
-Select samples data set
-
-```{r}
+# Select sample dataset
 pce_2019_df <- subset(pce_4720_wide, str_detect(rownames(pce_4720_wide), '2019'))
 pce_2020_df <- subset(pce_4720_wide, str_detect(rownames(pce_4720_wide), '2020'))
-```
 
-bootstrapping
-
-```{r}
 boot_straps_19 = 
   pce_2019_df %>% 
   modelr::bootstrap(n = 1000)
@@ -273,19 +262,21 @@ boot_straps_19 =
 boot_straps_20 = 
   pce_2020_df %>% 
   modelr::bootstrap(n = 1000)
+
+boot_straps_19$strap[[1]] %>% knitr::kable(caption = "A bootstrap example for year 2019")
+boot_straps_20$strap[[1]] %>% knitr::kable(caption = "A bootstrap example for year 2020")
 ```
 
-Compute rmse
+Then we can compute the RMSE and perform a t-test:
 
-```{r}
+```{r rmse_t_test}
+#function for RMSE
 rmse_compute <- function(data){
   data <- as.data.frame(data)
-  return(rmse(smooth_mod, data))
+  return(rmse(test1, data))
 }
-```
 
-
-```{r}
+# compute RMSE
 rmse_19 <- boot_straps_19 %>%
   mutate(
     rmse = map_dbl(strap, rmse_compute)
@@ -296,16 +287,14 @@ rmse_20 <- boot_straps_20 %>%
   mutate(
     rmse = map_dbl(strap, rmse_compute)
   ) %>%
-  select(rmse)          
+  select(rmse)  
+# Perform test
+t.test(rmse_19,rmse_20) %>% broom::tidy() %>% knitr::kable(caption = "T-Test Table: Welch Two Sample t-test")
 ```
 
-Perform test
+We reject the null hypothesis and conclude that there is significant difference between our model prediction of PCE for year 2019 and year 2020. This indicates that people's spending pattern has changed during the pandemic, and this change cannot fully explain by variations of their incomes. 
 
-```{r}
-t.test(rmse_19,rmse_20)
-```
-
-We reject the null hypothesis and conclude that there is significant difference between our prediction of personal consumption expenditures for year 2019 and year 2020. 
+Therefore, there is evidence showing that the COVID-19 pandemic has affected people's spending patterns. 
 
 
 
