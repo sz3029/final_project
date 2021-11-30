@@ -339,7 +339,7 @@ div.tocify {
   </ul>
 </li>
 <li>
-  <a href="linear_model.html">Regression Analyses</a>
+  <a href="linear_model.html">Regression Analysis</a>
 </li>
 <li>
   <a href="pce_state_distribution.html">Interactive Maps</a>
@@ -462,15 +462,15 @@ div.tocify {
 <p>
 <p>• <code>personal_current_taxes</code>: total personal tax payment</p>
 </div>
-</div>
-<div id="data-cleaning" class="section level2">
-<h2>Data cleaning</h2>
+<div id="data-cleaning" class="section level3">
+<h3>Data cleaning</h3>
 <P>
 <p>From <code>Consumption Function</code>, we deleted unneeded rows (whose row numbers are greater than 28, since these rows are not showing the function of the goods), made a <code>time</code> variable that sorted the years and the quarter. We renamed <code>Household consumption expenditures (for services)</code> to <code>household</code>, and renamed <code>Final consumption expenditures of nonprofit institutions serving households (NPISHs)1</code> to <code>nonprofit consumption</code>, since the original names are too long.</p>
 <P>
 <p>From <code>COVID Cumulative Cases</code>, we combined the new case data frame and the cumulative case data frame together and seperate the time points into <code>month</code>, <code>day</code> and <code>year</code>. Then we created a new variable named <code>date</code> that rewrite the date into the form of <code>YYYY-MM-DD</code>.</p>
 <P>
 <p>To compare the covid case data and the consumption data, we built a new data frame named <code>covid_seasonal</code> that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December).</p>
+</div>
 </div>
 <div id="exploratory-analysis" class="section level2">
 <h2>Exploratory Analysis</h2>

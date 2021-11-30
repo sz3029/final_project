@@ -81,7 +81,7 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 <p>• `medicare`: benefits include hospital and supplementary medical insurance benefits that are distributed from the federal hospital insurance trust fund and the supplementary medical insurance trust fund
 <p>• `personal_current_taxes`: total personal tax payment
 
-## Data cleaning
+### Data cleaning
 
 <P>  From `Consumption Function`, we deleted unneeded rows (whose row numbers are greater than 28, since these rows are not showing the function of the goods), made a `time` variable that sorted the years and the quarter. We renamed `Household consumption expenditures (for services)` to `household`, and renamed `Final consumption expenditures of nonprofit institutions serving households (NPISHs)1` to `nonprofit consumption`, since the original names are too long. 
 

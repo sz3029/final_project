@@ -207,9 +207,15 @@ Different to other consumption categories, `housing and utilities`(which mainly 
 
 This part visualizes the the percentage of the consumption expenditures of different categories of products in durable goods, nondurable goods, and services. 
 
-By the comparison between first quarter in 2019, second quarter in 2020, third quarter in 2021, there is no significant changes observed in proportion of different categories of consumption.  
+By the comparison between first quarter in 2019, second quarter in 2020, third quarter in 2021, percentages changed in the second quarter of 2020, but there is no significant changes observed in proportion of different categories of consumption before the consumption and now.
+
+*This is good news (in some ways)! At least we are returning back to normal...*\
+*But still be careful with the Omicron!*
 
 ### Durable Goods
+
+Recreational goods and vehicles increased its proportion to the largest in the second quarter of 2020 and now returned to the level before the pandemic. 
+
 ```{r, message = FALSE, warning = FALSE}
 areas <- c(rgb(1, 0, 0, 0.25),
            rgb(0, 1, 0, 0.25),
@@ -241,7 +247,7 @@ durable_goods_radar[-c(1,2),] %>%
   knitr::kable()
 
 radar_1 = radarchart(durable_goods_radar,
-                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2) 
+                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2, seg = 2) 
 legend("topright",
        legend = c("2019_q1", "2020_q2","2021_q3"),
        bty = "n", col = areas, pch = 20,
@@ -249,6 +255,9 @@ legend("topright",
 ```
 
 ### Nondurable Goods
+
+The proportion of consumption in clothing and energy goods dropped significantly in the second quarter of 2020 while people spend more of their savings on food and beverages. 
+
 ```{r, message = FALSE, warning = FALSE}
 nondurable_goods_radar = nondurable_goods %>% 
   filter(time %in% c("2019_q1", "2020_q2", "2021_q3")) %>% 
@@ -268,7 +277,7 @@ nondurable_goods_radar[-c(1,2),] %>%
   knitr::kable()
 
 radar_2 = radarchart(nondurable_goods_radar,
-                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2)
+                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2, seg = 2)
 legend("topright",
        legend = c("2019_q1", "2020_q2","2021_q3"),
        bty = "n", col = areas, pch = 20,
@@ -276,6 +285,9 @@ legend("topright",
 ```
 
 ### Household Services
+
+The proportion of consumption on housing increased significantly, and the proportion spent on financial services increased a little while people spend less of their savings on the other categories of household services
+
 ```{r, message = FALSE, warning = FALSE}
 household_consumption_radar = household_consumption %>% 
   filter(time %in% c("2019_q1", "2020_q2","2021_q3")) %>% 
@@ -297,7 +309,7 @@ household_consumption_radar[-c(1,2),] %>%
   knitr::kable()
 
 radar_3 = radarchart(household_consumption_radar,
-                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2)
+                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2, seg = 2)
 legend("topright",
        legend = c("2019_q1", "2020_q2","2021_q3"),
        bty = "n", col = areas, pch = 20,

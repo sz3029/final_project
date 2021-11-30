@@ -9,7 +9,7 @@ navbar:
           href: covid_state_case_rate.html
         - text: "Consumption Expenditure"
           href: consumption_timely_trend.html
-    - text: "Regression Analyses"
+    - text: "Regression Analysis"
       href: linear_model.html
     - text: "Interactive Maps"
       href: pce_state_distribution.html
