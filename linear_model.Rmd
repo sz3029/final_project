@@ -221,7 +221,7 @@ rmse20 <- rmse(test1, pce_2020)
 
 ### Testing on the difference
 
-**Hypothesize: there is significant difference between our model prediction of PCEs for pre- and in-pandemic periods (year 2019, year 2020)**
+**Hypothesis: there is significant difference between our model prediction of PCEs for pre- and in-pandemic periods (year 2019, year 2020)**
 
 We need to perform a paired t-test to evaluate if there is difference between the two RMSE. To do this, we need to bootstrap a set of 1000 samples from each year first.
 
@@ -263,8 +263,13 @@ boot_straps_20 =
   pce_2020_df %>% 
   modelr::bootstrap(n = 1000)
 
-boot_straps_19$strap[[1]] %>% knitr::kable(caption = "A bootstrap example for year 2019")
-boot_straps_20$strap[[1]] %>% knitr::kable(caption = "A bootstrap example for year 2020")
+boot_straps_19$strap[[1]] %>% 
+  knitr::kable(caption = "A bootstrap example for year 2019") %>%
+  kableExtra::kable_styling(latex_options="scale_down")
+
+boot_straps_20$strap[[1]] %>% 
+  knitr::kable(caption = "A bootstrap example for year 2020") %>%
+  kableExtra::kable_styling(latex_options="scale_down")
 ```
 
 Then we can compute the RMSE and perform a t-test:
@@ -289,7 +294,7 @@ rmse_20 <- boot_straps_20 %>%
   ) %>%
   select(rmse)  
 # Perform test
-t.test(rmse_19,rmse_20) %>% broom::tidy() %>% knitr::kable(caption = "T-Test Table: Welch Two Sample t-test")
+t.test(rmse_19,rmse_20) %>% broom::tidy() %>% knitr::kable(caption = "T-Test Table: Welch Two Sample t-test") %>% kableExtra::kable_styling(latex_options="scale_down")
 ```
 
 We reject the null hypothesis and conclude that there is significant difference between our model prediction of PCE for year 2019 and year 2020. This indicates that people's spending pattern has changed during the pandemic, and this change cannot fully explain by variations of their incomes. 
