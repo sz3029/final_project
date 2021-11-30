@@ -71,6 +71,9 @@ row = (nrow(consumption_function) / 11) - 7
 
 This part analyze the changes to consumer behaviors during the pandemic based on national consumption expenditure data retrieved from Bureau of Economic Analysis (BEA).
 
+*Will we ever spend our money like the good old days?*
+&nbsp;
+
 ## Consumption and Covid
 
 ```{r, message = FALSE, warning = FALSE}

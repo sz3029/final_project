@@ -13,8 +13,8 @@
 
 <title>Project Report</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -385,22 +385,22 @@ div.tocify {
 
 <div id="motivation" class="section level2">
 <h2>Motivation</h2>
-<p>Begin with the pandemic’s early stages in spring 2020, the COVID-19 pandemic has drastically altered the everyday lives of billions of people, with potential impacts on consumption.</p>
-<p>The epidemic also affected the way people consumed; people worked from home and went out less due to restrictions on avoiding gatherings and dine-in restaurants. We believe this will lead to a collapse in consumption mainly in the services sector. However, consumption in entertainment, such as video games, may increase as a result of the significant increase in time spent at home, meaning that the decline in consumption of goods may be smaller.</p>
-<p>To confirm our conjecture, our group wants to analyze the results of the change in consumption levels from the data sets.</p>
+<p>Ever since the spring of 2020, the COVID-19 pandemic has drastically altered the everyday lives of billions of people. Besides the way of living and working, the pandemic is slowly changing our way of consumption.</p>
+<p>As people were working from home and went out less due to restrictions on gatherings and social activities, we infer there might be a collapse in consumption mainly in the services sector, while consumption in indoor entertainment, household supplies etc. may increase as a result of the more time at home.</p>
+<p>To further explore the changes of consumer behaviors caused by the pandemic, our group studied joint data collected from Bureau of Economic Analysis, and Center for Disease Control and Prevention.</p>
 </div>
 <div id="related-work" class="section level2">
 <h2>Related Work</h2>
-<p>The following resources are samples of what inspired this project:</p>
-<p>1.“The decline and recovery of consumer spending in the US” Brookings, December 14, 2020 <a href="https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/">link</a></p>
-<p>2.“Will New York renew mask mandate and COVID-19 restrictions? What to know as cases surge”, Democrat and Chronicle, November 18, 2021<a href="https://www.democratandchronicle.com/story/news/2021/11/18/new-york-renew-mask-mandate-and-covid-restrictions-what-know/8654736002/">link</a></p>
+<p>1.”The decline and recovery of consumer spending in the US” Brookings, December 14, 2020 <a href="https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/">link</a><br />
+</p>
+<p>2.”A spring in consumers’ steps: Americans prepare to get back to their spending ways”Deloitte, June 28, 2021 <a href="https://www2.deloitte.com/us/en/insights/economy/us-consumer-spending-after-covid.html">link</a></p>
 </div>
 <div id="research-design" class="section level2">
 <h2>Research Design</h2>
-<div id="initial-hypothesis" class="section level3">
-<h3>Initial Hypothesis</h3>
+<div id="initial-question" class="section level3">
+<h3>Initial Question</h3>
 <p>Our project is designed to investigate how the Covid-19 pandemic has affected US people’s consuming behavior. We intend to research whether there are changes to people’s total personal consumption expenditure(PCE) and their consumption pattern since the pandemic happened in March 2020. We are also interested in how much people’s consuming behaviors has recovered since the society is gradually returning to normal life in 2021.</p>
-<p>Hypothesis:</p>
+<p>Initial Hypothesis: Covid 19 changes the value/structure of consumption expenditure.</p>
 </div>
 <div id="evolution-of-analytic-questions" class="section level3">
 <h3>Evolution of Analytic Questions</h3>
@@ -410,7 +410,7 @@ div.tocify {
 </div>
 <div id="new-questions-identified-during-analysis" class="section level3">
 <h3>New Questions Identified During Analysis</h3>
-<p>PCE is also affected by the trend of personal incomes, and government’s laws to support and sustain businesses and individuals through the pandemic. In addition, we decided to also examine how the pandemic has impacted personal incomes and savings in U.S., and whether they matched the changing of PCE. In this process, we can obtain more comprehensive understanding of how the pandemic has influenced people’s economic conditions and behaviors in different aspects.</p>
+<p>PCE is also affected by the trend of personal incomes, and government’s laws to support and sustain businesses and individuals through the pandemic. In addition, we examined how the pandemic has impacted personal incomes and savings in U.S., and whether they matched the changing of PCE. In this process, we can obtain more comprehensive understanding of how the pandemic has influenced people’s economic conditions and behaviors in different aspects.</p>
 </div>
 </div>
 <div id="data" class="section level2">
@@ -450,7 +450,17 @@ div.tocify {
 • <code>date</code>: the date when the data collected.
 <p>
 <p>• <code>total_cases</code>: the amount to the cases diagnosed within the date.</p>
-<p><strong>Personal Income and Savings</strong></p>
+<strong>Personal Income and Savings</strong>
+<p>
+• <code>wages_and_salaries</code>: wages and salaries received from employers
+<p>
+• <code>supplements_to_wages_and_salaries</code>: supplemental payments received from employers
+<p>
+• <code>social_security</code>: benefits include old-age, survivors, and disability insurance benefits that are distributed from the federal old-age and survivors insurance trust fund and the disability insurance trust fund
+<p>
+• <code>medicare</code>: benefits include hospital and supplementary medical insurance benefits that are distributed from the federal hospital insurance trust fund and the supplementary medical insurance trust fund
+<p>
+<p>• <code>personal_current_taxes</code>: total personal tax payment</p>
 </div>
 </div>
 <div id="data-cleaning" class="section level2">
@@ -458,20 +468,35 @@ div.tocify {
 <P>
 <p>From <code>Consumption Function</code>, we deleted unneeded rows (whose row numbers are greater than 28, since these rows are not showing the function of the goods), made a <code>time</code> variable that sorted the years and the quarter. We renamed <code>Household consumption expenditures (for services)</code> to <code>household</code>, and renamed <code>Final consumption expenditures of nonprofit institutions serving households (NPISHs)1</code> to <code>nonprofit consumption</code>, since the original names are too long.</p>
 <P>
-<p>From <code>COVID Cumulative Cases</code>, we combine the new case data frame and the cumulative case data frame together and seperate the time points into <code>month</code>, <code>day</code> and <code>year</code>. Then we created a new variable named <code>date</code> that rewrite the date into the form of <code>YYYY-MM-DD</code>.</p>
+<p>From <code>COVID Cumulative Cases</code>, we combined the new case data frame and the cumulative case data frame together and seperate the time points into <code>month</code>, <code>day</code> and <code>year</code>. Then we created a new variable named <code>date</code> that rewrite the date into the form of <code>YYYY-MM-DD</code>.</p>
 <P>
-<p>In order to compare the covid case data and the comsumption data, we made a new data frame named <code>covid_seasonal</code> that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December). Then we write this data frame into a new .csv document.</p>
+<p>To compare the covid case data and the consumption data, we built a new data frame named <code>covid_seasonal</code> that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December).</p>
 </div>
 <div id="exploratory-analysis" class="section level2">
 <h2>Exploratory Analysis</h2>
+<p>
+<p>The lowest value of consumption expenditure actually did not happen as expected at the peak of the pandemic but at the second quarter of 2020, when cases just start to rise. The expenditures of services experienced a steeper change than expenditures of goods due to the shutdown of businesses, the quarantine and the lock down policies etc.Even though cases keep rising, as restrictions keep lifting, the rate of vaccination keep rising, economics keep recovering, people’s consumption expenditure grows steadly after the third quarter of 2020. Although the severity of Covid 19 reached to the first peak in the fourth quarter of 2020, it has limited effect on people’s consumption behavior. The total consumption expenditure is even larger by now comparing with that before the pandemic. This can be partially explained by inflation and government’s stimulus plan.</p>
+<center>
+<img src="images/eda_1.png" style="width:80%" class="center">
+</center>
 <div id="us-covid-19" class="section level3">
 <h3>US Covid 19</h3>
 </div>
-<div id="national-consumption-expenditure-data" class="section level3">
-<h3>National Consumption Expenditure Data</h3>
-</div>
-<div id="income-data" class="section level3">
-<h3>Income Data</h3>
+<div id="consumption-expenditure" class="section level3">
+<h3>Consumption Expenditure</h3>
+<p>
+<p>Durable goods are divided into four categories. Consumption in <code>Recreational goods and vehicles</code> and <code>furnishings and durable household equipment</code> did not experience significant drop in the second quarter of 2020 like the other two. Changes in working mode and more time spent at home resulted in people’s growing demand for household equipment and in-door recreational equipments.</p>
+<center>
+<img src="images/eda_2.png" style="width:80%" class="center">
+</center>
+<p>Nondurable goods are divided into four categories. The proportion of consumption expenditure on food/beverages and other nondurable goods exceeds much than that of clothing/footware and energy goods all time. Even when Covid outbroke, unlike the changes in consumption of clothing/footware and energy goods, that in food/beverages and other nondurable goods is not experiencing reduction in the pandemic but increases steadly.</p>
+<center>
+<img src="images/eda_3.png" style="width:80%" class="center">
+</center>
+<p>Expenditures in household services are divided into seven categories. Only the <code>housing and utilities</code>(which mainly includes housing rental and the fees for the resources at home such as electricity and gas) and <code>financial service and insurance</code> (which mainly includes life and health insurance and commissions in banks) were not reduced but even increased in the pandemic. Expenditures of outdoor services like <code>Transportation</code>, <code>Food service and accomodation</code>, and <code>Recreation service</code> reduced significantly in the second quarter of 2020 due to nationwide quarantine policies. The total consumption of transportation and recreation services hasn’t recovered to the level before the pandemic by the third quarter of 2021.</p>
+<center>
+<img src="images/eda_4.png" style="width:80%" class="center">
+</center>
 </div>
 </div>
 <div id="regression-analysis" class="section level2">
