@@ -35,11 +35,12 @@ covid_total_by_state_tidy =
   replace_with_na_all(condition = ~.x %in% na_strings) %>% 
   mutate(
     state_territory = as.factor(state_territory),
-    case_rate_per_100000 = as.numeric(case_rate_per_100000)
+    case_rate_2021 = as.numeric(case_rate_per_100000)
          ) %>% 
-  rename(region = "state_territory") %>% 
-  select(region, case_rate_per_100000) %>% 
-  mutate(region = recode(region, "New York*" = "New York"))
+  rename(state = "state_territory") %>% 
+  select(state, case_rate_2021) %>% 
+  mutate(state = recode(state, "New York*" = "New York"))
+
 #Let's make a choropleth map plot to show the total covid cases by state in US.
 #Load the usa postal code dataset.
 postal_code = 
@@ -64,28 +65,33 @@ state_2020 =
   ) %>%                                                             # add path
   mutate(
     observations = map(path, read_data_function))
-#Let's unnest the data frame and filter the cases on Dec.31.2020
+
 state_2020_tidy =
   state_2020 %>% 
   unnest(cols = "observations") %>% 
   janitor::clean_names() %>% 
   filter(date == "Dec 31 2020") %>%
   select(state, total_cases, total_case_rate_per_100k)
-plot_2020_df = left_join(state_2020_tidy, postal_code, by = "state") %>% 
-  mutate(plot_text = str_c(state, total_case_rate_per_100k, sep = ":"))
-# specify some map projection/options
+
+plot_df = left_join(state_2020_tidy, covid_total_by_state_tidy, postal_code, by = "state") %>% 
+  left_join(postal_code, by = "state") %>% 
+  mutate(plot_text = str_c(state, total_case_rate_per_100k, sep = ":"),
+         plot_text2 = str_c(state, case_rate_2021, sep = ":"))
+
 g = list(
   scope = 'usa',
   projection = list(type = 'albers usa'),
   showlakes = TRUE,
   lakecolor = toRGB('white')
 )
-plot_2020_df$hover = with(plot_2020_df, paste(
+
+plot_df$hover = with(plot_df, paste(
   state, '<br>', "Total case", total_cases, "<br>")
   )
+
 #Make map plot.
-map_plotly2 = 
-  plot_geo(plot_2020_df, locationmode = 'USA-states') %>% 
+map_plotly = 
+  plot_geo(plot_df, locationmode = 'USA-states') %>% 
   add_trace(
     type = "scattergeo",
     locations = ~code,
@@ -100,20 +106,46 @@ map_plotly2 =
     locations = ~code,
     color = ~total_case_rate_per_100k, 
     colorscale = list(c(0, 0.85, 1), c("#ffffff", "#83c5fd", "#0066FF")),
-     colorbar = list(title = "Case Rate Per 100K"),
+    colorbar = list(title = "Case Rate"),
     hoverinfo = "text",
+    showlegend = FALSE,
     visible = T
+) %>% 
+  add_trace(
+    z = ~case_rate_2021, 
+    text = ~plot_text2, 
+    locations = ~code,
+    color = ~case_rate_2021, 
+    colorscale = list(c(0, 0.85, 1), c("#ffffff", "#83c5fd", "#0066FF")),
+    colorbar = list(title = "Case Rate"),
+    hoverinfo = "text",
+    showlegend = FALSE,
+    visible = F
   ) %>% 
   layout(
-    geo = g
+    title = "Case Rate of Covid 19 Per 100k population of all States",
+    geo = g,
+    updatemenus = list(
+      list(
+        type = 'buttons',
+        x = 0.1,
+        y = 0.95,
+        buttons = list(
+          list(method = "restyle",
+               args = list("visible", list(T, T, F)),
+               label = '2020'),
+          
+          list(method = "restyle",
+               args = list("visible", list(T, F, T)),
+               label = '2021')
+        )))
   )
 
-map_plotly2
+map_plotly
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
-
 ### Trends in Number of Cases
 
 ```{r, message=FALSE, warning=FALSE}
@@ -129,83 +161,26 @@ covid_daily = left_join(covid_day, covid_cum, by = "date") %>%
   arrange(year, month, day) %>% 
   mutate(date = make_date(year, month, day)) %>% 
   arrange(date)
-  
-covid_monthly = covid_daily %>% 
-  select(-day) %>% 
-  summarize(monthly = sum(new_cases))
-covid_seasonal = covid_monthly %>% 
-  mutate(quarter = recode(month,
-    "Jan" = "q1",
-    "Feb" = "q1",
-    "Mar" = "q1",
-    "Apr" = "q2",
-    "May" = "q2",
-    "Jun" = "q2",
-    "Jul" = "q3",
-    "Aug" = "q3",
-    "Sep" = "q3",
-    "Oct" = "q4",
-    "Nov" = "q4",
-    "Dec" = "q4"
-  )) %>% 
-  group_by(year, quarter) %>% 
-  summarize(quarterly = sum(monthly)) %>% 
-  mutate(date = str_c(year, quarter, sep = "_"))
-write_csv(covid_seasonal, 'covid_seasonal.csv')
+
 row_cum = nrow(covid_cum)
 row_daily = nrow(covid_daily)
 daily_fig = plot_ly(covid_daily) 
 daily_fig %>% 
   add_trace(x = ~date, y = ~new_cases, type = "bar", yaxis="y", name = "new", marker = list(color = 'rgb(158,202,225)')) %>% 
-  add_trace(x = ~date, y = ~total_cases, type = "scatter", mode = "lines", yaxis = "y2", name = "cumulative") %>% 
+  add_trace(x = ~date, y = ~total_cases, type = "scatter", mode = "lines", yaxis = "y2", name = "cum") %>% 
   layout(yaxis=list(title = "daily new cases", side="left"),
          yaxis2=list(title = "cumulative cases", side="right",overlaying="y"),
          showlegend=TRUE)
 ```
 
-### The latest Case Rate Per 100k
+### Total Number of cases by state
 
-```{r, message=FALSE, warning=FALSE}
-# join the data frames
-plot_df = 
-  left_join(postal_code, covid_total_by_state_tidy, by = c("state" = "region")) %>% 
-  relocate(code)
-# specify some map projection/options
-g = list(
-  scope = 'usa',
-  projection = list(type = 'albers usa'),
-  showlakes = TRUE,
-  lakecolor = toRGB('white')
-)
-plot_df$hover = with(plot_df, paste(
-  state, '<br>')
-  )
-
-plot_df = plot_df %>% 
-  mutate(plot_text = str_c(state, case_rate_per_100000, sep = ":"))
-
-# make the plot
-map_plotly1 = 
-  plot_geo(plot_df, locationmode = 'USA-states') %>% 
-    add_trace(
-    type = "scattergeo",
-    locations = ~code
-  ) %>% 
-  add_trace(
-    z = ~case_rate_per_100000, 
-    text = ~plot_text, 
-    locations = ~code,
-    color = ~case_rate_per_100000, 
-    colorscale = list(c(0, 0.85, 1), c("#ffffff", "#83c5fd", "#0066FF")),
-    colorbar = list(title = "Case Rate Per 100K"),
-    hoverinfo = "text",
-    visible = T,
-    showscale = FALSE,
-    showlegend = FALSE
-  ) %>% 
-  layout(
-    geo = g
-  )
-
-map_plotly1
+```{r}
+plot_df %>% 
+  mutate(abbrev = fct_reorder(as.factor(abbrev), total_cases)) %>% 
+  plot_ly(x = ~abbrev, y = ~total_cases, color = ~abbrev, type = "bar", colors = "viridis") %>% 
+  layout(yaxis = list(title = "Total Number of Positive Cases"),
+         xaxis = list(title = "State"),
+         showlegend = FALSE)
 ```
+
