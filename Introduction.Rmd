@@ -1,0 +1,38 @@
+---
+title: "Introduction"
+output: html_document
+---
+## Motivation
+
+Begin with the pandemic’s early stages in spring 2020, the COVID-19 pandemic has drastically altered the everyday lives of billions of people, with potential impacts on consumption.
+
+The epidemic also affected the way people consumed; people worked from home and went out less due to restrictions on avoiding gatherings and dine-in restaurants. We believe this will lead to a collapse in consumption mainly in the services sector. However, consumption in entertainment, such as video games, may increase as a result of the significant increase in time spent at home, meaning that the decline in consumption of goods may be smaller.
+
+To confirm our conjecture, our group wants to analyze the results of the change in consumption levels from the data sets.
+
+## Related Work
+
+The following resources are samples of what inspired this project:
+
+1."The decline and recovery of consumer spending in the US" Brookings, December 14, 2020 [link](https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/)
+
+2."Will New York renew mask mandate and COVID-19 restrictions? What to know as cases surge", Democrat and Chronicle, November 18, 2021[link](https://www.democratandchronicle.com/story/news/2021/11/18/new-york-renew-mask-mandate-and-covid-restrictions-what-know/8654736002/)
+
+
+
+
+## Initial Questions
+
+Initially, as our project title indicates, we want to know about how the pandemic has affected people’s consumption in U.S.. Had people spend less or more since the pandemic happened in March 2020? On what kinds of consumption? We made several assumptions including decreasing Personal Consumption Expenditure(PCE) in total and in some categories like motor vehicles, travelling, restaurants, and increasing PCE in others like household, video-games, online shopping etc. We are also interested in how much people’s consumption pattern has restored since the pandemic seems getting better and people are gradually returning to normal life in 2021. So we decided to make regression models of PCE of different categories and the severity of the pandemic.
+
+### Evolution of Analytic Questions
+
+• We noticed that the severity of Covid-19 varies significantly among states, so as the PCE, so we took into consideration of the analysis of data by states. Besides, we have the problem of insufficient data for regression because it’s less than two years since Covid-19, so dividing data by states enables us to build more models and make comparisons. This is also a good opportunity to draw some maps.
+
+• We wanted to find a normal pattern of the changing of PCE through years, since it could not be stationary as economy and society develops. Analyst of the PCE change disregarding of this regular trend is biased and meaningless. To deal with this problem, we found the PCE data since 1967 and tried to build a model and predict the data of 2020 and 2021 assuming there was no pandemic, and compare it to the real-world data in order to get our conclusion.
+
+• The apparent inflation and rising in prices after the pandemic will potentially affect the PCE data as well. Realizing this problem, we decided to include the counting of inflation and use chained dollars, which is a method of adjusting real dollar amounts for inflation over time, to allow the comparison of figures from different years. We are also interested in how the pandemic has affected the Consumer Price Index(CPI) besides PCE.
+
+## New Questions Identified During Analysis
+
+PCE is also affected by the trend of personal incomes, and government’s laws to support and sustain businesses and individuals through the pandemic. In addition, we decided to also examine how the pandemic has impacted personal incomes and savings in U.S., and whether they matched the changing of PCE. In this process, we can obtain more comprehensive understanding of how the pandemic has influenced people’s economic conditions and behaviors in different aspects.

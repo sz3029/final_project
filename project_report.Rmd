@@ -1,43 +1,145 @@
 ---
 title: "Project Report"
 output: 
-   html_document:
-      toc: true
-      toc_float: true
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
 ---
+
 ## Motivation
 
-Begin with the pandemic’s early stages in spring 2020, the COVID-19 pandemic has drastically altered the everyday lives of billions of people, with potential impacts on consumption.
+Ever since the spring of 2020, the COVID-19 pandemic has drastically altered the everyday lives of billions of people. Besides the way of living and working, the pandemic is slowly changing our way of consumption. 
 
-The epidemic also affected the way people consumed; people worked from home and went out less due to restrictions on avoiding gatherings and dine-in restaurants. We believe this will lead to a collapse in consumption mainly in the services sector. However, consumption in entertainment, such as video games, may increase as a result of the significant increase in time spent at home, meaning that the decline in consumption of goods may be smaller.
+As people were working from home and went out less due to restrictions on gatherings and social activities, we infer there might be a collapse in consumption mainly in the services sector, while consumption in indoor entertainment, household supplies etc. may increase as a result of the more time at home. 
 
-To confirm our conjecture, our group wants to analyze the results of the change in consumption levels from the data sets.
+To further explore the changes of consumer behaviors caused by the pandemic, our group studied joint data collected from Bureau of Economic Analysis, and Center for Disease Control and Prevention.
 
-### Related Work
+## Related Work
 
-The following resources are samples of what inspired this project:
+1."The decline and recovery of consumer spending in the US" Brookings, December 14, 2020  [link](https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/)\
 
-1."The decline and recovery of consumer spending in the US" Brookings, December 14, 2020 [link](https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/)
+2."A spring in consumers’ steps: Americans prepare to get back to their spending ways"Deloitte, June 28, 2021 [link](https://www2.deloitte.com/us/en/insights/economy/us-consumer-spending-after-covid.html)
 
-2."Will New York renew mask mandate and COVID-19 restrictions? What to know as cases surge", Democrat and Chronicle, November 18, 2021[link](https://www.democratandchronicle.com/story/news/2021/11/18/new-york-renew-mask-mandate-and-covid-restrictions-what-know/8654736002/)
+## Research Design
 
+### Initial Question
 
+Our project is designed to investigate how the Covid-19 pandemic has affected US people’s consuming behavior. We intend to research whether there are changes to people's total personal consumption expenditure(PCE) and their consumption pattern since the pandemic happened in March 2020. We are also interested in how much people’s consuming behaviors has recovered since the society is gradually returning to normal life in 2021. 
 
-
-## Initial Questions
-
-Initially, as our project title indicates, we want to know about how the pandemic has affected people’s consumption in U.S.. Had people spend less or more since the pandemic happened in March 2020? On what kinds of consumption? We made several assumptions including decreasing Personal Consumption Expenditure(PCE) in total and in some categories like motor vehicles, travelling, restaurants, and increasing PCE in others like household, video-games, online shopping etc. We are also interested in how much people’s consumption pattern has restored since the pandemic seems getting better and people are gradually returning to normal life in 2021. So we decided to make regression models of PCE of different categories and the severity of the pandemic.
+Initial Hypothesis: Covid 19 changes the value/structure of consumption expenditure.
 
 ### Evolution of Analytic Questions
 
-• We noticed that the severity of Covid-19 varies significantly among states, so as the PCE, so we took into consideration of the analysis of data by states. Besides, we have the problem of insufficient data for regression because it’s less than two years since Covid-19, so dividing data by states enables us to build more models and make comparisons. This is also a good opportunity to draw some maps.
+• There is evidence that the severity of Covid-19 varies among states, so as the PCE. To address the differences, we analyzed the data by states by drawing maps based on Covid 19 and consumption expenditure data. 
 
-• We wanted to find a normal pattern of the changing of PCE through years, since it could not be stationary as economy and society develops. Analyst of the PCE change disregarding of this regular trend is biased and meaningless. To deal with this problem, we found the PCE data since 1967 and tried to build a model and predict the data of 2020 and 2021 assuming there was no pandemic, and compare it to the real-world data in order to get our conclusion.
+• The pandemic has lasted for two years, thus using the data since the pandemic for modeling is insufficient and biased. To address this problem, we build a prediction model of PCE based on income and consumption data since 1967. To test the hypothesis, we predict the consumption data in 2020 and 2021 using the model and compare it to the real-world data.
 
-• The apparent inflation and rising in prices after the pandemic will potentially affect the PCE data as well. Realizing this problem, we decided to include the counting of inflation and use chained dollars, which is a method of adjusting real dollar amounts for inflation over time, to allow the comparison of figures from different years. We are also interested in how the pandemic has affected the Consumer Price Index(CPI) besides PCE.
+• The inflation and recent rises in prices potentially affect the PCE data as well. To address this, we considered inflation and analyze using chained dollars. which is a method of adjusting real dollar amounts for inflation over time, allowing the comparison of figures from different years.
 
-## New Questions Identified During Analysis
+### New Questions Identified During Analysis
 
-PCE is also affected by the trend of personal incomes, and government’s laws to support and sustain businesses and individuals through the pandemic. In addition, we decided to also examine how the pandemic has impacted personal incomes and savings in U.S., and whether they matched the changing of PCE. In this process, we can obtain more comprehensive understanding of how the pandemic has influenced people’s economic conditions and behaviors in different aspects.
+PCE is also affected by the trend of personal incomes, and government’s laws to support and sustain businesses and individuals through the pandemic. In addition, we examined how the pandemic has impacted personal incomes and savings in U.S., and whether they matched the changing of PCE. In this process, we can obtain more comprehensive understanding of how the pandemic has influenced people’s economic conditions and behaviors in different aspects.
 
 ## Data
+
+### Data Sources
+
+<p>• Personal Consumption Expenditures by Major Type of Product and by Major Function:
+
+https://www.bea.gov/data/consumer-spending/main
+
+<p>• Personal Consumption Expenditures by Major Type of Product and by Major Function, by State:
+
+https://www.bea.gov/data/consumer-spending/state
+
+<p>• Trends in Number of COVID-19 Cases and Deaths in the US Reported to CDC: 
+
+https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
+
+### Variables of Interest
+
+**Consumption Expenditure**
+<p>• `functions`: the different functions of the goods.
+<p>• `time`: different quarters.
+<p>• `consumption`: the total amount of consumptions.
+
+**COVID Cumulative Cases**
+<p>• `state`
+<p>• `date`: the date when the data collected.
+<p>• `total_cases`: the amount to the cases diagnosed within and before the date.
+
+**COVID Daily Cases**
+<p>• `state`
+<p>• `date`: the date when the data collected.
+<p>• `total_cases`: the amount to the cases diagnosed within the date.
+
+**Personal Income and Savings**
+<p>• `wages_and_salaries`: wages and salaries received from employers
+<p>• `supplements_to_wages_and_salaries`: supplemental payments received from employers
+<p>• `social_security`: benefits include old-age, survivors, and disability insurance benefits that are distributed from the federal old-age and survivors insurance trust fund and the disability insurance trust fund
+<p>• `medicare`: benefits include hospital and supplementary medical insurance benefits that are distributed from the federal hospital insurance trust fund and the supplementary medical insurance trust fund
+<p>• `personal_current_taxes`: total personal tax payment
+
+### Data cleaning
+
+<P>  From `Consumption Function`, we deleted unneeded rows (whose row numbers are greater than 28, since these rows are not showing the function of the goods), made a `time` variable that sorted the years and the quarter. We renamed `Household consumption expenditures (for services)` to `household`, and renamed `Final consumption expenditures of nonprofit institutions serving households (NPISHs)1` to `nonprofit consumption`, since the original names are too long. 
+
+<P>  From `COVID Cumulative Cases`, we combined the new case data frame and the cumulative case data frame together and seperate the time points into `month`, `day` and `year`. Then we created a new variable named `date` that rewrite the date into the form of `YYYY-MM-DD`.
+
+<P>  To compare the covid case data and the consumption data, we built a new data frame named `covid_seasonal` that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December). 
+
+## Exploratory Data Analysis
+
+<p> The lowest value of consumption expenditure actually did not happen as expected at the peak of the pandemic but at the second quarter of 2020, when cases just start to rise. The expenditures of services experienced a steeper change than expenditures of goods due to the shutdown of businesses, the quarantine and the lock down policies etc.Even though cases keep rising, as restrictions keep lifting, the rate of vaccination keep rising, economics keep recovering, people's consumption expenditure grows steadly after the third quarter of 2020. Although the severity of Covid 19 reached to the first peak in the fourth quarter of 2020, it has limited effect on people's consumption behavior. The total consumption expenditure is even larger by now comparing with that before the pandemic. This can be partially explained by inflation and government’s stimulus plan.
+
+<center>
+<img src="./images/eda_1.png" style="width:60%" class="center">
+</center>
+
+### US Covid 19
+
+<p> The dataset of Covid 19 in the United States begins from January 17, 2020. In this part we visualized the data based on location and time. 
+
+<center>
+<img src="./images/covid1.png" style="width:60%" class="center">
+</center>
+
+### Consumption Expenditure
+
+<p> Durable goods are divided into four categories. Consumption in `Recreational goods and vehicles` and `furnishings and durable household equipment` did not experience significant drop in the second quarter of 2020 like the other two. Changes in working mode and more time spent at home resulted in people's growing demand for household equipment and in-door recreational equipments. 
+
+<center>
+<img src="./images/eda_2.png" style="width:60%" class="center">
+</center>
+
+Nondurable goods are divided into four categories. The proportion of consumption expenditure on food/beverages and other nondurable goods exceeds much than that of clothing/footware and energy goods all time. Even when Covid outbroke, unlike the changes in consumption of clothing/footware and energy goods, that in food/beverages and other nondurable goods is not experiencing reduction in the pandemic but increases steadly. 
+
+<center>
+<img src="./images/eda_3.png" style="width:60%" class="center">
+</center>
+
+Expenditures in household services are divided into seven categories. Only the `housing and utilities`(which mainly includes housing rental and the fees for the resources at home such as electricity and gas) and `financial service and insurance` (which mainly includes life and health insurance and commissions in banks) were not reduced but even increased in the pandemic.
+Expenditures of outdoor services like `Transportation`, `Food service and accomodation`, and `Recreation service` reduced significantly in the second quarter of 2020 
+due to nationwide quarantine policies. The total consumption of transportation and recreation services hasn't recovered to the level before the pandemic by the third quarter of 2021. 
+
+<center>
+<img src="./images/eda_4.png" style="width:60%" class="center">
+</center>
+
+## Regression Analysis
+
+<p> Using the personal consumption expenditure (PCE) and income data, we aimed to investigate how the COVID-19 pandemic influence people's spending patterns. We know that one's consumption is associate with one's income, so we built a MLR model from income data and made predictions for PCE. Our variables of interest include `wages and salaries`, `supplements to wages and salaries`, `social security`, `medicare`, `personal current taxes`, and the outcome `PCE`.
+
+<p> We hypothesized that the PCE pattern has changed with respect to income for pre- v.s. in-pandemic periods. To test this hypothesis, we fitted a MLR model using data from year 1967-2018, the "pre-pandemic" period. We then used this model to predict for PCE outcomes for a pre-pandemic year, 2019, and a in-pandemic year, 2020, respectively. Then we compared if there is significant difference in the root mean square errors (RMSE) between the pre-pandemic and in-pandemic periods. If there is significant difference between them, we can conclude that there is enough evidence showing that the PCE patterns has changed during the pandemic and vice versa. 
+
+<p> Our model fits the data well because our $R^2$ value is $> 99\%$. We then used multiple diagnostic methods to evaluate the model. The QQ-plot indicates the distribution of residuals are normal. The Scale-location plot shows that the residuals are spread equally along the range of predictors. And the residuals-leverage plot shows that no outlier is influential. Therefore, we were confident to proceed our analysis with the MLR model. 
+
+<p> Giving the MLR model and its predictions for PCE, we explored the difference in the root mean square errors (RMSE) of the model between the pre-pandemic and in-pandemic periods in dollars. To obtain a pool of RMSE data, we utilized bootstrapping method on data of year 2019 and 2020. The results were tested via the t-test, which indicated a significant difference between the RMSEs of the two years. This indicated that people's spending pattern has changed during the pandemic, and this change could not fully explain by variations of their incomes. 
+
+<p> Therefore, there is evidence showing that the COVID-19 pandemic has affected people's spending patterns. 
+
+
+## Discussion
+
+## Conclusions

@@ -1,13 +1,11 @@
 ---
-title: "Consumer Behaviors in Pandemic"
+title: "Analysis of Consumer Behaviors in Pandemic"
 output: 
   html_document:
     toc: true
     toc_float: true
     code_folding: hide
 ---
-
-This page is about trend in personal consumption in the US
 
 ```{r setup, include = FALSE}
 library(tidyverse)
@@ -30,9 +28,9 @@ scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 ```
 
-## Import data
+## Introduction
 
-```{r message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 consumption_product = readxl::read_excel("data/consumption_product.xlsx") %>% 
   janitor::clean_names() %>% 
   pivot_longer(
@@ -71,11 +69,10 @@ col = ncol(consumption_function)
 row = (nrow(consumption_function) / 11) - 7
 ```
 
-Data description
-The `Consumption Function` data frame contains the amount of consumption of goods with different functions. There are `r name` in total `r col` coloumns in this data frame, and `r row` kinds of different functions in total.
+This part analyze the changes to consumer behaviors during the pandemic based on national consumption expenditure data retrieved from Bureau of Economic Analysis (BEA).
 
-Data cleaning
-To clean the `Consumption Function`, we first used ‘janitor::clean_names()’ to get a uniform naming scheme. From there, we deleted unneeded rows (whose row numbers are greater than 28, since these rows are not showing the function of the goods), made a `time` variable that sorted the years and the quarter. We renamed `Household consumption expenditures (for services)` to `household`, and renamed `Final consumption expenditures of nonprofit institutions serving households (NPISHs)1` to `nonprofit consumption`, since the original names are too long. 
+*Will we ever spend our money like the good old days?*
+&nbsp;
 
 ## Consumption and Covid
 
@@ -91,11 +88,11 @@ joint_plot = plot_ly(covid_consumption, x = ~time) %>%
 joint_plot
 ```
 
-The lowest point actually did not happen as expected at the peak of the pandemic. In the second quarter of 2020, when cases start to rise, personal protective equipment were in a shortage, no effective treatment plans/vaccines are available, the total expenditure of consumption in the US reached to its lowest. 
+The lowest point actually did not happen as expected at the peak of the pandemic but at the second quarter of 2020, when cases just start to rise. 
 
 Consumption expenditures of services experienced a steeper change than expenditures of goods due to the shutdown of businesses, the quarantine and the lock down policies etc. 
 
-Even though cases keep rising, as restrictions keep lifting, the rate of vaccination keep rising, economics keep recovering, people's consumption expenditure grows steadly after the third quarter of 2020. Although the severity of Covid 19 reached to the first peak in the fourth quarter of 2020, it has limited effect on people's consumption behavior. 
+Even though cases keep rising, as restrictions keep lifting, the rate of vaccination keep rising, economics keep recovering, people's consumption expenditure grows steadly after the third quarter of 2020. 
 
 The total consumption expenditure is even larger by now comparing with that before the pandemic. This can be partially explained by inflation and government's stimulus plan. 
 
@@ -119,9 +116,7 @@ subfig_1
 
 The proportion of the nondurable goods such as food, drinks and clothing etc. increased after the second quarter of 2020, the time when the cases are rising. People are more willing to spend income on the nonduarble goods instead of spending them on buying the durable goods such as cars and house. 
 
-This might result from the work-from-home policy which many companies are still keeping even after the outbreak of COVID-19. For example, people need to prepare food for themselves since many of the restaurants are no longer serving, and they don't need to drive that much so many of them don't buy the new cars as frequent as they used to.
-
-There is a lowest point of the value of consumption expenditure in all kind of goods consumption in the second quarter of 2020, when the COVID-19 outbroke, and after that, the consumption gradually grow up. From the lowest point we can infer that people were influenced a lot because of the pandemic, many of them might have lost their job in this period, so they don't have enough money to consume as what they did before.
+There is a lowest point of the value of consumption expenditure in all kind of goods consumption in the second quarter of 2020, when the COVID-19 outbroke, and after that, the consumption gradually grow up. 
 
 ### Durable Goods
 
@@ -131,16 +126,16 @@ durable_goods =
   filter(functions %in% c("Motor vehicles and parts","Furnishings and durable household equipment","Recreational goods and vehicles","Other durable goods")) 
 
 durable_goods %>% 
-  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", color = ~functions) %>% 
-  layout(title = "Decomposition of Consumption in Durable Goods",
-         legend = list(orientation = 'h', x = 0, y = -0.2))
+  plot_ly(x = ~time, y = ~consumption, type = 'scatter', mode = 'lines', yaxis="y", line = list(simplyfy = F), color = ~functions) %>% 
+  layout(title = "Decomposition of Consumption in Durable Goods", 
+    legend = list(orientation = 'h', x = 0, y = -0.2)) 
 ```
 
-`Motor vehicles and parts` increases fastest after experiencing the bottom point, from which we can infer that people go out even more frequently after the pandemic than before the pandemic. Let's call it *revenge travel*: people become more willing to get out of the room after being trapped at home for a long time due to the pandemic.  
+`Motor vehicles and parts` increases fastest after experiencing the bottom point, from which we can infer that people go out even more frequently after the pandemic than before the pandemic. 
 
-`Recrational goods and vehicles`(includes video/audio equipments and sporting equipments) keep increasing during the pandemic because people are spending more time at home instead of socializing. Thus people are changing their ways of having fun, which leads to more consumption for products like televisions, video games and some recreational vehicles.
+`Recrational goods and vehicles`(includes video/audio equipments and sporting equipments) keep increasing during the pandemic because people are spending more time at home instead of socializing. 
 
-`Furnishngs and durable household equipment` consumption value barely reduced in the pandemic, and there is a growth after the second quarter of 2020. That's probably because people's demand on durable goods like this does not change significantly due to the pandemic, on the contrary, staying at home increases people's willingness to buy furniture.
+`Furnishngs and durable household equipment` consumption value barely reduced in the pandemic, and there is a growth after the second quarter of 2020 probably because people's demand on durable goods like this does not change significantly due to the pandemic, on the contrary, staying at home increases people's willingness to buy furniture.
 
 `Other durable goods` includes jewelry and watches, therapeutic appliances, educational books, luggages, and telephones and related. Like most of other kinds of products, the value of expenditure experienced a lowest point at the second quarter of 2020 and recovered after that. 
 
@@ -159,13 +154,13 @@ nondurable_goods %>%
          legend = list(orientation = 'h', x = 0, y = -0.2))
 ```
 
-`Clothing and foodwear` consumption reduces rapidly in the pandemic because people began to work from home, and didn't need to go outside to meet other people. So they could just stay in their own room wearing the slippers and pajamas, didn't need to buy that much new clothes and shoes. 
+`Clothing and footwear` consumption reduces rapidly in the pandemic because people began to work from home, and didn't need to go outside to socialize. 
 
 Similar to changes in motor vehicles, the consumption expenditure in `Gasoline and other energy goods` experienced significant decline in the second quarter of 2020 due to reductions in transportation. Consumption in energy goods by the end of 2021 has already surpassed that in 2019 probably due to increase in gasoline prices in the United States. 
 
-There is a small peak in the second quarter in 2020 in the consumption of `food and beverages`. We can infer that people spent more time at home and reduced the frequency of dining outside. Thus leading to more spending on buying food and beverages. 
+The small peak in the second quarter in 2020 in the consumption of `food and beverages` results from people spending more time at home and reduced the frequency of dining outside. 
 
-`Othe nondurable goods` includes medical products, recreational items, household supplies, personal care products, tobacco, and magazines/newspapers. Similar to that of food and beverages, the total consumption of this category keep increasing and exceeds the value before the pandemic.
+`Other nondurable goods` includes medical products, recreational items, household supplies, personal care products, tobacco, and magazines/newspapers. Similar to that of food and beverages, the total consumption of this category keep increasing and exceeds the value before the pandemic.
 
 ## Consumption of Services 
 
@@ -198,21 +193,28 @@ household_consumption %>%
          legend = list(orientation = 'h', x = 0, y = -0.2))
 ```
 
-Consumption of `Health care` reduced significantly in the second quarter of 2020 because the hospital didn't have enough ability to take in other patients due to increasing cases of Covid. Also, most people stayed at home, which made them less likely to get illness such as cold.
+Consumption of `Health care` reduced significantly in the second quarter of 2020 because the hospital didn't have enough ability to take in other patients due to increasing cases of Covid. 
 
-`Transpotation service` includes `motor vehicle services` and `public transportation`. Due to changes in mode of working/education and reduction of services in public transportation, these fee reduced rapidly in the pandemic. The total consumption of transportation hasn't recovered to the level before the pandemic by the third quarter of 2021. 
+`Transpotation service` includes `motor vehicle services` and `public transportation`. The total consumption of transportation hasn't recovered to the level before the pandemic by the third quarter of 2021. 
 
-`Food service and accommodations` reduced because most of the restaurants were shut down in the pandemic. And people were not encouraged to eat outside for healthcare reasons. By the third quarter of 2021, the value in this category reached to a new highest level due to increase in price and the recovery of dining services. 
+`Food service and accommodations` reduced because most of the restaurants were shut down in the pandemic. By the third quarter of 2021, the value in this category reached to a new highest level due to increase in price and the recovery of dining services. 
 
-`Recreation service` mainly consists of the fees of the activities for fun such as sport, museum, gambling, package tour etc. Most of these activities need to be completed outdoor, which were limited during the pandemic, thus the value of consumption reduced significantly in the second quarter of 2020. 
+`Recreation service` mainly consists of the fees of the activities for fun such as sport, museum, gambling, package tour etc. The value of consumption reduced significantly in the second quarter of 2020 due to social-distancing. 
 
-Only the `housing and utilities`(which mainly includes housing rental and the fees for the resources at home such as electricity and gas) and `financial service and insurance` (which mainly includes life and health insurance and commissions in banks) were not reduced in the pandemic and even increased because people spend most of their time at home, and was impossible to use less life basic resource. Also, most of the service in the banks can be completed online now, so paying for the insurance and the commission was not influenced a lot in the pandemic.
+Different to other consumption categories, `housing and utilities`(which mainly includes housing rental and the fees for the resources at home such as electricity and gas) and `financial service and insurance` (which mainly includes life and health insurance and commissions in banks) increased.
 
 ## Consumption Structure Analysis
 
-This part visualizes the the percentage of consumption of different categories of products in durable goods, nondurable goods, and services. 
+This part visualizes the the percentage of the consumption expenditures of different categories of products in durable goods, nondurable goods, and services. 
 
-By the comparison between first quarter in 2019, second quarter in 2020, third quarter in 2021, there is no significant changes observed in proportion of different categories of consumption.  
+By the comparison between first quarter in 2019, second quarter in 2020, third quarter in 2021, percentages changed in the second quarter of 2020, but there is no significant changes observed in proportion of different categories of consumption before the consumption and now.
+
+*This is good news (in some ways)! At least we are returning back to normal...*\
+*But still be careful with the Omicron!*
+
+### Durable Goods
+
+Recreational goods and vehicles increased its proportion to the largest in the second quarter of 2020 and now returned to the level before the pandemic. 
 
 ```{r, message = FALSE, warning = FALSE}
 areas <- c(rgb(1, 0, 0, 0.25),
@@ -245,12 +247,16 @@ durable_goods_radar[-c(1,2),] %>%
   knitr::kable()
 
 radar_1 = radarchart(durable_goods_radar,
-                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2) 
+                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2, seg = 2) 
 legend("topright",
        legend = c("2019_q1", "2020_q2","2021_q3"),
        bty = "n", col = areas, pch = 20,
        text.col = "grey25", pt.cex = 2)
 ```
+
+### Nondurable Goods
+
+The proportion of consumption in clothing and energy goods dropped significantly in the second quarter of 2020 while people spend more of their savings on food and beverages. 
 
 ```{r, message = FALSE, warning = FALSE}
 nondurable_goods_radar = nondurable_goods %>% 
@@ -271,13 +277,16 @@ nondurable_goods_radar[-c(1,2),] %>%
   knitr::kable()
 
 radar_2 = radarchart(nondurable_goods_radar,
-                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2)
+                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2, seg = 2)
 legend("topright",
        legend = c("2019_q1", "2020_q2","2021_q3"),
        bty = "n", col = areas, pch = 20,
        text.col = "grey25", pt.cex = 2)
 ```
 
+### Household Services
+
+The proportion of consumption on housing increased significantly, and the proportion spent on financial services increased a little while people spend less of their savings on the other categories of household services
 
 ```{r, message = FALSE, warning = FALSE}
 household_consumption_radar = household_consumption %>% 
@@ -300,7 +309,7 @@ household_consumption_radar[-c(1,2),] %>%
   knitr::kable()
 
 radar_3 = radarchart(household_consumption_radar,
-                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2)
+                     cglty = 2, cglcol = "gray", pcol = 2:4, plwd = 1, plty = 2, seg = 2)
 legend("topright",
        legend = c("2019_q1", "2020_q2","2021_q3"),
        bty = "n", col = areas, pch = 20,
