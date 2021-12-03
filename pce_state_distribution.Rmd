@@ -1,7 +1,5 @@
 ---
-title: "Personal Consumption Expenditures by State"
-author: "Jibei Zheng"
-date: "11/18/2021"
+title: ""
 output: 
   html_document:
     toc: true
@@ -58,7 +56,7 @@ pce_state_df_1 =
   )
 ```
 
-```{r, echo = FALSE, message=FALSE}
+```{r, echo = FALSE, message=FALSE, warning = FALSE}
 # load data set of covid by states
 postal_code = 
   read_csv("./data/us_postal_code.csv") %>% 
@@ -93,39 +91,7 @@ covid_state_df = left_join(state_2020_tidy, postal_code, by = "state") %>%
   drop_na()
 ```
 
-
-## Consumption and Covid by State
-
-```{r, message=FALSE, warning=FALSE}
-# create joint data frame
-jointly_df = 
-  left_join(pce_state_df_1, covid_state_df, by = c("state", "code")) %>% 
-  mutate(state = as.factor(state)) %>% 
-  select(state, code, pce_2020, total_case_rate_per_100k, everything())
-
-# make plot
-Con_case_by_state =
-jointly_df %>% 
-  arrange(total_case_rate_per_100k) %>% 
-  mutate(state = fct_reorder(state, total_case_rate_per_100k)) %>% 
-  plot_ly(x = ~state) %>% 
-  add_trace(y = ~pce_2020, type = "scatter", mode = "lines",name = "Consumption", yaixs = "y") %>% 
-  add_trace(y = ~total_case_rate_per_100k, type = "bar", name = "Covid Cases", yaxis = "y2", opacity = 0.6, marker = list(color = 'rgb(158,202,225)'))  %>% 
-  layout(title = "Consumption of 2020 with Covid Cases",
-         yaxis = list(title = "consumption expenditure", side = "left"),
-         yaxis2 = list(title = "covid cases rate", side = "right", overlaying = "y"),
-         showlegend = TRUE)
-
-Con_case_by_state
-```
-
-
-
-
-
-
-
-
+## Personal Consumption Expenditures by State
 
 State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia. PCE increased in only four states, Idaho, Utah, Montana, and Arkansas.
 
@@ -243,7 +209,7 @@ fig_3 =
 fig_3
 ```
 
-```{r}
+```{r, include=FALSE}
 fig_2 = 
   plot_geo(pce_state_df_1, locationmode = 'USA-states') %>% 
   add_trace(
@@ -305,43 +271,28 @@ Recreation services decreased 28.6 percent nationally and was the largest contri
 
 Health care decreased 6.1 percent nationally and was the largest contributor to decreases in 12 states including Alaska.
 
+## Consumption and Covid by State
 
-```{r, include = FALSE}
-## us = usmap::us_map()
-## 
-## us_val =
-##   us %>% 
-##   left_join(pce_state_20_df, by = c("full" = "state"))
-## 
-## us_centroids = 
-##   us_val %>% 
-##   group_by(full) %>% 
-##   summarise(centroid.x = mean(range(x)), 
-##             centroid.y = mean(range(y)),
-##             label = abbr,
-##             pce = pce)
-## 
-## state_plot =
-##   us_val %>% 
-##   ggplot() +
-##   geom_polygon(
-##     aes(x,y, group = group, fill = pce), 
-##     color = "black",
-##     size = .1
-##   ) +
-##   geom_text(
-##     data = us_centroids, 
-##     aes(centroid.x, centroid.y, label = paste(label, "\n", pce)),
-##     size = 2
-##   ) +
-##   scale_fill_gradient2(low = "white", mid = "skyblue2", high = "skyblue4", midpoint = 800000) +
-##   labs(
-##     title = "Per Capita Personal Consumption Expenditures by State, 2020",
-##     x = "",
-##     y = ""
-##   ) +
-##   theme_void()
-## 
-## ggplotly(state_plot)
+```{r, message=FALSE, warning=FALSE}
+# create joint data frame
+jointly_df = 
+  left_join(pce_state_df_1, covid_state_df, by = c("state", "code")) %>% 
+  mutate(state = as.factor(state)) %>% 
+  select(state, code, pce_2020, total_case_rate_per_100k, everything())
+
+# make plot
+Con_case_by_state =
+jointly_df %>% 
+  arrange(total_case_rate_per_100k) %>% 
+  mutate(state = fct_reorder(state, total_case_rate_per_100k)) %>% 
+  plot_ly(x = ~state) %>% 
+  add_trace(y = ~personal_pce_2020, type = "scatter", mode = "lines",name = "PCE", yaixs = "y") %>% 
+  add_trace(y = ~total_case_rate_per_100k, type = "bar", name = "Covid Cases(per 100k)", yaxis = "y2", opacity = 0.6, marker = list(color = 'rgb(158,202,225)'))  %>% 
+  layout(title = "Per Capita PCE with Covid Cases, 2020",
+         xaxis = list(title = "State"),
+         yaxis = list(title = "PCE", side = "left"),
+         yaxis2 = list(title = "Covid Cases Rate", side = "right", overlaying = "y"),
+         showlegend = TRUE)
+
+Con_case_by_state
 ```
-
