@@ -20,7 +20,7 @@ library(flexdashboard)
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Total Case Rate Per 100k in 2020
+### Covid 19 Case Rate Per 100k
 
 ```{r, message=FALSE, warning=FALSE}
 # input data table for Total Cases by State/Territory
@@ -143,6 +143,10 @@ map_plotly =
 
 map_plotly
 ```
+
+### Comment
+The dataset of Covid 19 in the United States begins from January 17, 2020. Considering the differences in population of each state, the map displays the total number of cases per 100k people in all states of the US in 2020 and 2021.
+
 
 Column {data-width=350}
 -----------------------------------------------------------------------
