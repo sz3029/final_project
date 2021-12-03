@@ -9,6 +9,7 @@ output:
     code_folding: hide
 ---
 
+
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(readxl)
@@ -23,7 +24,7 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r, message = FALSE}
+```{r, echo = FALSE, message = FALSE}
 raw_df = 
   read_excel("data/pce_by_state.xlsx", sheet = "Table 1", range = "A4:F63", col_names = FALSE)
 
@@ -56,6 +57,75 @@ pce_state_df_1 =
     text_personal_2019 = paste(state, "\n", "Personal PCE:", personal_pce_2019)
   )
 ```
+
+```{r, echo = FALSE, message=FALSE}
+# load data set of covid by states
+postal_code = 
+  read_csv("./data/us_postal_code.csv") %>% 
+  janitor::clean_names()
+
+read_data_function = function(file_df) {
+  
+  state_df = 
+    read_csv(file_df, skip = 2)
+  
+  return(state_df)
+}
+# create a data frame containing all participants
+state_2020 =
+  tibble(
+    files = list.files("./data/state_covid_separate")
+  ) %>% 
+  mutate(
+    path = map(.x = files, ~paste("./data/state_covid_separate", ., sep = "/"))
+  ) %>%                                                             # add path
+  mutate(
+    observations = map(path, read_data_function))
+
+state_2020_tidy =
+  state_2020 %>% 
+  unnest(cols = "observations") %>% 
+  janitor::clean_names() %>% 
+  filter(date == "Dec 31 2020") %>%
+  select(state, total_cases, total_case_rate_per_100k)
+
+covid_state_df = left_join(state_2020_tidy, postal_code, by = "state") %>%
+  drop_na()
+```
+
+
+## Consumption and Covid by State
+
+```{r, message=FALSE, warning=FALSE}
+# create joint data frame
+jointly_df = 
+  left_join(pce_state_df_1, covid_state_df, by = c("state", "code")) %>% 
+  mutate(state = as.factor(state)) %>% 
+  select(state, code, pce_2020, total_case_rate_per_100k, everything())
+
+# make plot
+Con_case_by_state =
+jointly_df %>% 
+  arrange(total_case_rate_per_100k) %>% 
+  mutate(state = fct_reorder(state, total_case_rate_per_100k)) %>% 
+  plot_ly(x = ~state) %>% 
+  add_trace(y = ~pce_2020, type = "scatter", mode = "lines",name = "Consumption", yaixs = "y") %>% 
+  add_trace(y = ~total_case_rate_per_100k, type = "bar", name = "Covid Cases", yaxis = "y2", opacity = 0.6, marker = list(color = 'rgb(158,202,225)'))  %>% 
+  layout(title = "Consumption of 2020 with Covid Cases",
+         yaxis = list(title = "consumption expenditure", side = "left"),
+         yaxis2 = list(title = "covid cases rate", side = "right", overlaying = "y"),
+         showlegend = TRUE)
+
+Con_case_by_state
+```
+
+
+
+
+
+
+
+
 
 State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia. PCE increased in only four states, Idaho, Utah, Montana, and Arkansas.
 

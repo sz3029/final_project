@@ -68,6 +68,7 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 <p>• `state`
 <p>• `date`: the date when the data collected.
 <p>• `total_cases`: the amount to the cases diagnosed within and before the date.
+<p>• `case_rate`: the amount of cases since the pandemic started for every 100,000 people.
 
 **COVID Daily Cases**
 <p>• `state`
