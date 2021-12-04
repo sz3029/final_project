@@ -1,0 +1,216 @@
+---
+title: "Interative Maps"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(shiny)
+library(tidyverse)
+library(plotly)
+```
+
+
+```{r data_import, warning=FALSE}
+total_df =
+  read_csv("data/pce_by_state/total.csv", skip = 4) %>% 
+  drop_na() %>% 
+  janitor::clean_names() %>% 
+  rename(state = geo_name, type = description) %>% 
+  mutate(t_p = factor("Total")) %>% 
+  select(-geo_fips, -line_code) %>% 
+  pivot_longer(
+    x2016:x2020,
+    names_to = "year",
+    names_prefix = "x",
+    values_to = "Crude"
+  ) %>% 
+  mutate(year = as.numeric(year))
+
+per_df =
+  read_csv("data/pce_by_state/per_capita.csv", skip = 4) %>% 
+  drop_na() %>% 
+  janitor::clean_names() %>% 
+  rename(state = geo_name, type = description) %>% 
+  mutate(t_p = factor("Per Capita")) %>% 
+  select(-geo_fips, -line_code) %>% 
+  pivot_longer(
+    x2016:x2020,
+    names_to = "year",
+    names_prefix = "x",
+    values_to = "Crude"
+  ) %>% 
+  mutate(year = as.numeric(year))
+
+postal_code = 
+  read_csv("./data/us_postal_code.csv") %>% 
+  janitor::clean_names() %>% 
+  select(-abbrev)
+  
+
+state_df =
+  full_join(total_df, per_df) %>% 
+  mutate(
+    type = replace(type, type == "Personal consumption expenditures", "Total"),
+    type = replace(type, type == "Per capita personal consumption expenditures", "Total")
+  )
+
+state_df =
+  state_df %>% 
+  group_by(state, type, t_p) %>% 
+  mutate(Change = round(100 * (Crude - lag(Crude)) / lag(Crude), digit = 1)) %>% 
+  pivot_longer(
+    Crude:Change,
+    names_to = "if_change",
+    values_to = "pce"
+  ) %>% 
+  mutate(if_change = replace(if_change, if_change == "Change", "Percent Change")) %>% 
+  ungroup()
+
+state_df = 
+  left_join(state_df, postal_code, by = "state") %>% 
+  mutate(text = paste(state, "\n", round(pce, digit = 1)))
+
+g = list(
+  scope = 'usa',
+  projection = list(type = 'albers usa')
+)
+```
+
+
+Personal Consumption Expenditures by State
+===================================== 
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+```{r for_sidebar}
+year_choices = as.list(c(2017:2020))
+
+type_choices = 
+  state_df %>% 
+  distinct(type) %>% 
+  pull()
+
+method_choices = as.list(c("Total", "Per Capita"))
+
+percent_change_choices = as.list(c("Crude", "Percent Change"))
+
+radioButtons(
+  "method_choice",
+  label = "",
+  choices = method_choices,
+  selected = "Total"
+)
+
+selectInput(
+  "year_choice",
+  label = h3("Select Year"),
+  choices = year_choices,
+  selected = "2020"
+)
+
+selectInput(
+  "type_choice",
+  label = h3("Select Type of Product"),
+  choices = type_choices,
+  selected = "Total"
+)
+
+radioButtons(
+  "percent_change_choice",
+  label = "",
+  choices = percent_change_choices,
+  selected = "Percent Change"
+)
+```
+
+Column {.tabset}
+-----------------------------------------------------------------------
+
+### US Map
+
+```{r us_map}
+
+renderPlotly({
+  
+  state_df %>% 
+    filter(
+      t_p == input[["method_choice"]],
+      year == input[["year_choice"]],
+      type == input[["type_choice"]],
+      if_change == input[["percent_change_choice"]]
+    ) %>% 
+  plot_geo(locationmode = 'USA-states') %>%
+    add_trace(
+    type = "scattergeo",
+    locations = ~code,
+    text = ~code,
+    mode = "text",
+    textfont = list(color = rgb(0,0,0), size = 10),
+    hoverinfo = "none"
+  ) %>% 
+    add_trace(
+    z = ~pce, 
+    locations = ~code,
+    text = ~text,
+    color = ~pce, 
+    colorscale = list(c(0, 1), c("#f5faff", "#004c8c")),
+    hoverinfo = "text",
+    colorbar = list(title = "PCE", thickness = 20, x = 1, y = 0.8)
+  ) %>% 
+  layout(
+    title = 'Personal Consumption Expenditures by State',
+    geo = g
+  )
+  
+})
+```
+
+### Description
+**PCE by state** is the state counterpart of the nation's personal consumption expenditures (PCE). PCE by state measures the goods and services purchased by or on behalf of households and the net expenditures of nonprofit institutions serving households by state of residence for the 50 states and the District of Columbia. PCE by state reflects spending on activities that are attributable to the residents of a state, even when those activities take place outside of the state.
+
+**Per capita PCE by state** measures average PCE spending per person in a state, and it is calculated as PCE in a state divided by the population of the state.
+
+**Relationship of PCE by state to national PCE.** The U.S. PCE by state differs slightly from the PCE in the national accounts because PCE by state excludes the net expenditures abroad by U.S. residents, which consist of government and private employees’ expenditures abroad less personal remittances in kind to nonresidents. PCE by state, however, does include the travel expenditures abroad by U.S. residents.
+
+The PCE by state estimates were impacted by the response to the spread of COVID-19, as governments issued and lifted "stay-at-home" orders. This led to rapid changes in demand and consumers canceled, restricted, or redirected their spending. 
+
+State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia. 
+
+PCE increased in only four states, Idaho, Utah, Montana, and Arkansas.
+
+Across all states and the District of Columbia, per capita PCE was $42,635. Per capita PCE by state ranged from a high of $52,001 in Massachusetts to a low of $32,358 in Mississippi. Per capita PCE in the District of Columbia was $65,169. 
+
+Expenditures on food services and accommodations, recreation services, and health care were the leading contributors to the decrease nationally:
+
+• Food services and accommodations decreased 20.5 percent nationally and was the largest contributor to decreases in the District of Columbia and 27 states including Hawaii and New York; it was the second largest contributor to decreases in 11 states.
+
+• Recreation services decreased 28.6 percent nationally and was the largest contributor to decreases in 4 states including California.
+
+• Health care decreased 6.1 percent nationally and was the largest contributor to decreases in 12 states including Alaska.
+
+Covid Cases by State
+===================================== 
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+```{r}
+
+```
+
+Column {.tabset}
+-----------------------------------------------------------------------
+
+### US Map
+
+```{r}
+
+```
+
+### Description

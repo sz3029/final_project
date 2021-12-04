@@ -51,7 +51,7 @@ https://www.bea.gov/data/consumer-spending/main
 
 <p>• Personal Consumption Expenditures by Major Type of Product and by Major Function, by State:
 
-https://apps.bea.gov/iTable/iTable.cfm?reqid=70&step=1&acrdn=7#reqid=70&step=1&acrdn=7
+https://apps.bea.gov/itable/iTable.cfm?ReqID=70&step=1
 
 <p>• Trends in Number of COVID-19 Cases and Deaths in the US Reported to CDC: 
 
