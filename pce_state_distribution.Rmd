@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 ```{r, echo = FALSE, message = FALSE}
 raw_df = 
-  read_excel("data/pce_by_state.xlsx", sheet = "Table 1", range = "A4:F63", col_names = FALSE)
+  read_excel("data/pce_by_state/pce_by_state.xlsx", sheet = "Table 1", range = "A4:F63", col_names = FALSE)
 
 colnames(raw_df) = c("state", "pce_2018", "pce_2019", "pce_2020", "change_2019", "change_2020")
 
@@ -42,7 +42,7 @@ pce_state_df_1 =
   )
 
 personal_df = 
-  read_excel("data/pce_by_state.xlsx", sheet = "Table 4", range = "A4:G63", col_names = FALSE)
+  read_excel("data/pce_by_state/pce_by_state.xlsx", sheet = "Table 4", range = "A4:G63", col_names = FALSE)
 
 colnames(personal_df) = c("state", "personal_pce_2020", "housing", "health", "food", "gasoline", "other")
 
@@ -271,7 +271,9 @@ Recreation services decreased 28.6 percent nationally and was the largest contri
 
 Health care decreased 6.1 percent nationally and was the largest contributor to decreases in 12 states including Alaska.
 
-## Consumption and Covid by State
+<br />
+
+## PCE and Covid by State
 
 ```{r, message=FALSE, warning=FALSE}
 # create joint data frame
@@ -296,3 +298,5 @@ jointly_df %>%
 
 Con_case_by_state
 ```
+
+Generally, there is an apparent negative correlation between per capita PCE and Covid cases. 

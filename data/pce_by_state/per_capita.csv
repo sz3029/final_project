@@ -1,0 +1,824 @@
+"SAPCE2 Per capita personal consumption expenditures (PCE) by major type of product 1/"
+"(dollars)" 
+"Bureau of Economic Analysis" 
+"State or DC"
+"GeoFips","GeoName","LineCode","Description","2016","2017","2018","2019","2020"
+"01000","Alabama","1","Per capita personal consumption expenditures",32284,33491,34928,36217,35859
+"01000","Alabama","4","      Motor vehicles and parts",1562,1598,1658,1645,1791
+"01000","Alabama","5","      Furnishings and durable household equipment",777,810,863,914,1046
+"01000","Alabama","6","      Recreational goods and vehicles",719,751,792,861,1015
+"01000","Alabama","7","      Other durable goods",501,501,512,521,497
+"01000","Alabama","9","      Food and beverages purchased for off-premises consumption",2618,2666,2746,2822,3126
+"01000","Alabama","10","      Clothing and footwear",997,995,1018,1030,988
+"01000","Alabama","11","      Gasoline and other energy goods",909,1007,1115,1073,787
+"01000","Alabama","12","      Other nondurable goods",3500,3592,3666,3829,4093
+"01000","Alabama","15","      Housing and utilities",5724,5852,6112,6336,6536
+"01000","Alabama","16","      Health care",5631,5796,5990,6303,5904
+"01000","Alabama","17","      Transportation services",743,769,791,844,715
+"01000","Alabama","18","      Recreation services",958,987,1003,1029,788
+"01000","Alabama","19","      Food services and accommodations",2148,2260,2354,2455,2135
+"01000","Alabama","20","      Financial services and insurance",2159,2342,2562,2667,2732
+"01000","Alabama","21","      Other services",2761,2956,3117,3302,2886
+"02000","Alaska","1","Per capita personal consumption expenditures",46080,47556,49747,51499,48739
+"02000","Alaska","4","      Motor vehicles and parts",1694,1730,1707,1693,1857
+"02000","Alaska","5","      Furnishings and durable household equipment",1055,1076,1147,1205,1289
+"02000","Alaska","6","      Recreational goods and vehicles",1490,1657,1758,1858,2170
+"02000","Alaska","7","      Other durable goods",582,588,603,615,563
+"02000","Alaska","9","      Food and beverages purchased for off-premises consumption",3665,3655,3723,3787,4042
+"02000","Alaska","10","      Clothing and footwear",910,897,922,930,821
+"02000","Alaska","11","      Gasoline and other energy goods",766,811,887,848,603
+"02000","Alaska","12","      Other nondurable goods",2779,2807,2827,2888,2987
+"02000","Alaska","15","      Housing and utilities",7662,7885,8143,8355,8530
+"02000","Alaska","16","      Health care",9652,10062,10872,11520,10483
+"02000","Alaska","17","      Transportation services",1661,1722,1805,1945,1487
+"02000","Alaska","18","      Recreation services",2389,2443,2510,2588,1690
+"02000","Alaska","19","      Food services and accommodations",3434,3462,3528,3671,2675
+"02000","Alaska","20","      Financial services and insurance",2830,3082,3329,3424,3428
+"02000","Alaska","21","      Other services",3068,3074,3234,3358,3157
+"04000","Arizona","1","Per capita personal consumption expenditures",35194,36676,38167,39450,38684
+"04000","Arizona","4","      Motor vehicles and parts",1454,1512,1594,1604,1830
+"04000","Arizona","5","      Furnishings and durable household equipment",934,993,1059,1088,1199
+"04000","Arizona","6","      Recreational goods and vehicles",910,982,1010,1109,1291
+"04000","Arizona","7","      Other durable goods",679,692,707,713,678
+"04000","Arizona","9","      Food and beverages purchased for off-premises consumption",2743,2840,2862,2851,3164
+"04000","Arizona","10","      Clothing and footwear",1038,1045,1064,1063,997
+"04000","Arizona","11","      Gasoline and other energy goods",802,901,1005,976,696
+"04000","Arizona","12","      Other nondurable goods",2897,3034,3119,3295,3631
+"04000","Arizona","15","      Housing and utilities",6793,6950,7164,7440,7648
+"04000","Arizona","16","      Health care",5620,5839,6073,6402,6047
+"04000","Arizona","17","      Transportation services",1416,1505,1560,1678,1172
+"04000","Arizona","18","      Recreation services",1529,1659,1751,1782,1320
+"04000","Arizona","19","      Food services and accommodations",2689,2877,3014,3118,2646
+"04000","Arizona","20","      Financial services and insurance",2202,2306,2453,2468,2541
+"04000","Arizona","21","      Other services",2883,2923,3073,3236,3010
+"05000","Arkansas","1","Per capita personal consumption expenditures",31550,32603,33772,34568,34479
+"05000","Arkansas","4","      Motor vehicles and parts",1517,1515,1519,1480,1609
+"05000","Arkansas","5","      Furnishings and durable household equipment",810,847,905,939,1073
+"05000","Arkansas","6","      Recreational goods and vehicles",791,796,822,849,961
+"05000","Arkansas","7","      Other durable goods",421,421,426,431,421
+"05000","Arkansas","9","      Food and beverages purchased for off-premises consumption",2489,2529,2551,2559,2872
+"05000","Arkansas","10","      Clothing and footwear",1017,1024,1034,1027,1023
+"05000","Arkansas","11","      Gasoline and other energy goods",1086,1191,1330,1266,961
+"05000","Arkansas","12","      Other nondurable goods",2860,2938,2998,3135,3348
+"05000","Arkansas","15","      Housing and utilities",5382,5457,5597,5660,5746
+"05000","Arkansas","16","      Health care",5722,6016,6270,6555,6194
+"05000","Arkansas","17","      Transportation services",667,716,739,786,692
+"05000","Arkansas","18","      Recreation services",853,875,899,933,740
+"05000","Arkansas","19","      Food services and accommodations",1874,1939,1996,2101,1923
+"05000","Arkansas","20","      Financial services and insurance",2813,3047,3312,3453,3568
+"05000","Arkansas","21","      Other services",2399,2429,2486,2538,2298
+"06000","California","1","Per capita personal consumption expenditures",42178,44209,46545,48722,46636
+"06000","California","4","      Motor vehicles and parts",1265,1310,1316,1266,1289
+"06000","California","5","      Furnishings and durable household equipment",930,971,1041,1083,1158
+"06000","California","6","      Recreational goods and vehicles",1175,1202,1307,1432,1582
+"06000","California","7","      Other durable goods",688,701,730,756,719
+"06000","California","9","      Food and beverages purchased for off-premises consumption",2965,3046,3123,3240,3630
+"06000","California","10","      Clothing and footwear",1354,1418,1473,1533,1366
+"06000","California","11","      Gasoline and other energy goods",720,838,950,938,688
+"06000","California","12","      Other nondurable goods",2844,2940,3071,3242,3436
+"06000","California","15","      Housing and utilities",7958,8330,8707,9111,9542
+"06000","California","16","      Health care",6847,7230,7607,8060,7638
+"06000","California","17","      Transportation services",1749,1822,1965,2066,1457
+"06000","California","18","      Recreation services",2213,2332,2407,2562,1536
+"06000","California","19","      Food services and accommodations",3158,3311,3520,3784,2999
+"06000","California","20","      Financial services and insurance",3338,3532,3772,3797,3890
+"06000","California","21","      Other services",3605,3778,4029,4309,3898
+"08000","Colorado","1","Per capita personal consumption expenditures",42114,43899,45613,47478,46642
+"08000","Colorado","4","      Motor vehicles and parts",1556,1642,1712,1692,1774
+"08000","Colorado","5","      Furnishings and durable household equipment",1141,1199,1282,1332,1449
+"08000","Colorado","6","      Recreational goods and vehicles",1426,1562,1665,1825,2048
+"08000","Colorado","7","      Other durable goods",646,660,684,707,690
+"08000","Colorado","9","      Food and beverages purchased for off-premises consumption",3306,3431,3479,3584,3980
+"08000","Colorado","10","      Clothing and footwear",1166,1166,1208,1252,1167
+"08000","Colorado","11","      Gasoline and other energy goods",804,926,1056,1011,751
+"08000","Colorado","12","      Other nondurable goods",3116,3322,3409,3546,3857
+"08000","Colorado","15","      Housing and utilities",8342,8664,8876,9486,9914
+"08000","Colorado","16","      Health care",6441,6559,6689,6942,6543
+"08000","Colorado","17","      Transportation services",1565,1664,1766,1893,1483
+"08000","Colorado","18","      Recreation services",2198,2266,2343,2420,1751
+"08000","Colorado","19","      Food services and accommodations",3287,3466,3662,3836,3049
+"08000","Colorado","20","      Financial services and insurance",2968,3135,3298,3271,3350
+"08000","Colorado","21","      Other services",3231,3284,3456,3678,3576
+"09000","Connecticut","1","Per capita personal consumption expenditures",47462,48968,50795,51967,50437
+"09000","Connecticut","4","      Motor vehicles and parts",1512,1530,1576,1540,1542
+"09000","Connecticut","5","      Furnishings and durable household equipment",1149,1181,1256,1303,1364
+"09000","Connecticut","6","      Recreational goods and vehicles",1252,1284,1370,1437,1584
+"09000","Connecticut","7","      Other durable goods",797,791,792,795,749
+"09000","Connecticut","9","      Food and beverages purchased for off-premises consumption",3299,3391,3379,3413,3770
+"09000","Connecticut","10","      Clothing and footwear",1276,1258,1267,1278,1138
+"09000","Connecticut","11","      Gasoline and other energy goods",729,830,920,870,623
+"09000","Connecticut","12","      Other nondurable goods",4074,4261,4313,4409,4561
+"09000","Connecticut","15","      Housing and utilities",8123,8209,8636,8885,9129
+"09000","Connecticut","16","      Health care",7556,7691,7878,8239,7780
+"09000","Connecticut","17","      Transportation services",1704,1789,1886,1944,1259
+"09000","Connecticut","18","      Recreation services",1932,1974,1997,2003,1535
+"09000","Connecticut","19","      Food services and accommodations",2778,2869,2965,3065,2375
+"09000","Connecticut","20","      Financial services and insurance",4908,5131,5505,5601,5680
+"09000","Connecticut","21","      Other services",4398,4558,4772,4985,4732
+"10000","Delaware","1","Per capita personal consumption expenditures",42694,43780,45761,46960,45434
+"10000","Delaware","4","      Motor vehicles and parts",1919,1945,2003,1975,1982
+"10000","Delaware","5","      Furnishings and durable household equipment",1066,1087,1161,1181,1249
+"10000","Delaware","6","      Recreational goods and vehicles",1197,1164,1203,1316,1462
+"10000","Delaware","7","      Other durable goods",807,801,814,823,766
+"10000","Delaware","9","      Food and beverages purchased for off-premises consumption",3037,3080,3168,3179,3549
+"10000","Delaware","10","      Clothing and footwear",1322,1296,1299,1282,1122
+"10000","Delaware","11","      Gasoline and other energy goods",914,1037,1180,1137,873
+"10000","Delaware","12","      Other nondurable goods",3412,3409,3484,3561,3671
+"10000","Delaware","15","      Housing and utilities",7545,7734,8190,8525,8866
+"10000","Delaware","16","      Health care",8183,8339,8576,8879,8156
+"10000","Delaware","17","      Transportation services",1038,1071,1120,1192,860
+"10000","Delaware","18","      Recreation services",1358,1418,1486,1492,1190
+"10000","Delaware","19","      Food services and accommodations",2952,2986,3120,3267,2554
+"10000","Delaware","20","      Financial services and insurance",3011,3250,3511,3514,3554
+"10000","Delaware","21","      Other services",3653,3849,4086,4299,4063
+"11000","District of Columbia","1","Per capita personal consumption expenditures",62742,64599,67644,69633,65169
+"11000","District of Columbia","4","      Motor vehicles and parts",1600,1619,1676,1673,1722
+"11000","District of Columbia","5","      Furnishings and durable household equipment",1253,1267,1344,1395,1437
+"11000","District of Columbia","6","      Recreational goods and vehicles",1347,1476,1654,1827,2238
+"11000","District of Columbia","7","      Other durable goods",909,957,993,1030,968
+"11000","District of Columbia","9","      Food and beverages purchased for off-premises consumption",5061,5207,5263,5380,5696
+"11000","District of Columbia","10","      Clothing and footwear",2104,2164,2188,2342,1877
+"11000","District of Columbia","11","      Gasoline and other energy goods",839,919,1091,1160,803
+"11000","District of Columbia","12","      Other nondurable goods",3984,4164,4324,4475,4437
+"11000","District of Columbia","15","      Housing and utilities",9696,10088,10526,10891,11355
+"11000","District of Columbia","16","      Health care",10536,10736,10885,11172,10295
+"11000","District of Columbia","17","      Transportation services",2617,2982,3089,3377,2343
+"11000","District of Columbia","18","      Recreation services",1706,1723,1777,1844,1315
+"11000","District of Columbia","19","      Food services and accommodations",5024,5129,5412,5671,3284
+"11000","District of Columbia","20","      Financial services and insurance",4379,4542,4725,4671,4731
+"11000","District of Columbia","21","      Other services",10246,10404,10890,11248,10089
+"12000","Florida","1","Per capita personal consumption expenditures",40552,41680,43616,44991,43615
+"12000","Florida","4","      Motor vehicles and parts",1562,1583,1639,1603,1690
+"12000","Florida","5","      Furnishings and durable household equipment",1167,1213,1310,1361,1457
+"12000","Florida","6","      Recreational goods and vehicles",1363,1430,1504,1587,1769
+"12000","Florida","7","      Other durable goods",746,746,766,759,728
+"12000","Florida","9","      Food and beverages purchased for off-premises consumption",3085,3157,3257,3371,3693
+"12000","Florida","10","      Clothing and footwear",1023,1015,1034,1033,930
+"12000","Florida","11","      Gasoline and other energy goods",687,775,850,813,580
+"12000","Florida","12","      Other nondurable goods",3171,3263,3374,3503,3742
+"12000","Florida","15","      Housing and utilities",8070,8267,8588,8934,9255
+"12000","Florida","16","      Health care",6479,6550,6802,7140,6675
+"12000","Florida","17","      Transportation services",1279,1321,1390,1471,1038
+"12000","Florida","18","      Recreation services",1533,1603,1685,1741,1308
+"12000","Florida","19","      Food services and accommodations",3200,3245,3392,3501,2761
+"12000","Florida","20","      Financial services and insurance",3895,4156,4447,4486,4571
+"12000","Florida","21","      Other services",3104,3173,3367,3540,3097
+"13000","Georgia","1","Per capita personal consumption expenditures",35108,36515,38091,39193,38165
+"13000","Georgia","4","      Motor vehicles and parts",1525,1562,1629,1622,1740
+"13000","Georgia","5","      Furnishings and durable household equipment",806,850,920,991,1128
+"13000","Georgia","6","      Recreational goods and vehicles",896,972,1020,1075,1230
+"13000","Georgia","7","      Other durable goods",585,596,617,621,589
+"13000","Georgia","9","      Food and beverages purchased for off-premises consumption",2873,3016,3072,3138,3483
+"13000","Georgia","10","      Clothing and footwear",1127,1128,1151,1151,1059
+"13000","Georgia","11","      Gasoline and other energy goods",885,1002,1112,1057,782
+"13000","Georgia","12","      Other nondurable goods",3133,3285,3428,3560,3826
+"13000","Georgia","15","      Housing and utilities",6213,6362,6615,6937,7190
+"13000","Georgia","16","      Health care",5751,5923,6205,6399,5910
+"13000","Georgia","17","      Transportation services",1395,1438,1505,1605,1170
+"13000","Georgia","18","      Recreation services",1592,1668,1678,1682,1241
+"13000","Georgia","19","      Food services and accommodations",2503,2622,2721,2819,2354
+"13000","Georgia","20","      Financial services and insurance",2571,2726,2895,2875,2877
+"13000","Georgia","21","      Other services",2881,2996,3143,3308,2959
+"15000","Hawaii","1","Per capita personal consumption expenditures",41140,42881,45281,47313,45080
+"15000","Hawaii","4","      Motor vehicles and parts",1311,1367,1402,1370,1417
+"15000","Hawaii","5","      Furnishings and durable household equipment",920,972,1046,1070,1156
+"15000","Hawaii","6","      Recreational goods and vehicles",582,585,630,685,786
+"15000","Hawaii","7","      Other durable goods",550,568,609,642,600
+"15000","Hawaii","9","      Food and beverages purchased for off-premises consumption",3569,3717,3898,4084,4556
+"15000","Hawaii","10","      Clothing and footwear",1328,1376,1464,1476,1096
+"15000","Hawaii","11","      Gasoline and other energy goods",541,613,700,654,440
+"15000","Hawaii","12","      Other nondurable goods",3296,3389,3543,3754,3957
+"15000","Hawaii","15","      Housing and utilities",8757,9066,9365,9840,10405
+"15000","Hawaii","16","      Health care",6191,6476,6879,7337,7002
+"15000","Hawaii","17","      Transportation services",1285,1394,1509,1635,940
+"15000","Hawaii","18","      Recreation services",1791,1804,1891,1886,1149
+"15000","Hawaii","19","      Food services and accommodations",3064,3256,3416,3613,2394
+"15000","Hawaii","20","      Financial services and insurance",2870,3092,3331,3389,3417
+"15000","Hawaii","21","      Other services",3197,3285,3513,3772,3304
+"16000","Idaho","1","Per capita personal consumption expenditures",31891,33330,35031,35765,35459
+"16000","Idaho","4","      Motor vehicles and parts",1453,1582,1638,1585,1741
+"16000","Idaho","5","      Furnishings and durable household equipment",828,859,926,982,1106
+"16000","Idaho","6","      Recreational goods and vehicles",1369,1434,1490,1515,1777
+"16000","Idaho","7","      Other durable goods",531,536,544,542,515
+"16000","Idaho","9","      Food and beverages purchased for off-premises consumption",2891,2954,2974,2997,3243
+"16000","Idaho","10","      Clothing and footwear",849,845,873,869,834
+"16000","Idaho","11","      Gasoline and other energy goods",1076,1231,1367,1252,941
+"16000","Idaho","12","      Other nondurable goods",2331,2362,2373,2425,2615
+"16000","Idaho","15","      Housing and utilities",5877,6035,6421,6637,6910
+"16000","Idaho","16","      Health care",5914,6145,6467,6707,6169
+"16000","Idaho","17","      Transportation services",876,939,1014,1093,932
+"16000","Idaho","18","      Recreation services",1056,1108,1154,1184,809
+"16000","Idaho","19","      Food services and accommodations",2076,2145,2271,2374,2141
+"16000","Idaho","20","      Financial services and insurance",2468,2698,2929,2937,2941
+"16000","Idaho","21","      Other services",1952,2035,2152,2260,2162
+"17000","Illinois","1","Per capita personal consumption expenditures",40446,41927,43975,45338,43981
+"17000","Illinois","4","      Motor vehicles and parts",1405,1421,1457,1438,1479
+"17000","Illinois","5","      Furnishings and durable household equipment",936,974,1019,1066,1162
+"17000","Illinois","6","      Recreational goods and vehicles",1115,1201,1247,1380,1595
+"17000","Illinois","7","      Other durable goods",664,669,686,707,690
+"17000","Illinois","9","      Food and beverages purchased for off-premises consumption",2654,2755,2840,2955,3277
+"17000","Illinois","10","      Clothing and footwear",1284,1270,1312,1321,1218
+"17000","Illinois","11","      Gasoline and other energy goods",719,821,977,897,659
+"17000","Illinois","12","      Other nondurable goods",3269,3432,3559,3782,4090
+"17000","Illinois","15","      Housing and utilities",6926,7124,7421,7570,7755
+"17000","Illinois","16","      Health care",6611,6769,7065,7336,6873
+"17000","Illinois","17","      Transportation services",1681,1755,1846,1940,1369
+"17000","Illinois","18","      Recreation services",1627,1666,1726,1771,1301
+"17000","Illinois","19","      Food services and accommodations",2692,2804,2936,3073,2348
+"17000","Illinois","20","      Financial services and insurance",3246,3481,3701,3781,3826
+"17000","Illinois","21","      Other services",3716,3832,4038,4242,3845
+"18000","Indiana","1","Per capita personal consumption expenditures",34701,36369,37888,38645,38097
+"18000","Indiana","4","      Motor vehicles and parts",1457,1530,1617,1605,1729
+"18000","Indiana","5","      Furnishings and durable household equipment",845,892,943,965,1069
+"18000","Indiana","6","      Recreational goods and vehicles",1008,1057,1054,1095,1215
+"18000","Indiana","7","      Other durable goods",553,563,570,572,559
+"18000","Indiana","9","      Food and beverages purchased for off-premises consumption",2836,2936,2958,2995,3283
+"18000","Indiana","10","      Clothing and footwear",975,993,1008,1012,968
+"18000","Indiana","11","      Gasoline and other energy goods",1055,1187,1343,1287,904
+"18000","Indiana","12","      Other nondurable goods",3208,3367,3411,3509,3758
+"18000","Indiana","15","      Housing and utilities",5924,6159,6499,6508,6688
+"18000","Indiana","16","      Health care",6983,7334,7590,7953,7508
+"18000","Indiana","17","      Transportation services",947,984,1029,1063,904
+"18000","Indiana","18","      Recreation services",1004,1035,1054,1076,790
+"18000","Indiana","19","      Food services and accommodations",2271,2326,2412,2482,2154
+"18000","Indiana","20","      Financial services and insurance",2127,2365,2581,2648,2651
+"18000","Indiana","21","      Other services",2300,2388,2492,2580,2386
+"19000","Iowa","1","Per capita personal consumption expenditures",35566,36652,37903,38562,37586
+"19000","Iowa","4","      Motor vehicles and parts",1868,1938,2017,2009,2236
+"19000","Iowa","5","      Furnishings and durable household equipment",850,874,910,927,1002
+"19000","Iowa","6","      Recreational goods and vehicles",1019,1049,1073,1121,1255
+"19000","Iowa","7","      Other durable goods",499,499,508,502,478
+"19000","Iowa","9","      Food and beverages purchased for off-premises consumption",2834,2863,2875,2841,3130
+"19000","Iowa","10","      Clothing and footwear",926,928,952,945,879
+"19000","Iowa","11","      Gasoline and other energy goods",1303,1434,1592,1515,1107
+"19000","Iowa","12","      Other nondurable goods",3133,3211,3241,3310,3514
+"19000","Iowa","15","      Housing and utilities",6088,6244,6498,6734,6901
+"19000","Iowa","16","      Health care",6295,6393,6517,6691,6116
+"19000","Iowa","17","      Transportation services",995,1053,1098,1150,947
+"19000","Iowa","18","      Recreation services",1124,1126,1173,1195,858
+"19000","Iowa","19","      Food services and accommodations",2154,2199,2258,2299,1924
+"19000","Iowa","20","      Financial services and insurance",2353,2578,2766,2801,2796
+"19000","Iowa","21","      Other services",2670,2766,2866,2974,2712
+"20000","Kansas","1","Per capita personal consumption expenditures",35631,36804,38266,39404,38845
+"20000","Kansas","4","      Motor vehicles and parts",1593,1640,1710,1710,1795
+"20000","Kansas","5","      Furnishings and durable household equipment",948,964,998,1007,1103
+"20000","Kansas","6","      Recreational goods and vehicles",742,737,736,761,854
+"20000","Kansas","7","      Other durable goods",535,531,545,548,527
+"20000","Kansas","9","      Food and beverages purchased for off-premises consumption",3060,3151,3220,3305,3672
+"20000","Kansas","10","      Clothing and footwear",958,949,961,947,890
+"20000","Kansas","11","      Gasoline and other energy goods",926,992,1094,1043,737
+"20000","Kansas","12","      Other nondurable goods",2879,2924,3010,3162,3402
+"20000","Kansas","15","      Housing and utilities",6002,6246,6477,6663,6822
+"20000","Kansas","16","      Health care",6343,6503,6711,7061,6707
+"20000","Kansas","17","      Transportation services",1004,1039,1095,1165,932
+"20000","Kansas","18","      Recreation services",1240,1218,1277,1319,1024
+"20000","Kansas","19","      Food services and accommodations",2136,2197,2257,2331,2050
+"20000","Kansas","20","      Financial services and insurance",2854,3130,3394,3460,3507
+"20000","Kansas","21","      Other services",3403,3523,3655,3812,3471
+"21000","Kentucky","1","Per capita personal consumption expenditures",33457,34601,36017,36935,36574
+"21000","Kentucky","4","      Motor vehicles and parts",1437,1465,1525,1510,1599
+"21000","Kentucky","5","      Furnishings and durable household equipment",772,804,859,896,992
+"21000","Kentucky","6","      Recreational goods and vehicles",799,793,811,841,974
+"21000","Kentucky","7","      Other durable goods",514,507,520,524,514
+"21000","Kentucky","9","      Food and beverages purchased for off-premises consumption",3096,3215,3248,3263,3581
+"21000","Kentucky","10","      Clothing and footwear",876,885,893,893,858
+"21000","Kentucky","11","      Gasoline and other energy goods",987,1099,1236,1168,849
+"21000","Kentucky","12","      Other nondurable goods",3435,3563,3663,3785,4073
+"21000","Kentucky","15","      Housing and utilities",5522,5650,5907,6045,6237
+"21000","Kentucky","16","      Health care",6420,6558,6720,6978,6561
+"21000","Kentucky","17","      Transportation services",714,748,801,856,712
+"21000","Kentucky","18","      Recreation services",1032,1100,1134,1173,936
+"21000","Kentucky","19","      Food services and accommodations",2155,2213,2280,2374,2038
+"21000","Kentucky","20","      Financial services and insurance",2297,2510,2761,2799,2853
+"21000","Kentucky","21","      Other services",2306,2353,2468,2638,2418
+"22000","Louisiana","1","Per capita personal consumption expenditures",34301,35381,36753,37894,37354
+"22000","Louisiana","4","      Motor vehicles and parts",1767,1769,1818,1800,1924
+"22000","Louisiana","5","      Furnishings and durable household equipment",925,983,1027,1040,1119
+"22000","Louisiana","6","      Recreational goods and vehicles",705,711,736,767,854
+"22000","Louisiana","7","      Other durable goods",473,467,475,477,456
+"22000","Louisiana","9","      Food and beverages purchased for off-premises consumption",2811,2857,2901,2943,3241
+"22000","Louisiana","10","      Clothing and footwear",1061,1052,1064,1057,993
+"22000","Louisiana","11","      Gasoline and other energy goods",992,1090,1205,1150,811
+"22000","Louisiana","12","      Other nondurable goods",3359,3452,3530,3663,3815
+"22000","Louisiana","15","      Housing and utilities",5817,5928,6186,6412,6639
+"22000","Louisiana","16","      Health care",6282,6440,6588,7001,6742
+"22000","Louisiana","17","      Transportation services",814,834,866,911,737
+"22000","Louisiana","18","      Recreation services",1075,1124,1158,1183,894
+"22000","Louisiana","19","      Food services and accommodations",2639,2706,2820,2888,2344
+"22000","Louisiana","20","      Financial services and insurance",2540,2778,3086,3144,3261
+"22000","Louisiana","21","      Other services",2298,2418,2495,2667,2578
+"23000","Maine","1","Per capita personal consumption expenditures",41166,43115,44836,46167,45272
+"23000","Maine","4","      Motor vehicles and parts",1671,1716,1796,1805,1972
+"23000","Maine","5","      Furnishings and durable household equipment",984,1032,1101,1151,1271
+"23000","Maine","6","      Recreational goods and vehicles",938,992,1021,1064,1228
+"23000","Maine","7","      Other durable goods",529,534,538,550,529
+"23000","Maine","9","      Food and beverages purchased for off-premises consumption",3446,3581,3709,3869,4338
+"23000","Maine","10","      Clothing and footwear",976,963,970,980,873
+"23000","Maine","11","      Gasoline and other energy goods",1220,1422,1625,1582,1132
+"23000","Maine","12","      Other nondurable goods",3585,3728,3818,4010,4331
+"23000","Maine","15","      Housing and utilities",7333,7718,8006,8220,8537
+"23000","Maine","16","      Health care",7704,7950,8095,8302,7851
+"23000","Maine","17","      Transportation services",1129,1178,1254,1293,1024
+"23000","Maine","18","      Recreation services",1591,1684,1787,1842,1368
+"23000","Maine","19","      Food services and accommodations",2774,2951,3104,3251,2501
+"23000","Maine","20","      Financial services and insurance",2509,2649,2804,2761,2753
+"23000","Maine","21","      Other services",2736,2844,2954,3181,3046
+"24000","Maryland","1","Per capita personal consumption expenditures",42527,43779,45345,46382,44331
+"24000","Maryland","4","      Motor vehicles and parts",1478,1480,1508,1485,1492
+"24000","Maryland","5","      Furnishings and durable household equipment",960,988,1015,1038,1096
+"24000","Maryland","6","      Recreational goods and vehicles",1102,1115,1155,1266,1414
+"24000","Maryland","7","      Other durable goods",665,673,678,690,648
+"24000","Maryland","9","      Food and beverages purchased for off-premises consumption",2753,2806,2844,2871,3150
+"24000","Maryland","10","      Clothing and footwear",1204,1217,1228,1227,1065
+"24000","Maryland","11","      Gasoline and other energy goods",806,885,1018,949,700
+"24000","Maryland","12","      Other nondurable goods",3645,3777,3857,4032,4283
+"24000","Maryland","15","      Housing and utilities",8403,8537,8836,9054,9289
+"24000","Maryland","16","      Health care",7093,7283,7438,7723,7186
+"24000","Maryland","17","      Transportation services",1411,1465,1533,1578,1191
+"24000","Maryland","18","      Recreation services",1717,1784,1831,1828,1275
+"24000","Maryland","19","      Food services and accommodations",2794,2947,3062,3201,2451
+"24000","Maryland","20","      Financial services and insurance",2935,3141,3362,3403,3452
+"24000","Maryland","21","      Other services",4180,4245,4417,4582,3877
+"25000","Massachusetts","1","Per capita personal consumption expenditures",49505,51110,52969,54763,52001
+"25000","Massachusetts","4","      Motor vehicles and parts",1449,1488,1522,1481,1470
+"25000","Massachusetts","5","      Furnishings and durable household equipment",1108,1132,1185,1243,1290
+"25000","Massachusetts","6","      Recreational goods and vehicles",1324,1358,1417,1518,1680
+"25000","Massachusetts","7","      Other durable goods",773,788,803,820,771
+"25000","Massachusetts","9","      Food and beverages purchased for off-premises consumption",3461,3618,3672,3774,4108
+"25000","Massachusetts","10","      Clothing and footwear",1377,1357,1373,1389,1171
+"25000","Massachusetts","11","      Gasoline and other energy goods",720,796,863,813,600
+"25000","Massachusetts","12","      Other nondurable goods",3710,3935,4062,4322,4472
+"25000","Massachusetts","15","      Housing and utilities",8277,8530,8983,9414,9824
+"25000","Massachusetts","16","      Health care",8903,8953,9073,9382,8701
+"25000","Massachusetts","17","      Transportation services",2057,2142,2294,2395,1511
+"25000","Massachusetts","18","      Recreation services",2174,2313,2399,2481,1717
+"25000","Massachusetts","19","      Food services and accommodations",3343,3478,3613,3840,2743
+"25000","Massachusetts","20","      Financial services and insurance",4417,4569,4763,4740,4816
+"25000","Massachusetts","21","      Other services",4355,4523,4766,4967,4711
+"26000","Michigan","1","Per capita personal consumption expenditures",38205,39531,41244,42409,41274
+"26000","Michigan","4","      Motor vehicles and parts",1328,1404,1438,1422,1482
+"26000","Michigan","5","      Furnishings and durable household equipment",863,909,953,976,1022
+"26000","Michigan","6","      Recreational goods and vehicles",1032,1062,1131,1213,1379
+"26000","Michigan","7","      Other durable goods",630,636,660,671,635
+"26000","Michigan","9","      Food and beverages purchased for off-premises consumption",2883,3027,3100,3187,3532
+"26000","Michigan","10","      Clothing and footwear",1002,1006,1032,1044,967
+"26000","Michigan","11","      Gasoline and other energy goods",900,1007,1153,1111,788
+"26000","Michigan","12","      Other nondurable goods",3089,3222,3336,3495,3668
+"26000","Michigan","15","      Housing and utilities",6705,6878,7101,7321,7516
+"26000","Michigan","16","      Health care",6622,6718,6959,7212,6651
+"26000","Michigan","17","      Transportation services",1034,1058,1112,1170,917
+"26000","Michigan","18","      Recreation services",1174,1228,1265,1282,924
+"26000","Michigan","19","      Food services and accommodations",2231,2324,2424,2485,1926
+"26000","Michigan","20","      Financial services and insurance",3886,4116,4361,4469,4586
+"26000","Michigan","21","      Other services",2745,2792,2965,3096,2810
+"27000","Minnesota","1","Per capita personal consumption expenditures",41926,43579,45492,46532,44403
+"27000","Minnesota","4","      Motor vehicles and parts",1667,1788,1907,1921,1999
+"27000","Minnesota","5","      Furnishings and durable household equipment",968,992,1026,1055,1098
+"27000","Minnesota","6","      Recreational goods and vehicles",1655,1759,1836,1929,2132
+"27000","Minnesota","7","      Other durable goods",589,575,594,589,544
+"27000","Minnesota","9","      Food and beverages purchased for off-premises consumption",2756,2793,2868,2897,3145
+"27000","Minnesota","10","      Clothing and footwear",1168,1164,1176,1156,1063
+"27000","Minnesota","11","      Gasoline and other energy goods",1014,1116,1240,1186,889
+"27000","Minnesota","12","      Other nondurable goods",2808,2846,2923,3005,3149
+"27000","Minnesota","15","      Housing and utilities",7255,7529,7756,8043,8309
+"27000","Minnesota","16","      Health care",7695,7960,8375,8681,8024
+"27000","Minnesota","17","      Transportation services",1257,1300,1349,1408,1073
+"27000","Minnesota","18","      Recreation services",1497,1577,1632,1629,1071
+"27000","Minnesota","19","      Food services and accommodations",2434,2487,2563,2631,1970
+"27000","Minnesota","20","      Financial services and insurance",3590,3882,4190,4164,4100
+"27000","Minnesota","21","      Other services",3824,3992,4147,4328,3699
+"28000","Mississippi","1","Per capita personal consumption expenditures",29904,30586,31775,32413,32358
+"28000","Mississippi","4","      Motor vehicles and parts",1418,1431,1483,1466,1617
+"28000","Mississippi","5","      Furnishings and durable household equipment",700,720,767,792,874
+"28000","Mississippi","6","      Recreational goods and vehicles",576,605,622,650,748
+"28000","Mississippi","7","      Other durable goods",477,474,485,494,482
+"28000","Mississippi","9","      Food and beverages purchased for off-premises consumption",2666,2726,2796,2874,3211
+"28000","Mississippi","10","      Clothing and footwear",973,969,982,976,954
+"28000","Mississippi","11","      Gasoline and other energy goods",979,1078,1176,1099,839
+"28000","Mississippi","12","      Other nondurable goods",3014,3073,3136,3260,3577
+"28000","Mississippi","15","      Housing and utilities",5283,5353,5548,5565,5661
+"28000","Mississippi","16","      Health care",5850,5913,6201,6452,6063
+"28000","Mississippi","17","      Transportation services",672,687,714,750,641
+"28000","Mississippi","18","      Recreation services",858,865,883,898,703
+"28000","Mississippi","19","      Food services and accommodations",1991,2052,2122,2192,1999
+"28000","Mississippi","20","      Financial services and insurance",1751,1872,1984,2012,1998
+"28000","Mississippi","21","      Other services",2001,2043,2118,2191,2073
+"29000","Missouri","1","Per capita personal consumption expenditures",37198,38483,39968,41071,39999
+"29000","Missouri","4","      Motor vehicles and parts",1642,1686,1736,1726,1873
+"29000","Missouri","5","      Furnishings and durable household equipment",834,876,929,938,1027
+"29000","Missouri","6","      Recreational goods and vehicles",871,880,915,957,1068
+"29000","Missouri","7","      Other durable goods",542,537,545,550,514
+"29000","Missouri","9","      Food and beverages purchased for off-premises consumption",2673,2739,2793,2850,3136
+"29000","Missouri","10","      Clothing and footwear",980,982,985,989,950
+"29000","Missouri","11","      Gasoline and other energy goods",1191,1321,1455,1407,1044
+"29000","Missouri","12","      Other nondurable goods",3276,3380,3444,3554,3752
+"29000","Missouri","15","      Housing and utilities",6072,6221,6498,6663,6840
+"29000","Missouri","16","      Health care",6787,6980,7216,7601,7081
+"29000","Missouri","17","      Transportation services",1129,1190,1224,1283,1065
+"29000","Missouri","18","      Recreation services",1583,1611,1643,1673,1218
+"29000","Missouri","19","      Food services and accommodations",2353,2425,2504,2600,2222
+"29000","Missouri","20","      Financial services and insurance",2876,3134,3400,3452,3503
+"29000","Missouri","21","      Other services",3240,3310,3412,3571,3236
+"30000","Montana","1","Per capita personal consumption expenditures",38323,39647,41429,42560,42310
+"30000","Montana","4","      Motor vehicles and parts",1910,1975,2054,2080,2291
+"30000","Montana","5","      Furnishings and durable household equipment",1022,1033,1084,1122,1262
+"30000","Montana","6","      Recreational goods and vehicles",1376,1377,1434,1413,1697
+"30000","Montana","7","      Other durable goods",591,583,597,594,567
+"30000","Montana","9","      Food and beverages purchased for off-premises consumption",3310,3339,3452,3515,3814
+"30000","Montana","10","      Clothing and footwear",918,921,906,899,888
+"30000","Montana","11","      Gasoline and other energy goods",1157,1246,1369,1285,939
+"30000","Montana","12","      Other nondurable goods",2697,2717,2812,2910,3160
+"30000","Montana","15","      Housing and utilities",6261,6683,6979,7268,7599
+"30000","Montana","16","      Health care",6996,7251,7552,7905,7560
+"30000","Montana","17","      Transportation services",1270,1350,1443,1542,1291
+"30000","Montana","18","      Recreation services",1586,1642,1731,1784,1361
+"30000","Montana","19","      Food services and accommodations",2639,2679,2779,2872,2453
+"30000","Montana","20","      Financial services and insurance",2555,2679,2844,2857,2928
+"30000","Montana","21","      Other services",2588,2654,2823,2937,2681
+"31000","Nebraska","1","Per capita personal consumption expenditures",38171,39383,40837,41752,41142
+"31000","Nebraska","4","      Motor vehicles and parts",1991,2039,2085,2080,2296
+"31000","Nebraska","5","      Furnishings and durable household equipment",846,870,927,962,1070
+"31000","Nebraska","6","      Recreational goods and vehicles",1067,1072,1111,1158,1340
+"31000","Nebraska","7","      Other durable goods",714,706,723,731,698
+"31000","Nebraska","9","      Food and beverages purchased for off-premises consumption",2843,2899,2960,3028,3347
+"31000","Nebraska","10","      Clothing and footwear",989,988,991,974,930
+"31000","Nebraska","11","      Gasoline and other energy goods",1304,1393,1545,1474,1082
+"31000","Nebraska","12","      Other nondurable goods",2993,3032,3094,3216,3446
+"31000","Nebraska","15","      Housing and utilities",6167,6414,6678,6884,7109
+"31000","Nebraska","16","      Health care",7052,7306,7526,7789,7365
+"31000","Nebraska","17","      Transportation services",1169,1209,1279,1335,1079
+"31000","Nebraska","18","      Recreation services",1045,1103,1126,1141,847
+"31000","Nebraska","19","      Food services and accommodations",2282,2325,2396,2453,2127
+"31000","Nebraska","20","      Financial services and insurance",3508,3708,3930,3969,3965
+"31000","Nebraska","21","      Other services",2864,2928,3038,3138,2798
+"32000","Nevada","1","Per capita personal consumption expenditures",36608,38044,39638,40743,39211
+"32000","Nevada","4","      Motor vehicles and parts",1468,1498,1529,1485,1561
+"32000","Nevada","5","      Furnishings and durable household equipment",925,979,1054,1082,1150
+"32000","Nevada","6","      Recreational goods and vehicles",1087,1134,1248,1321,1521
+"32000","Nevada","7","      Other durable goods",606,621,626,634,581
+"32000","Nevada","9","      Food and beverages purchased for off-premises consumption",3055,3143,3199,3267,3595
+"32000","Nevada","10","      Clothing and footwear",1162,1148,1166,1178,1024
+"32000","Nevada","11","      Gasoline and other energy goods",828,948,1036,961,642
+"32000","Nevada","12","      Other nondurable goods",3207,3324,3390,3541,3724
+"32000","Nevada","15","      Housing and utilities",6779,7142,7398,7827,8241
+"32000","Nevada","16","      Health care",5193,5344,5642,5855,5486
+"32000","Nevada","17","      Transportation services",1231,1275,1328,1374,1007
+"32000","Nevada","18","      Recreation services",1489,1557,1661,1692,1210
+"32000","Nevada","19","      Food services and accommodations",2768,2854,2915,3030,2240
+"32000","Nevada","20","      Financial services and insurance",3047,3181,3342,3300,3245
+"32000","Nevada","21","      Other services",2604,2730,2879,3014,2602
+"33000","New Hampshire","1","Per capita personal consumption expenditures",47395,49229,51309,52932,51760
+"33000","New Hampshire","4","      Motor vehicles and parts",2010,2061,2123,2113,2239
+"33000","New Hampshire","5","      Furnishings and durable household equipment",1107,1127,1198,1264,1394
+"33000","New Hampshire","6","      Recreational goods and vehicles",1064,1077,1113,1178,1363
+"33000","New Hampshire","7","      Other durable goods",738,739,749,756,715
+"33000","New Hampshire","9","      Food and beverages purchased for off-premises consumption",3619,3761,3839,3945,4383
+"33000","New Hampshire","10","      Clothing and footwear",1368,1354,1369,1375,1231
+"33000","New Hampshire","11","      Gasoline and other energy goods",980,1142,1273,1222,896
+"33000","New Hampshire","12","      Other nondurable goods",3556,3637,3725,3878,4116
+"33000","New Hampshire","15","      Housing and utilities",8148,8559,8708,8963,9226
+"33000","New Hampshire","16","      Health care",8382,8616,8946,9408,8759
+"33000","New Hampshire","17","      Transportation services",1488,1528,1593,1647,1340
+"33000","New Hampshire","18","      Recreation services",1902,1984,2067,2134,1589
+"33000","New Hampshire","19","      Food services and accommodations",2766,2849,2979,3095,2585
+"33000","New Hampshire","20","      Financial services and insurance",4335,4629,5003,5056,5123
+"33000","New Hampshire","21","      Other services",3855,4011,4337,4573,4192
+"34000","New Jersey","1","Per capita personal consumption expenditures",46477,47648,49878,51564,50221
+"34000","New Jersey","4","      Motor vehicles and parts",1484,1486,1521,1498,1496
+"34000","New Jersey","5","      Furnishings and durable household equipment",1123,1178,1272,1343,1413
+"34000","New Jersey","6","      Recreational goods and vehicles",1177,1207,1236,1350,1467
+"34000","New Jersey","7","      Other durable goods",797,799,824,861,817
+"34000","New Jersey","9","      Food and beverages purchased for off-premises consumption",3191,3264,3325,3455,3805
+"34000","New Jersey","10","      Clothing and footwear",1582,1566,1610,1640,1333
+"34000","New Jersey","11","      Gasoline and other energy goods",807,871,928,896,668
+"34000","New Jersey","12","      Other nondurable goods",4131,4239,4412,4689,4999
+"34000","New Jersey","15","      Housing and utilities",8660,8801,9215,9467,9754
+"34000","New Jersey","16","      Health care",7293,7539,7855,8264,7825
+"34000","New Jersey","17","      Transportation services",1485,1529,1601,1665,1102
+"34000","New Jersey","18","      Recreation services",1857,1902,1963,1971,1477
+"34000","New Jersey","19","      Food services and accommodations",2601,2700,2848,2967,2305
+"34000","New Jersey","20","      Financial services and insurance",3652,3841,4079,4087,4144
+"34000","New Jersey","21","      Other services",3849,3887,4157,4377,4231
+"35000","New Mexico","1","Per capita personal consumption expenditures",33015,34050,35601,36215,35264
+"35000","New Mexico","4","      Motor vehicles and parts",1516,1552,1635,1595,1640
+"35000","New Mexico","5","      Furnishings and durable household equipment",791,818,874,904,983
+"35000","New Mexico","6","      Recreational goods and vehicles",659,669,720,750,824
+"35000","New Mexico","7","      Other durable goods",643,651,661,656,616
+"35000","New Mexico","9","      Food and beverages purchased for off-premises consumption",2847,2889,2942,2969,3288
+"35000","New Mexico","10","      Clothing and footwear",854,853,864,862,788
+"35000","New Mexico","11","      Gasoline and other energy goods",1145,1221,1422,1092,772
+"35000","New Mexico","12","      Other nondurable goods",2597,2663,2747,2829,2997
+"35000","New Mexico","15","      Housing and utilities",5906,6154,6255,6481,6673
+"35000","New Mexico","16","      Health care",6050,6188,6481,6801,6418
+"35000","New Mexico","17","      Transportation services",885,915,969,1012,781
+"35000","New Mexico","18","      Recreation services",1009,1040,1075,1075,783
+"35000","New Mexico","19","      Food services and accommodations",2579,2622,2748,2853,2204
+"35000","New Mexico","20","      Financial services and insurance",2437,2604,2832,2807,2846
+"35000","New Mexico","21","      Other services",1994,2048,2157,2316,2233
+"36000","New York","1","Per capita personal consumption expenditures",45202,47262,49982,52151,49735
+"36000","New York","4","      Motor vehicles and parts",1106,1147,1188,1177,1169
+"36000","New York","5","      Furnishings and durable household equipment",1014,1055,1124,1184,1227
+"36000","New York","6","      Recreational goods and vehicles",970,996,1073,1132,1244
+"36000","New York","7","      Other durable goods",693,703,730,752,714
+"36000","New York","9","      Food and beverages purchased for off-premises consumption",2829,2940,3073,3216,3549
+"36000","New York","10","      Clothing and footwear",1471,1481,1534,1586,1323
+"36000","New York","11","      Gasoline and other energy goods",529,598,680,661,471
+"36000","New York","12","      Other nondurable goods",4124,4343,4554,4862,5212
+"36000","New York","15","      Housing and utilities",7977,8243,8618,8992,9359
+"36000","New York","16","      Health care",7665,7989,8511,9015,8585
+"36000","New York","17","      Transportation services",1704,1814,1952,2043,1261
+"36000","New York","18","      Recreation services",1748,1783,1841,1897,1310
+"36000","New York","19","      Food services and accommodations",3258,3474,3667,3861,2525
+"36000","New York","20","      Financial services and insurance",3989,4299,4673,4805,4964
+"36000","New York","21","      Other services",4209,4410,4609,4814,4335
+"37000","North Carolina","1","Per capita personal consumption expenditures",34498,35780,37391,38844,38295
+"37000","North Carolina","4","      Motor vehicles and parts",1590,1626,1668,1666,1750
+"37000","North Carolina","5","      Furnishings and durable household equipment",931,961,1026,1077,1179
+"37000","North Carolina","6","      Recreational goods and vehicles",1038,1081,1171,1311,1493
+"37000","North Carolina","7","      Other durable goods",554,561,572,585,568
+"37000","North Carolina","9","      Food and beverages purchased for off-premises consumption",2764,2829,2899,3042,3470
+"37000","North Carolina","10","      Clothing and footwear",1039,1037,1055,1087,1017
+"37000","North Carolina","11","      Gasoline and other energy goods",862,962,1105,1057,778
+"37000","North Carolina","12","      Other nondurable goods",3292,3382,3466,3594,3870
+"37000","North Carolina","15","      Housing and utilities",6245,6391,6628,6858,7063
+"37000","North Carolina","16","      Health care",5733,6073,6370,6723,6250
+"37000","North Carolina","17","      Transportation services",914,958,999,1061,849
+"37000","North Carolina","18","      Recreation services",1379,1404,1463,1507,1214
+"37000","North Carolina","19","      Food services and accommodations",2389,2486,2578,2690,2262
+"37000","North Carolina","20","      Financial services and insurance",2562,2712,2898,2944,2986
+"37000","North Carolina","21","      Other services",3065,3186,3356,3549,3251
+"38000","North Dakota","1","Per capita personal consumption expenditures",43444,43635,44871,45613,43945
+"38000","North Dakota","4","      Motor vehicles and parts",1823,1858,1921,1903,2054
+"38000","North Dakota","5","      Furnishings and durable household equipment",1203,1147,1187,1199,1307
+"38000","North Dakota","6","      Recreational goods and vehicles",1474,1466,1549,1576,1799
+"38000","North Dakota","7","      Other durable goods",623,598,598,596,571
+"38000","North Dakota","9","      Food and beverages purchased for off-premises consumption",3021,2975,2993,2988,3217
+"38000","North Dakota","10","      Clothing and footwear",1347,1264,1252,1236,1166
+"38000","North Dakota","11","      Gasoline and other energy goods",903,913,1012,951,669
+"38000","North Dakota","12","      Other nondurable goods",3463,3436,3503,3554,3732
+"38000","North Dakota","15","      Housing and utilities",7102,6976,6932,6801,6748
+"38000","North Dakota","16","      Health care",8465,8820,9091,9618,8998
+"38000","North Dakota","17","      Transportation services",1333,1308,1393,1471,1237
+"38000","North Dakota","18","      Recreation services",1281,1268,1332,1396,1055
+"38000","North Dakota","19","      Food services and accommodations",2823,2772,2836,2894,2286
+"38000","North Dakota","20","      Financial services and insurance",3638,3753,3826,3784,3702
+"38000","North Dakota","21","      Other services",3237,3269,3542,3693,3252
+"39000","Ohio","1","Per capita personal consumption expenditures",37070,38271,39678,40691,39866
+"39000","Ohio","4","      Motor vehicles and parts",1461,1519,1561,1552,1634
+"39000","Ohio","5","      Furnishings and durable household equipment",877,927,984,1020,1130
+"39000","Ohio","6","      Recreational goods and vehicles",1076,1126,1188,1243,1404
+"39000","Ohio","7","      Other durable goods",561,556,561,565,547
+"39000","Ohio","9","      Food and beverages purchased for off-premises consumption",2971,3124,3176,3225,3540
+"39000","Ohio","10","      Clothing and footwear",992,994,989,983,928
+"39000","Ohio","11","      Gasoline and other energy goods",920,1015,1116,1066,755
+"39000","Ohio","12","      Other nondurable goods",3227,3331,3399,3524,3773
+"39000","Ohio","15","      Housing and utilities",6071,6177,6403,6531,6664
+"39000","Ohio","16","      Health care",7379,7507,7706,8032,7507
+"39000","Ohio","17","      Transportation services",876,902,947,1008,824
+"39000","Ohio","18","      Recreation services",1328,1397,1445,1473,1057
+"39000","Ohio","19","      Food services and accommodations",2266,2309,2393,2476,2112
+"39000","Ohio","20","      Financial services and insurance",2444,2651,2903,2977,3058
+"39000","Ohio","21","      Other services",2828,2894,2995,3103,2803
+"40000","Oklahoma","1","Per capita personal consumption expenditures",32148,32945,34483,35081,34533
+"40000","Oklahoma","4","      Motor vehicles and parts",1816,1818,1922,1907,2067
+"40000","Oklahoma","5","      Furnishings and durable household equipment",818,829,883,917,1024
+"40000","Oklahoma","6","      Recreational goods and vehicles",776,794,806,804,916
+"40000","Oklahoma","7","      Other durable goods",532,529,541,545,516
+"40000","Oklahoma","9","      Food and beverages purchased for off-premises consumption",2232,2281,2337,2384,2645
+"40000","Oklahoma","10","      Clothing and footwear",1067,1059,1085,1104,1073
+"40000","Oklahoma","11","      Gasoline and other energy goods",1184,1243,1415,1329,978
+"40000","Oklahoma","12","      Other nondurable goods",2865,2926,3011,3101,3342
+"40000","Oklahoma","15","      Housing and utilities",5635,5735,6033,6057,6152
+"40000","Oklahoma","16","      Health care",5939,6072,6354,6627,6121
+"40000","Oklahoma","17","      Transportation services",779,825,888,909,766
+"40000","Oklahoma","18","      Recreation services",1056,1074,1113,1125,858
+"40000","Oklahoma","19","      Food services and accommodations",2380,2446,2548,2592,2284
+"40000","Oklahoma","20","      Financial services and insurance",2128,2252,2418,2475,2541
+"40000","Oklahoma","21","      Other services",2452,2501,2569,2682,2526
+"41000","Oregon","1","Per capita personal consumption expenditures",37566,39384,41350,42871,42055
+"41000","Oregon","4","      Motor vehicles and parts",1393,1504,1552,1517,1592
+"41000","Oregon","5","      Furnishings and durable household equipment",1061,1132,1220,1277,1385
+"41000","Oregon","6","      Recreational goods and vehicles",1446,1558,1673,1768,1971
+"41000","Oregon","7","      Other durable goods",546,558,580,590,577
+"41000","Oregon","9","      Food and beverages purchased for off-premises consumption",3247,3300,3388,3494,3928
+"41000","Oregon","10","      Clothing and footwear",1091,1120,1162,1189,1138
+"41000","Oregon","11","      Gasoline and other energy goods",797,911,1044,987,707
+"41000","Oregon","12","      Other nondurable goods",2572,2657,2782,2886,3101
+"41000","Oregon","15","      Housing and utilities",7121,7521,7801,8162,8544
+"41000","Oregon","16","      Health care",6723,6984,7219,7615,7124
+"41000","Oregon","17","      Transportation services",1308,1369,1455,1506,1076
+"41000","Oregon","18","      Recreation services",1442,1511,1579,1619,1142
+"41000","Oregon","19","      Food services and accommodations",2714,2858,3074,3201,2427
+"41000","Oregon","20","      Financial services and insurance",2397,2562,2781,2821,2974
+"41000","Oregon","21","      Other services",2348,2446,2572,2769,2664
+"42000","Pennsylvania","1","Per capita personal consumption expenditures",41548,42931,45049,46478,44650
+"42000","Pennsylvania","4","      Motor vehicles and parts",1518,1553,1596,1581,1583
+"42000","Pennsylvania","5","      Furnishings and durable household equipment",942,978,1033,1078,1140
+"42000","Pennsylvania","6","      Recreational goods and vehicles",1099,1118,1245,1345,1538
+"42000","Pennsylvania","7","      Other durable goods",618,629,645,655,626
+"42000","Pennsylvania","9","      Food and beverages purchased for off-premises consumption",2905,2948,2995,3067,3334
+"42000","Pennsylvania","10","      Clothing and footwear",1131,1127,1144,1138,1017
+"42000","Pennsylvania","11","      Gasoline and other energy goods",976,1062,1195,1164,855
+"42000","Pennsylvania","12","      Other nondurable goods",3569,3673,3782,3948,4157
+"42000","Pennsylvania","15","      Housing and utilities",6882,7112,7405,7556,7768
+"42000","Pennsylvania","16","      Health care",7526,7727,8097,8402,7894
+"42000","Pennsylvania","17","      Transportation services",1188,1215,1292,1342,1013
+"42000","Pennsylvania","18","      Recreation services",1523,1556,1613,1668,1188
+"42000","Pennsylvania","19","      Food services and accommodations",2367,2439,2530,2620,1975
+"42000","Pennsylvania","20","      Financial services and insurance",3188,3422,3717,3852,3986
+"42000","Pennsylvania","21","      Other services",4343,4524,4780,5052,4316
+"44000","Rhode Island","1","Per capita personal consumption expenditures",40397,41726,43351,44604,42944
+"44000","Rhode Island","4","      Motor vehicles and parts",1391,1420,1492,1464,1476
+"44000","Rhode Island","5","      Furnishings and durable household equipment",855,924,971,1024,1126
+"44000","Rhode Island","6","      Recreational goods and vehicles",822,826,836,905,1017
+"44000","Rhode Island","7","      Other durable goods",607,631,654,662,622
+"44000","Rhode Island","9","      Food and beverages purchased for off-premises consumption",3082,3203,3326,3408,3751
+"44000","Rhode Island","10","      Clothing and footwear",965,966,983,978,885
+"44000","Rhode Island","11","      Gasoline and other energy goods",645,736,891,892,636
+"44000","Rhode Island","12","      Other nondurable goods",3262,3425,3603,3754,3941
+"44000","Rhode Island","15","      Housing and utilities",7223,7399,7630,7786,8058
+"44000","Rhode Island","16","      Health care",7325,7447,7545,7872,7242
+"44000","Rhode Island","17","      Transportation services",1693,1777,1912,2014,1503
+"44000","Rhode Island","18","      Recreation services",1586,1612,1654,1711,1303
+"44000","Rhode Island","19","      Food services and accommodations",3131,3265,3447,3688,2837
+"44000","Rhode Island","20","      Financial services and insurance",2909,3064,3221,3194,3260
+"44000","Rhode Island","21","      Other services",3074,3164,3262,3328,3185
+"45000","South Carolina","1","Per capita personal consumption expenditures",34615,35661,37031,38122,37554
+"45000","South Carolina","4","      Motor vehicles and parts",1536,1579,1595,1582,1746
+"45000","South Carolina","5","      Furnishings and durable household equipment",866,908,960,1020,1148
+"45000","South Carolina","6","      Recreational goods and vehicles",756,772,805,844,970
+"45000","South Carolina","7","      Other durable goods",574,587,602,613,587
+"45000","South Carolina","9","      Food and beverages purchased for off-premises consumption",2936,2933,3017,3075,3438
+"45000","South Carolina","10","      Clothing and footwear",1100,1138,1175,1207,1149
+"45000","South Carolina","11","      Gasoline and other energy goods",1089,1185,1328,1272,940
+"45000","South Carolina","12","      Other nondurable goods",3162,3255,3349,3471,3732
+"45000","South Carolina","15","      Housing and utilities",6639,6735,6938,7273,7493
+"45000","South Carolina","16","      Health care",5503,5586,5744,5878,5449
+"45000","South Carolina","17","      Transportation services",828,881,929,995,810
+"45000","South Carolina","18","      Recreation services",1385,1446,1489,1503,1138
+"45000","South Carolina","19","      Food services and accommodations",2639,2738,2809,2930,2460
+"45000","South Carolina","20","      Financial services and insurance",2195,2380,2617,2702,2807
+"45000","South Carolina","21","      Other services",2771,2878,2965,3054,2783
+"46000","South Dakota","1","Per capita personal consumption expenditures",37983,39457,41187,42383,41825
+"46000","South Dakota","4","      Motor vehicles and parts",1491,1542,1587,1579,1741
+"46000","South Dakota","5","      Furnishings and durable household equipment",980,992,1055,1081,1179
+"46000","South Dakota","6","      Recreational goods and vehicles",928,905,946,927,1077
+"46000","South Dakota","7","      Other durable goods",479,465,477,477,462
+"46000","South Dakota","9","      Food and beverages purchased for off-premises consumption",2773,2754,2804,2850,3138
+"46000","South Dakota","10","      Clothing and footwear",1011,1018,1044,1039,1020
+"46000","South Dakota","11","      Gasoline and other energy goods",799,880,952,894,674
+"46000","South Dakota","12","      Other nondurable goods",2778,2815,2873,2961,3201
+"46000","South Dakota","15","      Housing and utilities",5856,6006,6237,6401,6498
+"46000","South Dakota","16","      Health care",8691,9306,9744,10335,9666
+"46000","South Dakota","17","      Transportation services",1062,1108,1134,1191,1087
+"46000","South Dakota","18","      Recreation services",1454,1476,1540,1584,1259
+"46000","South Dakota","19","      Food services and accommodations",2538,2582,2652,2700,2347
+"46000","South Dakota","20","      Financial services and insurance",2723,3033,3342,3356,3389
+"46000","South Dakota","21","      Other services",2833,2863,3000,3157,2886
+"47000","Tennessee","1","Per capita personal consumption expenditures",34357,35561,36978,38185,37499
+"47000","Tennessee","4","      Motor vehicles and parts",1579,1602,1626,1588,1708
+"47000","Tennessee","5","      Furnishings and durable household equipment",890,932,990,1042,1131
+"47000","Tennessee","6","      Recreational goods and vehicles",783,806,845,932,1028
+"47000","Tennessee","7","      Other durable goods",509,518,531,543,506
+"47000","Tennessee","9","      Food and beverages purchased for off-premises consumption",2501,2489,2537,2593,2906
+"47000","Tennessee","10","      Clothing and footwear",1048,1065,1084,1085,1049
+"47000","Tennessee","11","      Gasoline and other energy goods",854,970,1113,1096,773
+"47000","Tennessee","12","      Other nondurable goods",3418,3509,3617,3752,4034
+"47000","Tennessee","15","      Housing and utilities",6101,6245,6414,6813,7056
+"47000","Tennessee","16","      Health care",6171,6287,6444,6605,6295
+"47000","Tennessee","17","      Transportation services",942,1003,1046,1146,926
+"47000","Tennessee","18","      Recreation services",1214,1271,1332,1364,1011
+"47000","Tennessee","19","      Food services and accommodations",2486,2604,2763,2872,2411
+"47000","Tennessee","20","      Financial services and insurance",2482,2722,2962,2978,2948
+"47000","Tennessee","21","      Other services",2801,2938,3048,3174,2917
+"48000","Texas","1","Per capita personal consumption expenditures",36688,37842,39419,40495,39661
+"48000","Texas","4","      Motor vehicles and parts",1792,1838,1904,1869,1966
+"48000","Texas","5","      Furnishings and durable household equipment",976,993,1063,1083,1173
+"48000","Texas","6","      Recreational goods and vehicles",998,1056,1127,1197,1348
+"48000","Texas","7","      Other durable goods",618,627,646,650,625
+"48000","Texas","9","      Food and beverages purchased for off-premises consumption",2773,2835,2894,2934,3309
+"48000","Texas","10","      Clothing and footwear",1215,1223,1249,1238,1146
+"48000","Texas","11","      Gasoline and other energy goods",928,1019,1148,1110,811
+"48000","Texas","12","      Other nondurable goods",3193,3297,3382,3511,3760
+"48000","Texas","15","      Housing and utilities",6445,6546,6799,7063,7257
+"48000","Texas","16","      Health care",5767,5903,6052,6294,5793
+"48000","Texas","17","      Transportation services",1133,1189,1266,1315,1038
+"48000","Texas","18","      Recreation services",1616,1692,1757,1786,1370
+"48000","Texas","19","      Food services and accommodations",2661,2739,2863,2988,2515
+"48000","Texas","20","      Financial services and insurance",2933,3117,3338,3383,3389
+"48000","Texas","21","      Other services",2822,2937,3057,3218,3129
+"49000","Utah","1","Per capita personal consumption expenditures",32860,34276,36088,37451,37369
+"49000","Utah","4","      Motor vehicles and parts",1586,1689,1791,1795,2019
+"49000","Utah","5","      Furnishings and durable household equipment",999,1045,1157,1210,1324
+"49000","Utah","6","      Recreational goods and vehicles",1754,1947,2100,2271,2615
+"49000","Utah","7","      Other durable goods",624,632,663,677,631
+"49000","Utah","9","      Food and beverages purchased for off-premises consumption",2593,2640,2713,2774,3040
+"49000","Utah","10","      Clothing and footwear",982,996,1034,1042,987
+"49000","Utah","11","      Gasoline and other energy goods",882,991,1123,1100,801
+"49000","Utah","12","      Other nondurable goods",2553,2603,2680,2771,2949
+"49000","Utah","15","      Housing and utilities",5909,6119,6407,6692,6987
+"49000","Utah","16","      Health care",4979,5087,5217,5417,5055
+"49000","Utah","17","      Transportation services",1129,1187,1243,1316,1057
+"49000","Utah","18","      Recreation services",1416,1485,1529,1569,1168
+"49000","Utah","19","      Food services and accommodations",2243,2343,2462,2582,2235
+"49000","Utah","20","      Financial services and insurance",2403,2583,2817,2911,3045
+"49000","Utah","21","      Other services",2094,2189,2389,2597,2547
+"50000","Vermont","1","Per capita personal consumption expenditures",44974,45977,48047,49285,47397
+"50000","Vermont","4","      Motor vehicles and parts",1888,1982,2059,2040,2044
+"50000","Vermont","5","      Furnishings and durable household equipment",1004,1028,1089,1115,1193
+"50000","Vermont","6","      Recreational goods and vehicles",1086,1070,1101,1135,1233
+"50000","Vermont","7","      Other durable goods",490,480,484,489,458
+"50000","Vermont","9","      Food and beverages purchased for off-premises consumption",3734,3776,3952,4035,4420
+"50000","Vermont","10","      Clothing and footwear",892,887,899,904,811
+"50000","Vermont","11","      Gasoline and other energy goods",1110,1220,1390,1299,980
+"50000","Vermont","12","      Other nondurable goods",3535,3603,3722,3870,4119
+"50000","Vermont","15","      Housing and utilities",8277,8314,8771,9055,9407
+"50000","Vermont","16","      Health care",8114,8221,8537,8962,8490
+"50000","Vermont","17","      Transportation services",1285,1289,1410,1461,1085
+"50000","Vermont","18","      Recreation services",1610,1716,1793,1856,1214
+"50000","Vermont","19","      Food services and accommodations",3038,3157,3258,3352,2345
+"50000","Vermont","20","      Financial services and insurance",2789,2880,2933,2908,2903
+"50000","Vermont","21","      Other services",3321,3474,3645,3779,3453
+"51000","Virginia","1","Per capita personal consumption expenditures",40392,41429,43092,44124,42757
+"51000","Virginia","4","      Motor vehicles and parts",1561,1572,1610,1586,1642
+"51000","Virginia","5","      Furnishings and durable household equipment",1011,1043,1096,1120,1254
+"51000","Virginia","6","      Recreational goods and vehicles",1059,1101,1189,1309,1498
+"51000","Virginia","7","      Other durable goods",693,692,709,724,703
+"51000","Virginia","9","      Food and beverages purchased for off-premises consumption",2959,3080,3127,3195,3538
+"51000","Virginia","10","      Clothing and footwear",1187,1171,1189,1194,1105
+"51000","Virginia","11","      Gasoline and other energy goods",903,1011,1126,1074,786
+"51000","Virginia","12","      Other nondurable goods",3417,3530,3626,3783,4056
+"51000","Virginia","15","      Housing and utilities",7730,7850,8152,8332,8535
+"51000","Virginia","16","      Health care",6210,6371,6586,6897,6361
+"51000","Virginia","17","      Transportation services",1251,1287,1334,1401,1024
+"51000","Virginia","18","      Recreation services",2152,2165,2263,2295,1638
+"51000","Virginia","19","      Food services and accommodations",2761,2829,2914,2998,2384
+"51000","Virginia","20","      Financial services and insurance",2773,2955,3143,3131,3161
+"51000","Virginia","21","      Other services",3858,3929,4076,4219,3837
+"53000","Washington","1","Per capita personal consumption expenditures",42031,43863,46157,47688,46041
+"53000","Washington","4","      Motor vehicles and parts",1462,1522,1553,1509,1518
+"53000","Washington","5","      Furnishings and durable household equipment",999,1050,1125,1150,1228
+"53000","Washington","6","      Recreational goods and vehicles",1459,1557,1706,1848,2168
+"53000","Washington","7","      Other durable goods",573,582,606,614,591
+"53000","Washington","9","      Food and beverages purchased for off-premises consumption",3189,3233,3313,3382,3836
+"53000","Washington","10","      Clothing and footwear",1050,1086,1144,1164,1068
+"53000","Washington","11","      Gasoline and other energy goods",709,824,931,882,662
+"53000","Washington","12","      Other nondurable goods",2768,2872,2981,3105,3341
+"53000","Washington","15","      Housing and utilities",7873,8320,8763,9044,9485
+"53000","Washington","16","      Health care",7154,7355,7708,8143,7408
+"53000","Washington","17","      Transportation services",1815,1928,2084,2174,1404
+"53000","Washington","18","      Recreation services",2132,2184,2286,2334,1792
+"53000","Washington","19","      Food services and accommodations",2682,2919,3080,3206,2346
+"53000","Washington","20","      Financial services and insurance",3043,3148,3283,3298,3389
+"53000","Washington","21","      Other services",3528,3610,3847,4073,3854
+"54000","West Virginia","1","Per capita personal consumption expenditures",34015,35113,36869,37938,37206
+"54000","West Virginia","4","      Motor vehicles and parts",1487,1502,1614,1623,1712
+"54000","West Virginia","5","      Furnishings and durable household equipment",744,758,798,812,895
+"54000","West Virginia","6","      Recreational goods and vehicles",582,572,595,615,708
+"54000","West Virginia","7","      Other durable goods",373,364,375,381,368
+"54000","West Virginia","9","      Food and beverages purchased for off-premises consumption",2815,2879,2911,3003,3322
+"54000","West Virginia","10","      Clothing and footwear",821,812,823,819,787
+"54000","West Virginia","11","      Gasoline and other energy goods",1039,1110,1228,1147,797
+"54000","West Virginia","12","      Other nondurable goods",3109,3199,3275,3366,3530
+"54000","West Virginia","15","      Housing and utilities",5598,5719,6049,6139,6220
+"54000","West Virginia","16","      Health care",7712,8053,8507,9036,8649
+"54000","West Virginia","17","      Transportation services",575,593,639,677,567
+"54000","West Virginia","18","      Recreation services",865,885,925,949,694
+"54000","West Virginia","19","      Food services and accommodations",2123,2147,2215,2280,1876
+"54000","West Virginia","20","      Financial services and insurance",2187,2374,2579,2575,2558
+"54000","West Virginia","21","      Other services",2329,2385,2485,2614,2402
+"55000","Wisconsin","1","Per capita personal consumption expenditures",37807,39132,40970,41987,40963
+"55000","Wisconsin","4","      Motor vehicles and parts",1613,1698,1764,1761,1893
+"55000","Wisconsin","5","      Furnishings and durable household equipment",946,969,1036,1053,1146
+"55000","Wisconsin","6","      Recreational goods and vehicles",1191,1248,1330,1379,1600
+"55000","Wisconsin","7","      Other durable goods",498,497,508,505,483
+"55000","Wisconsin","9","      Food and beverages purchased for off-premises consumption",2770,2858,2928,2969,3221
+"55000","Wisconsin","10","      Clothing and footwear",983,993,1014,991,928
+"55000","Wisconsin","11","      Gasoline and other energy goods",1070,1191,1379,1341,996
+"55000","Wisconsin","12","      Other nondurable goods",3159,3216,3316,3461,3646
+"55000","Wisconsin","15","      Housing and utilities",6534,6718,6954,7084,7256
+"55000","Wisconsin","16","      Health care",7451,7575,7923,8224,7648
+"55000","Wisconsin","17","      Transportation services",965,1009,1055,1103,884
+"55000","Wisconsin","18","      Recreation services",1208,1280,1337,1365,978
+"55000","Wisconsin","19","      Food services and accommodations",2286,2382,2461,2534,2069
+"55000","Wisconsin","20","      Financial services and insurance",2762,2952,3184,3238,3338
+"55000","Wisconsin","21","      Other services",2604,2712,2859,3044,2743
+"56000","Wyoming","1","Per capita personal consumption expenditures",39441,40628,42055,42817,42016
+"56000","Wyoming","4","      Motor vehicles and parts",2014,2101,2135,2123,2286
+"56000","Wyoming","5","      Furnishings and durable household equipment",910,921,987,1029,1147
+"56000","Wyoming","6","      Recreational goods and vehicles",777,742,780,805,871
+"56000","Wyoming","7","      Other durable goods",491,487,500,507,480
+"56000","Wyoming","9","      Food and beverages purchased for off-premises consumption",3219,3329,3415,3521,3883
+"56000","Wyoming","10","      Clothing and footwear",1293,1295,1341,1357,1333
+"56000","Wyoming","11","      Gasoline and other energy goods",1067,1173,1350,1340,947
+"56000","Wyoming","12","      Other nondurable goods",2653,2682,2733,2822,3023
+"56000","Wyoming","15","      Housing and utilities",6966,7331,7597,7785,7811
+"56000","Wyoming","16","      Health care",6533,6768,7144,7393,6894
+"56000","Wyoming","17","      Transportation services",1293,1311,1385,1419,1204
+"56000","Wyoming","18","      Recreation services",1334,1418,1495,1530,1198
+"56000","Wyoming","19","      Food services and accommodations",2629,2683,2848,2963,2414
+"56000","Wyoming","20","      Financial services and insurance",4873,4877,4857,4630,4732
+"56000","Wyoming","21","      Other services",2392,2467,2449,2583,2530
+"Legend / Footnotes:"
+"1/ Per capita PCE estimates are in current dollars, and reflect Census Bureau midyear population estimates for years 2010-2020 available as of December 2020. These population estimates are based on the 2010 census. BEA will incorporate Census Bureau midyear population estimates based on the 2020 census results when they become available. Per capita values are computed from unrounded data."
+"Last updated: October 8, 2021-- new statistics for 2020; revised statistics for 1997-2019."
