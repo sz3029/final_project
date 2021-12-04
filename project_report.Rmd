@@ -51,7 +51,7 @@ https://www.bea.gov/data/consumer-spending/main
 
 <p>• Personal Consumption Expenditures by Major Type of Product and by Major Function, by State:
 
-https://www.bea.gov/data/consumer-spending/state
+https://apps.bea.gov/iTable/iTable.cfm?reqid=70&step=1&acrdn=7#reqid=70&step=1&acrdn=7
 
 <p>• Trends in Number of COVID-19 Cases and Deaths in the US Reported to CDC: 
 
@@ -75,6 +75,11 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 <p>• `date`: the date when the data collected.
 <p>• `total_cases`: the amount to the cases diagnosed within the date.
 
+**PCE by State**
+<p>• `state`
+<p>• `year`: the year of which the PCE by date was calculated.
+<p>• `type`: major types of product.
+
 **Personal Income and Savings**
 <p>• `wages_and_salaries`: wages and salaries received from employers
 <p>• `supplements_to_wages_and_salaries`: supplemental payments received from employers
@@ -89,6 +94,8 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 <P>  From `COVID Cumulative Cases`, we combined the new case data frame and the cumulative case data frame together and seperate the time points into `month`, `day` and `year`. Then we created a new variable named `date` that rewrite the date into the form of `YYYY-MM-DD`.
 
 <P>  To compare the covid case data and the consumption data, we built a new data frame named `covid_seasonal` that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December). 
+
+<P>  From `PCE by State`, we renamed some variables,deleted some unneeded columns and use `pivot_longer` to tidy the dataframe. We added a `code` variable for each state, in convenience of making interactive maps. Then we joined the total and per capita dataframe, calculated the percent change of PCE each year using `lag` function.
 
 ## Exploratory Data Analysis
 

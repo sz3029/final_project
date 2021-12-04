@@ -422,7 +422,7 @@ div.tocify {
 <p><a href="https://www.bea.gov/data/consumer-spending/main" class="uri">https://www.bea.gov/data/consumer-spending/main</a></p>
 <p>
 <p>• Personal Consumption Expenditures by Major Type of Product and by Major Function, by State:</p>
-<p><a href="https://www.bea.gov/data/consumer-spending/state" class="uri">https://www.bea.gov/data/consumer-spending/state</a></p>
+<p><a href="https://apps.bea.gov/iTable/iTable.cfm?reqid=70&amp;step=1&amp;acrdn=7#reqid=70&amp;step=1&amp;acrdn=7" class="uri">https://apps.bea.gov/iTable/iTable.cfm?reqid=70&amp;step=1&amp;acrdn=7#reqid=70&amp;step=1&amp;acrdn=7</a></p>
 <p>
 <p>• Trends in Number of COVID-19 Cases and Deaths in the US Reported to CDC:</p>
 <p><a href="https://covid.cdc.gov/covid-data-tracker/#trends_dailycases" class="uri">https://covid.cdc.gov/covid-data-tracker/#trends_dailycases</a></p>
@@ -452,6 +452,13 @@ div.tocify {
 • <code>date</code>: the date when the data collected.
 <p>
 <p>• <code>total_cases</code>: the amount to the cases diagnosed within the date.</p>
+<strong>PCE by State</strong>
+<p>
+• <code>state</code>
+<p>
+• <code>year</code>: the year of which the PCE by date was calculated.
+<p>
+<p>• <code>type</code>: major types of product.</p>
 <strong>Personal Income and Savings</strong>
 <p>
 • <code>wages_and_salaries</code>: wages and salaries received from employers
@@ -472,6 +479,8 @@ div.tocify {
 <p>From <code>COVID Cumulative Cases</code>, we combined the new case data frame and the cumulative case data frame together and seperate the time points into <code>month</code>, <code>day</code> and <code>year</code>. Then we created a new variable named <code>date</code> that rewrite the date into the form of <code>YYYY-MM-DD</code>.</p>
 <P>
 <p>To compare the covid case data and the consumption data, we built a new data frame named <code>covid_seasonal</code> that reorder the covid case data by season (quarter 1 = January - March, quarter 2 = April - June, quarter 3 = July - September, quarter 4 = October - December).</p>
+<P>
+<p>From <code>PCE by State</code>, we renamed some variables,deleted some unneeded columns and use <code>pivot_longer</code> to tidy the dataframe. We added a <code>code</code> variable for each state, in convenience of making interactive maps. Then we joined the total and per capita dataframe, calculated the percent change of PCE each year using <code>lag</code> function.</p>
 </div>
 </div>
 <div id="exploratory-data-analysis" class="section level2">
