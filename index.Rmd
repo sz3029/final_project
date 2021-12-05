@@ -24,16 +24,16 @@ h1.title {
 
 # About the Project
 
+COVID-19 pandemic, which started in 2019, has been a great challenge for global public health. Moreover, it has significantly impacted the general society in many aspects, especially in global economics and personal expenses. As data scientists, we are trying to identify and understand the trends, and provide reference on personal spending for individuals through this project. 
 
+We utilized consumption expenditure/personal income and savings data retrieved from [U.S. Bureau of Economic Analysis](https://www.bea.gov/data), and Covid 19 data in the US from [Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#datatracker-home). We built interactive dashboards and visualizations for exploratory data analysis, and a regression model showing the changes in personal consumption expenditure pattern. 
 
 &nbsp;
 
 # Website Overview
 
 
-
-# Additional Information
-
+&nbsp;
 
 
 **Collaborators:**

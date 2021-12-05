@@ -1,6 +1,5 @@
 ---
 title: "Regression Model for Comsumption Prediction"
-author: "Shihui Zhu"
 output: 
   html_document:
     toc: true

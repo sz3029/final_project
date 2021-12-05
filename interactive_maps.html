@@ -41,6 +41,8 @@ window.FlexDashboardComponents = [];
 <link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
 <script src="shared/selectize/js/selectize.min.js"></script>
 <script src="shared/selectize/accessibility/js/selectize-plugin-a11y.min.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
 <style type="text/css">
 
 /*
@@ -2628,6 +2630,8 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
+<div id="section-personal-consumption-expenditures-by-state" class="section level1">
+<h1>Personal Consumption Expenditures by State</h1>
 <div id="section-column" class="section level2 sidebar">
 <h2 class="sidebar">Column</h2>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
@@ -2655,8 +2659,7 @@ window.FlexDashboardComponents.push({
 <h3>Select Year</h3>
 </label>
 <div>
-<select id="year_choice"><option value="2016">2016</option>
-<option value="2017">2017</option>
+<select id="year_choice"><option value="2017">2017</option>
 <option value="2018">2018</option>
 <option value="2019">2019</option>
 <option value="2020" selected>2020</option></select>
@@ -2687,28 +2690,67 @@ window.FlexDashboardComponents.push({
 <script type="application/json" data-for="type_choice" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
 </div>
+<div id="percent_change_choice" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="percent_change_choice-label">
+<label class="control-label" id="percent_change_choice-label" for="percent_change_choice"></label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="percent_change_choice" value="Crude"/>
+<span>Crude</span>
+</label>
 </div>
-<div id="section-column-1" class="section level2" data-width="650">
-<h2 data-width="650">Column</h2>
-<div id="section-chart-a" class="section level3">
-<h3>Chart A</h3>
+<div class="radio">
+<label>
+<input type="radio" name="percent_change_choice" value="Percent Change" checked="checked"/>
+<span>Percent Change</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div id="section-column-1" class="section level2 tabset">
+<h2 class="tabset">Column</h2>
+<div id="section-us-map" class="section level3">
+<h3>US Map</h3>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<p><div id="oute82e3edadacc0056" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
+</div>
+<div id="section-description" class="section level3">
+<h3>Description</h3>
+<p><strong>PCE by state</strong> is the state counterpart of the nation’s personal consumption expenditures (PCE). PCE by state measures the goods and services purchased by or on behalf of households and the net expenditures of nonprofit institutions serving households by state of residence for the 50 states and the District of Columbia. PCE by state reflects spending on activities that are attributable to the residents of a state, even when those activities take place outside of the state.</p>
+<p><strong>Per capita PCE by state</strong> measures average PCE spending per person in a state, and it is calculated as PCE in a state divided by the population of the state.</p>
+<p><strong>Relationship of PCE by state to national PCE.</strong> The U.S. PCE by state differs slightly from the PCE in the national accounts because PCE by state excludes the net expenditures abroad by U.S. residents, which consist of government and private employees’ expenditures abroad less personal remittances in kind to nonresidents. PCE by state, however, does include the travel expenditures abroad by U.S. residents.</p>
+<p>The PCE by state estimates were impacted by the response to the spread of COVID-19, as governments issued and lifted “stay-at-home” orders. This led to rapid changes in demand and consumers canceled, restricted, or redirected their spending.</p>
+<p>State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia.</p>
+<p>PCE increased in only four states, Idaho, Utah, Montana, and Arkansas.</p>
+<p>Across all states and the District of Columbia, per capita PCE was $42,635. Per capita PCE by state ranged from a high of $52,001 in Massachusetts to a low of $32,358 in Mississippi. Per capita PCE in the District of Columbia was $65,169.</p>
+<p>Expenditures on food services and accommodations, recreation services, and health care were the leading contributors to the decrease nationally:</p>
+<p>• Food services and accommodations decreased 20.5 percent nationally and was the largest contributor to decreases in the District of Columbia and 27 states including Hawaii and New York; it was the second largest contributor to decreases in 11 states.</p>
+<p>• Recreation services decreased 28.6 percent nationally and was the largest contributor to decreases in 4 states including California.</p>
+<p>• Health care decreased 6.1 percent nationally and was the largest contributor to decreases in 12 states including Alaska.</p>
+</div>
+</div>
+</div>
+<div id="section-covid-cases-by-state" class="section level1">
+<h1>Covid Cases by State</h1>
+<div id="section-column-2" class="section level2 sidebar">
+<h2 class="sidebar">Column</h2>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
 </div>
-</div>
-<div id="section-column-2" class="section level2" data-width="350">
-<h2 data-width="350">Column</h2>
-<div id="section-chart-b" class="section level3">
-<h3>Chart B</h3>
+<div id="section-column-3" class="section level2 tabset">
+<h2 class="tabset">Column</h2>
+<div id="section-us-map-1" class="section level3">
+<h3>US Map</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
 </div>
-<div id="section-chart-c" class="section level3">
-<h3>Chart C</h3>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
+<div id="section-description-1" class="section level3">
+<h3>Description</h3>
 </div>
 </div>
 </div>

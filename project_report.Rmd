@@ -107,10 +107,16 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 
 ### US Covid 19
 
-<p> The dataset of Covid 19 in the United States begins from January 17, 2020. In this part we visualized the data based on location and time. 
+<p> The dataset of Covid 19 in the United States begins from January 17, 2020. With cumulative number of postive cases keep rising, the first peak of new cases occurred in the summer of 2020, and the largest peak happened at the beginning of 2021.
 
 <center>
 <img src="./images/covid1.png" style="width:60%" class="center">
+</center>
+
+If analyze based on states, California, Texas, and Floida has the greatest number of total positive cases. However, considering the population factor, states in central part of the US tend to have higher case rate (postive number of cases per 100k people), with North Dakota being the one with the highest rate. 
+
+<center>
+<img src="./images/covid3.png" style="width:60%" class="center">
 </center>
 
 ### Consumption Expenditure

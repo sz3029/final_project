@@ -175,9 +175,12 @@ daily_fig %>%
 Row {data-height=350}
 -----------------------------------------------------------------------
 
-### Comment
+### Comments
 The dataset of Covid 19 in the United States begins from January 17, 2020. Considering the differences in population of each state, the map displays the total number of cases per 100k people in all states of the US in 2020 and 2021.
 
+The first peak of number of positive cases in the US occurred around April 2020. The number goes up and down and reached to the highest value at the beginning of 2021. The cumulative number of cases keep rising ever since the pandemic started.
+
+Currently California has the most number of positive cases among all states. If analyze based on population, North Dakota has the largest case rate in 2020 and 2021. From the map of case rate, we can see states from the central part of US tend to have larger value of case rate although the total number of cases are not higher than some other states with larger population. 
 
 ### Total Number of cases by state
 
