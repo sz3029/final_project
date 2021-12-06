@@ -11,7 +11,7 @@ navbar:
           href: consumption_timely_trend.html
     - text: "Regression Analysis"
       href: linear_model.html
-    - text: "Interactive Maps"
+    - text: "Regional Data"
       href:  https://bshiny.shinyapps.io/interactive_maps/
   right:
     - text: "Project Report"

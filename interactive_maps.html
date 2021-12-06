@@ -8,9 +8,9 @@
 
 
 
-<title>Interative Maps</title>
+<title>Regional Data</title>
 
-<meta property="og:title" content="Interative Maps" />
+<meta property="og:title" content="Regional Data" />
 
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
@@ -820,7 +820,7 @@ html, body {
   
 </span>
 <span class="navbar-brand">
-  Interative Maps
+  Regional Data
   <span class="navbar-author">
         </span>
 </span>
@@ -2632,8 +2632,8 @@ window.FlexDashboardComponents.push({
 </div>
 <div id="section-personal-consumption-expenditures-by-state" class="section level1">
 <h1>Personal Consumption Expenditures by State</h1>
-<div id="section-column" class="section level2 sidebar">
-<h2 class="sidebar">Column</h2>
+<div id="section-column" class="section level2 sidebar" data-width="200">
+<h2 class="sidebar" data-width="200">Column</h2>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
@@ -2656,7 +2656,7 @@ window.FlexDashboardComponents.push({
 </div>
 <div class="form-group shiny-input-container">
 <label class="control-label" id="year_choice-label" for="year_choice">
-<h3>Select Year</h3>
+<h4>Select Year</h4>
 </label>
 <div>
 <select id="year_choice"><option value="2017">2017</option>
@@ -2668,7 +2668,7 @@ window.FlexDashboardComponents.push({
 </div>
 <div class="form-group shiny-input-container">
 <label class="control-label" id="type_choice-label" for="type_choice">
-<h3>Select Type of Product</h3>
+<h4>Select Type of Product</h4>
 </label>
 <div>
 <select id="type_choice"><option value="Total" selected>Total</option>
@@ -2708,22 +2708,34 @@ window.FlexDashboardComponents.push({
 </div>
 </div>
 </div>
-<div id="section-column-1" class="section level2 tabset">
-<h2 class="tabset">Column</h2>
+<div id="section-column-1" class="section level2 tabset" data-width="600">
+<h2 class="tabset" data-width="600">Column</h2>
 <div id="section-us-map" class="section level3">
 <h3>US Map</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><div id="oute82e3edadacc0056" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
+<p><div id="out756b403b88b54f0b" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
 </div>
+<div id="section-pce-with-covid-by-state" class="section level3">
+<h3>PCE with Covid by State</h3>
+<p>Generally, there is an apparent negative correlation between per capita PCE and Covid Rate.</p>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<p><div id="outb2002dec83e4bcc0" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
+</div>
+</div>
+<div id="section-column-2" class="section level2" data-width="400">
+<h2 data-width="400">Column</h2>
 <div id="section-description" class="section level3">
 <h3>Description</h3>
 <p><strong>PCE by state</strong> is the state counterpart of the nation’s personal consumption expenditures (PCE). PCE by state measures the goods and services purchased by or on behalf of households and the net expenditures of nonprofit institutions serving households by state of residence for the 50 states and the District of Columbia. PCE by state reflects spending on activities that are attributable to the residents of a state, even when those activities take place outside of the state.</p>
 <p><strong>Per capita PCE by state</strong> measures average PCE spending per person in a state, and it is calculated as PCE in a state divided by the population of the state.</p>
 <p><strong>Relationship of PCE by state to national PCE.</strong> The U.S. PCE by state differs slightly from the PCE in the national accounts because PCE by state excludes the net expenditures abroad by U.S. residents, which consist of government and private employees’ expenditures abroad less personal remittances in kind to nonresidents. PCE by state, however, does include the travel expenditures abroad by U.S. residents.</p>
+<p><br /></p>
 <p>The PCE by state estimates were impacted by the response to the spread of COVID-19, as governments issued and lifted “stay-at-home” orders. This led to rapid changes in demand and consumers canceled, restricted, or redirected their spending.</p>
-<p>State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia.</p>
+<p>State PCE decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia.</p>
 <p>PCE increased in only four states, Idaho, Utah, Montana, and Arkansas.</p>
 <p>Across all states and the District of Columbia, per capita PCE was $42,635. Per capita PCE by state ranged from a high of $52,001 in Massachusetts to a low of $32,358 in Mississippi. Per capita PCE in the District of Columbia was $65,169.</p>
 <p>Expenditures on food services and accommodations, recreation services, and health care were the leading contributors to the decrease nationally:</p>
@@ -2733,21 +2745,92 @@ window.FlexDashboardComponents.push({
 </div>
 </div>
 </div>
-<div id="section-covid-cases-by-state" class="section level1">
-<h1>Covid Cases by State</h1>
-<div id="section-column-2" class="section level2 sidebar">
+<div id="section-trend-by-states" class="section level1">
+<h1>Trend by States</h1>
+<div id="section-column-3" class="section level2 sidebar">
 <h2 class="sidebar">Column</h2>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
+<div class="form-group shiny-input-container">
+<label class="control-label" id="state_choice-label" for="state_choice">
+<h3>Select State</h3>
+</label>
+<div>
+<select id="state_choice"><option value="Alabama">Alabama</option>
+<option value="Alaska">Alaska</option>
+<option value="Arizona">Arizona</option>
+<option value="Arkansas">Arkansas</option>
+<option value="California">California</option>
+<option value="Colorado">Colorado</option>
+<option value="Connecticut">Connecticut</option>
+<option value="Delaware">Delaware</option>
+<option value="District of Columbia">District of Columbia</option>
+<option value="Florida">Florida</option>
+<option value="Georgia">Georgia</option>
+<option value="Hawaii">Hawaii</option>
+<option value="Idaho">Idaho</option>
+<option value="Illinois">Illinois</option>
+<option value="Indiana">Indiana</option>
+<option value="Iowa">Iowa</option>
+<option value="Kansas">Kansas</option>
+<option value="Kentucky">Kentucky</option>
+<option value="Louisiana">Louisiana</option>
+<option value="Maine">Maine</option>
+<option value="Maryland">Maryland</option>
+<option value="Massachusetts">Massachusetts</option>
+<option value="Michigan">Michigan</option>
+<option value="Minnesota">Minnesota</option>
+<option value="Mississippi">Mississippi</option>
+<option value="Missouri">Missouri</option>
+<option value="Montana">Montana</option>
+<option value="Nebraska">Nebraska</option>
+<option value="Nevada">Nevada</option>
+<option value="New Hampshire">New Hampshire</option>
+<option value="New Jersey">New Jersey</option>
+<option value="New Mexico">New Mexico</option>
+<option value="New York" selected>New York</option>
+<option value="North Carolina">North Carolina</option>
+<option value="North Dakota">North Dakota</option>
+<option value="Ohio">Ohio</option>
+<option value="Oklahoma">Oklahoma</option>
+<option value="Oregon">Oregon</option>
+<option value="Pennsylvania">Pennsylvania</option>
+<option value="Rhode Island">Rhode Island</option>
+<option value="South Carolina">South Carolina</option>
+<option value="South Dakota">South Dakota</option>
+<option value="Tennessee">Tennessee</option>
+<option value="Texas">Texas</option>
+<option value="Utah">Utah</option>
+<option value="Vermont">Vermont</option>
+<option value="Virginia">Virginia</option>
+<option value="Washington">Washington</option>
+<option value="West Virginia">West Virginia</option>
+<option value="Wisconsin">Wisconsin</option>
+<option value="Wyoming">Wyoming</option></select>
+<script type="application/json" data-for="state_choice" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
-<div id="section-column-3" class="section level2 tabset">
+</div>
+<div class="form-group shiny-input-container">
+<label class="control-label" id="major_type_choice-label" for="major_type_choice">
+<h3>Select Major Type</h3>
+</label>
+<div>
+<select id="major_type_choice"><option value="Durable Goods" selected>Durable Goods</option>
+<option value="Nondurable Goods">Nondurable Goods</option>
+<option value="Services">Services</option></select>
+<script type="application/json" data-for="major_type_choice" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+</div>
+</div>
+</div>
+<div id="section-column-4" class="section level2 tabset">
 <h2 class="tabset">Column</h2>
-<div id="section-us-map-1" class="section level3">
-<h3>US Map</h3>
+<div id="section-line-chart" class="section level3">
+<h3>Line Chart</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
+<p><div id="outb595ab6498591ada" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
 </div>
 <div id="section-description-1" class="section level3">
 <h3>Description</h3>
