@@ -24,9 +24,12 @@ h1.title {
 
 # About the Project
 
+Whether you're picking up coffee, paying for cellphone service, or buying a car, that's consumer spending. Spending by consumers (or on their behalf, like an insurance company paying part of your hospital bill) is a big force in the nation's economic growth. Consumer spending is a key component of gross domestic product. Spending data for the nation and each state help businesses predict consumer behavior and make decisions about hiring and investing.
+
 COVID-19 pandemic, which started in 2019, has been a great challenge for global public health. Moreover, it has significantly impacted the general society in many aspects, especially in global economics and personal expenses. As data scientists, we are trying to identify and understand the trends, and provide reference on personal spending for individuals through this project. 
 
 We utilized consumption expenditure/personal income and savings data retrieved from [U.S. Bureau of Economic Analysis](https://www.bea.gov/data), and Covid 19 data in the US from [Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#datatracker-home). We built interactive dashboards and visualizations for exploratory data analysis, and a regression model showing the changes in personal consumption expenditure pattern. 
+
 
 &nbsp;
 

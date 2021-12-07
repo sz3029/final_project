@@ -314,9 +314,10 @@ Column {data-width=400}
 -----------------------------------------------------------------------
 
 ### Description
-**PCE by state** is the state counterpart of the nation's personal consumption expenditures (PCE). PCE by state measures the goods and services purchased by or on behalf of households and the net expenditures of nonprofit institutions serving households by state of residence for the 50 states and the District of Columbia. PCE by state reflects spending on activities that are attributable to the residents of a state, even when those activities take place outside of the state.
 
-**Per capita PCE by state** measures average PCE spending per person in a state, and it is calculated as PCE in a state divided by the population of the state.
+**PCE by state** (millions of current dollars) is the state counterpart of the nation's personal consumption expenditures (PCE). PCE by state measures the goods and services purchased by or on behalf of households and the net expenditures of nonprofit institutions serving households by state of residence for the 50 states and the District of Columbia. PCE by state reflects spending on activities that are attributable to the residents of a state, even when those activities take place outside of the state.
+
+**Per capita PCE by state** (dollars) measures average PCE spending per person in a state, and it is calculated as PCE in a state divided by the population of the state.
 
 **Relationship of PCE by state to national PCE.** The U.S. PCE by state differs slightly from the PCE in the national accounts because PCE by state excludes the net expenditures abroad by U.S. residents, which consist of government and private employees’ expenditures abroad less personal remittances in kind to nonresidents. PCE by state, however, does include the travel expenditures abroad by U.S. residents.
 
@@ -326,9 +327,9 @@ The PCE by state estimates were impacted by the response to the spread of COVID-
 
 State PCE decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia. 
 
-PCE increased in only four states, Idaho, Utah, Montana, and Arkansas.
-
 Across all states and the District of Columbia, per capita PCE was $42,635. Per capita PCE by state ranged from a high of $52,001 in Massachusetts to a low of $32,358 in Mississippi. Per capita PCE in the District of Columbia was $65,169. 
+
+PCE increased in only four states, Idaho, Utah, Montana, and Arkansas. Nationally, expenditures on housing and utilities increased 3.8 percent and was the leading contributor to the increases in Idaho, Utah, and Montana. 
 
 Expenditures on food services and accommodations, recreation services, and health care were the leading contributors to the decrease nationally:
 
@@ -338,6 +339,9 @@ Expenditures on food services and accommodations, recreation services, and healt
 
 • Health care decreased 6.1 percent nationally and was the largest contributor to decreases in 12 states including Alaska.
 
+In 2019, expenditures on motor vehicles and parts decreased or remained flat in most of the states; while in 2020, the expenditures increased significantly in most of the states, with the highest growing rate 16.2% in Arizona.
+
+Expenditures on furnishings and durable household equipment, recreational goods and vehicles, and food and beverages purchased for off-premises consumption all increased significantly compared to 2019.
 
 
 Trend by States
@@ -362,7 +366,7 @@ selectInput(
   "state_choice",
   label = h3("Select State"),
   choices = state_choices,
-  selected = "New York"
+  selected = "Alabama"
 )
 
 selectInput(
@@ -391,7 +395,7 @@ renderPlotly({
     ) %>% 
     group_by(type) %>% 
     plot_ly(x = ~year) %>% 
-    add_trace(y = ~pce, type = "scatter", mode = "lines", yaixs = "y", color = ~type, colorscale = "viridis") %>% 
+    add_trace(y = ~pce, type = "scatter", mode = "lines", yaixs = "y", color = ~type) %>% 
     layout(title = "PCE Trend by States",
            xaxis = list(title = "Year", dtick = 1),
            yaxis = list(title = "PCE", side = "left"),
@@ -401,5 +405,31 @@ renderPlotly({
 })
 ```
 
-### Description
+### Bar Chart
+
+```{r}
+renderPlotly({
+  
+  state_df %>% 
+    filter(
+      state == input[["state_choice"]],
+      type != "Total",
+      major_type == input[["major_type_choice"]],
+      t_p == "Total",
+      if_change == "Percent Change",
+      year == "2019" | year == "2020"
+    ) %>% 
+    mutate(year = factor(year)) %>% 
+    plot_ly() %>% 
+    add_bars(
+      x = ~type,
+      y = ~pce,
+      color = ~year,
+      alpha = .3,
+      colors = c("black", "grey")
+    ) %>% 
+    layout(barmode = "overlay")
+  
+})
+```
 
