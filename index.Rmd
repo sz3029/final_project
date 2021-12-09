@@ -41,9 +41,9 @@ We utilized consumption expenditure/personal income and savings data retrieved f
 
 **Collaborators:**
 <ul>
-<li>[Yujin Zhang]()</li>
-<li>[Yijing Tao]()</li>
-<li>[Jibei Zheng]()</li>
-<li>[Shihui Zhu]()</li>
-<li>[Anyu Zhu]()</li>
+<li>[Yujin Zhang](https://www.linkedin.com/in/yujin-zhang-1715bb223/)</li>
+<li>[Yijing Tao](https://www.linkedin.com/in/yijing-tao-1a385220b/)</li>
+<li>[Jibei Zheng](https://www.linkedin.com/in/jibeizheng/)</li>
+<li>[Shihui Zhu](https://www.linkedin.com/in/shihui-zhu-319266173/)</li>
+<li>[Anyu Zhu](https://www.linkedin.com/in/anyu-zhu-81a241154/)</li>
 </ul>

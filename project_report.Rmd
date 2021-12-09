@@ -11,15 +11,23 @@ output:
 
 Ever since the spring of 2020, the COVID-19 pandemic has drastically altered the everyday lives of billions of people. Besides the way of living and working, the pandemic is slowly changing our way of consumption. 
 
-As people were working from home and went out less due to restrictions on gatherings and social activities, we infer there might be a collapse in consumption mainly in the services sector, while consumption in indoor entertainment, household supplies etc. may increase as a result of the more time at home. 
+As people were working from home and went out less due to restrictions on gatherings and social activities, we infer there might be a collapse in consumption mainly in the services sector, while consumption in indoor entertainment, household supplies etc. may increase as a result of the more time at home. We can get a brief sense of how our behaviors of consumption is changing from the changes in Engel Coefficient ever since the pandemic started. 
+
+<center>
+<img src="./images/engel.png" style="width:60%" class="center">
+</center>
 
 To further explore the changes of consumer behaviors caused by the pandemic, our group studied joint data collected from Bureau of Economic Analysis, and Center for Disease Control and Prevention.
+
+&nbsp;
 
 ## Related Work
 
 1."The decline and recovery of consumer spending in the US" Brookings, December 14, 2020  [link](https://www.brookings.edu/blog/future-development/2020/12/14/the-decline-and-recovery-of-consumer-spending-in-the-us/)\
 
 2."A spring in consumers’ steps: Americans prepare to get back to their spending ways"Deloitte, June 28, 2021 [link](https://www2.deloitte.com/us/en/insights/economy/us-consumer-spending-after-covid.html)
+
+&nbsp;
 
 ## Research Design
 
@@ -40,6 +48,8 @@ Initial Hypothesis: Covid 19 changes the value/structure of consumption expendit
 ### New Questions Identified During Analysis
 
 PCE is also affected by the trend of personal incomes, and government’s laws to support and sustain businesses and individuals through the pandemic. In addition, we examined how the pandemic has impacted personal incomes and savings in U.S., and whether they matched the changing of PCE. In this process, we can obtain more comprehensive understanding of how the pandemic has influenced people’s economic conditions and behaviors in different aspects.
+
+&nbsp;
 
 ## Data
 
@@ -97,6 +107,8 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 
 <P>  From `PCE by State`, we renamed some variables,deleted some unneeded columns and use `pivot_longer` to tidy the dataframe. We added a `code` variable for each state, in convenience of making interactive maps. Then we joined the total and per capita dataframe, calculated the percent change of PCE each year using `lag` function.
 
+&nbsp;
+
 ## Exploratory Data Analysis
 
 <p> The lowest value of consumption expenditure actually did not happen as expected at the peak of the pandemic but at the second quarter of 2020, when cases just start to rise. The expenditures of services experienced a steeper change than expenditures of goods due to the shutdown of businesses, the quarantine and the lock down policies etc.Even though cases keep rising, as restrictions keep lifting, the rate of vaccination keep rising, economics keep recovering, people's consumption expenditure grows steadly after the third quarter of 2020. Although the severity of Covid 19 reached to the first peak in the fourth quarter of 2020, it has limited effect on people's consumption behavior. The total consumption expenditure is even larger by now comparing with that before the pandemic. This can be partially explained by inflation and government’s stimulus plan.
@@ -110,28 +122,20 @@ https://covid.cdc.gov/covid-data-tracker/#trends_dailycases
 <p> The dataset of Covid 19 in the United States begins from January 17, 2020. With cumulative number of postive cases keep rising, the first peak of new cases occurred in the summer of 2020, and the largest peak happened at the beginning of 2021.
 
 <center>
-<img src="./images/covid1.png" style="width:60%" class="center">
+<img src="./images/covid.png" style="width:60%" class="center">
 </center>
 
-If analyze based on states, California, Texas, and Floida has the greatest number of total positive cases. However, considering the population factor, states in central part of the US tend to have higher case rate (postive number of cases per 100k people), with North Dakota being the one with the highest rate. 
-
-<center>
-<img src="./images/covid3.png" style="width:60%" class="center">
-</center>
+If analyze based on states, California, Texas, and Floida has the greatest number of total positive cases. However, considering the population factor, states in central part of the US tend to have higher case rate (positive number of cases per 100k people), with North Dakota being the one with the highest rate. 
 
 ### Consumption Expenditure
 
 <p> Durable goods are divided into four categories. Consumption in `Recreational goods and vehicles` and `furnishings and durable household equipment` did not experience significant drop in the second quarter of 2020 like the other two. Changes in working mode and more time spent at home resulted in people's growing demand for household equipment and in-door recreational equipments. 
 
-<center>
-<img src="./images/eda_2.png" style="width:60%" class="center">
-</center>
-
 Nondurable goods are divided into four categories. The proportion of consumption expenditure on food/beverages and other nondurable goods exceeds much than that of clothing/footware and energy goods all time. Even when Covid outbroke, unlike the changes in consumption of clothing/footware and energy goods, that in food/beverages and other nondurable goods is not experiencing reduction in the pandemic but increases steadly. 
 
-<center>
-<img src="./images/eda_3.png" style="width:60%" class="center">
-</center>
+```{r, echo=FALSE,out.width="50%", out.height="50%",fig.cap="PCE by function",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("./images/eda_2.png","./images/eda_3.png"))
+``` 
 
 Expenditures in household services are divided into seven categories. Only the `housing and utilities`(which mainly includes housing rental and the fees for the resources at home such as electricity and gas) and `financial service and insurance` (which mainly includes life and health insurance and commissions in banks) were not reduced but even increased in the pandemic.
 Expenditures of outdoor services like `Transportation`, `Food service and accomodation`, and `Recreation service` reduced significantly in the second quarter of 2020 
@@ -140,6 +144,8 @@ due to nationwide quarantine policies. The total consumption of transportation a
 <center>
 <img src="./images/eda_4.png" style="width:60%" class="center">
 </center>
+
+&nbsp;
 
 ## Regression Analysis
 
@@ -153,7 +159,30 @@ due to nationwide quarantine policies. The total consumption of transportation a
 
 <p> Therefore, there is evidence showing that the COVID-19 pandemic has affected people's spending patterns. 
 
+&nbsp;
 
 ## Discussion
 
+First, we performed a series of exploratory analyses on COVID-19 cases and expenditure data. We visualized the cases of COVID-19 in the U.S. from 2020 up to now. The bar plot reveals that the first peak of the positive cases in the U.S. occurred in April 2020, and it kept rising in the entire pandemic period. We then visualized the case number per state on a map plot, from which we found that California has the greatest number of positive cases, whereas North Dakota has the largest case rate. Our observation showed that some central states also have a relatively large case rate compared to other states.
+
+To understand the consumption expenditure components, we then looked at the goods and services consumed at the beginning of and during the pandemic (from the year 2019 to 2021). We observed that the percentages of both durable and nondurable goods dropped significantly in the second quarter of 2020, but it bounced back to normal level afterward. It revealed a temporary influence of pandemic on consumption expenditure, although which effect seemed to dampen over several months. 
+
+Afterward, to verify our hypothesis that the COVID-19 did affect the spending pattern, we proposed a model based on population income to predict the personal consumption expenditure (PCE). The model is built using pre-pandemic data since 1967 and tested on the year 2019 and 2020 to illustrate the difference in the predictions. We then performed statistical tests via bootstrapping samples and conclude that there is a significant difference between our model prediction of PCE for the year 2019 and the year 2020. This indicated that people’s spending patterns have changed during the pandemic, which cannot be fully explained by variations in their incomes. Therefore, there is evidence showing that the COVID-19 pandemic has affected people’s spending patterns.
+
+Then we used `shiny` to analyze the PCE patterns by state and year. From the map we found that the cases per state were inversely proportional to the per state expenditure i.e., people tended to spend less among states where the pandemic was more severe. Overall, we concluded that the COVID-19 pandemic has a negative impact on people’s expenditure patterns in the U.S.
+
+### Limitations
+
+There are some limitations in our study: the personal consumption expenditure (PCE) data retrieved from BEA is on a quarterly basis, so we only have less than 30 observations after the covid outbreak. Thus, the dataset is not sufficient to model the consumption expenditure in the pandemic period. To address this problem, we built a regression model of consumption expenditure based on personal savings data from 1967 and test the significance of the changes between the predicted value in 2020 and the actual value. What’s more, since the data is given quarterly, some abnormal changes might be impossible to observe. As for PCE by state, we could only achieve data until 2020, so the analysis of reconciliation and prediction is limited.
+
+### Future Implication
+
+Based on analysis of consumption structure, we observed that the consumer behaviors are gradually returning to the level before the COVID. Even though life is getting back to normal, the new variant Omicron is now coming, and several related cases have been confirmed in the United States. The future is hard to predict, we are still uncertain what is waiting for us in the coming new year. There might be another significant wave of changes economic changes due to the new outbreak. Thus, the changing pattern we analyzed can be used as reference for residents and businesses to get better prepared for future changes.
+
+&nbsp;
+
 ## Conclusions
+
+Consumer spending is the key component of quarterly gross domestic product. Spending data for the nation and each state help businesses predict consumer behavior and make decisions about hiring and investing. These statistics also help policymakers and researchers understand the interplay between Americans’ incomes, spending, and saving. The expenditure pattern is presumably affected by domestic income, and other social or environmental factors. Our study explored the influence of the pandemic on expenditure to understand how public health factor affects spending behaviors.
+
+Overall, the findings for the changes in consumption expenditure during the pandemic is consistent with what we had originally hypothesized. We expected there was changes in the value as well as the structure of the consumption of goods and services due to covid pandemic. More specifically, we found that consumption expenditures of services experienced a steeper change than expenditures of goods due to the shutdown of businesses, the quarantine, and the lock down policies etc.The regression model we built for consumption prediction demonstrated the significant difference of PEC for year 2019 and 2020 and confirmed the hypothesis that covid pandemic had affected people’s spending pattern.
