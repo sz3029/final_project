@@ -1,10 +1,69 @@
 ---
-title: "Interative Maps"
-output: 
+title: "Regional Data"
+output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
 runtime: shiny
+resource_files:
+- data/state_covid_separate/data_table_for_total_cases__alabama.csv
+- data/state_covid_separate/data_table_for_total_cases__alaska.csv
+- data/state_covid_separate/data_table_for_total_cases__arizona.csv
+- data/state_covid_separate/data_table_for_total_cases__arkansas.csv
+- data/state_covid_separate/data_table_for_total_cases__california.csv
+- data/state_covid_separate/data_table_for_total_cases__colorado.csv
+- data/state_covid_separate/data_table_for_total_cases__connecticut.csv
+- data/state_covid_separate/data_table_for_total_cases__delaware.csv
+- data/state_covid_separate/data_table_for_total_cases__district_of_columbia.csv
+- data/state_covid_separate/data_table_for_total_cases__florida.csv
+- data/state_covid_separate/data_table_for_total_cases__georgia.csv
+- data/state_covid_separate/data_table_for_total_cases__guam.csv
+- data/state_covid_separate/data_table_for_total_cases__hawaii.csv
+- data/state_covid_separate/data_table_for_total_cases__idaho.csv
+- data/state_covid_separate/data_table_for_total_cases__illinois.csv
+- data/state_covid_separate/data_table_for_total_cases__indiana.csv
+- data/state_covid_separate/data_table_for_total_cases__iowa.csv
+- data/state_covid_separate/data_table_for_total_cases__kansas.csv
+- data/state_covid_separate/data_table_for_total_cases__kentucky.csv
+- data/state_covid_separate/data_table_for_total_cases__louisiana.csv
+- data/state_covid_separate/data_table_for_total_cases__maine.csv
+- data/state_covid_separate/data_table_for_total_cases__maryland.csv
+- data/state_covid_separate/data_table_for_total_cases__massachusetts.csv
+- data/state_covid_separate/data_table_for_total_cases__michigan.csv
+- data/state_covid_separate/data_table_for_total_cases__minnesota.csv
+- data/state_covid_separate/data_table_for_total_cases__mississippi.csv
+- data/state_covid_separate/data_table_for_total_cases__missouri.csv
+- data/state_covid_separate/data_table_for_total_cases__montana.csv
+- data/state_covid_separate/data_table_for_total_cases__nebraska.csv
+- data/state_covid_separate/data_table_for_total_cases__nevada.csv
+- data/state_covid_separate/data_table_for_total_cases__new_hampshire.csv
+- data/state_covid_separate/data_table_for_total_cases__new_jersey.csv
+- data/state_covid_separate/data_table_for_total_cases__new_mexico.csv
+- data/state_covid_separate/data_table_for_total_cases__new_york_(excludes_nyc)_.csv
+- data/state_covid_separate/data_table_for_total_cases__new_york_city_.csv
+- data/state_covid_separate/data_table_for_total_cases__north_carolina.csv
+- data/state_covid_separate/data_table_for_total_cases__north_dakota.csv
+- data/state_covid_separate/data_table_for_total_cases__northern_mariana_islands.csv
+- data/state_covid_separate/data_table_for_total_cases__ohio.csv
+- data/state_covid_separate/data_table_for_total_cases__oklahoma.csv
+- data/state_covid_separate/data_table_for_total_cases__oregon.csv
+- data/state_covid_separate/data_table_for_total_cases__palau.csv
+- data/state_covid_separate/data_table_for_total_cases__pennsylvania.csv
+- data/state_covid_separate/data_table_for_total_cases__puerto_rico.csv
+- data/state_covid_separate/data_table_for_total_cases__republic_of_marshall_islands.csv
+- data/state_covid_separate/data_table_for_total_cases__rhode_island.csv
+- data/state_covid_separate/data_table_for_total_cases__south_carolina.csv
+- data/state_covid_separate/data_table_for_total_cases__south_dakota.csv
+- data/state_covid_separate/data_table_for_total_cases__tennessee.csv
+- data/state_covid_separate/data_table_for_total_cases__texas.csv
+- data/state_covid_separate/data_table_for_total_cases__utah.csv
+- data/state_covid_separate/data_table_for_total_cases__vermont.csv
+- data/state_covid_separate/data_table_for_total_cases__virgin_islands.csv
+- data/state_covid_separate/data_table_for_total_cases__virginia.csv
+- data/state_covid_separate/data_table_for_total_cases__washington.csv
+- data/state_covid_separate/data_table_for_total_cases__west_virginia.csv
+- data/state_covid_separate/data_table_for_total_cases__wisconsin.csv
+- data/state_covid_separate/data_table_for_total_cases__wyoming.csv
 ---
 
 ```{r setup, include=FALSE}
@@ -16,6 +75,7 @@ library(plotly)
 
 
 ```{r data_import, warning=FALSE}
+#load data for pce by states
 total_df =
   read_csv("data/pce_by_state/total.csv", skip = 4) %>% 
   drop_na() %>% 
@@ -73,7 +133,59 @@ state_df =
 
 state_df = 
   left_join(state_df, postal_code, by = "state") %>% 
-  mutate(text = paste(state, "\n", round(pce, digit = 1)))
+  mutate(
+    text = paste(state, "\n", round(pce, digit = 1)),
+    major_type = case_when(
+      type == "Total" ~ "Total",
+      type %in% c("Motor vehicles and parts", 
+                  "Furnishings and durable household equipment",
+                  "Recreational goods and vehicles",
+                  "Other durable goods") ~ "Durable Goods",
+      type %in% c("Food and beverages purchased for off-premises consumption",
+                  "Clothing and footwear",
+                  "Gasoline and other energy goods",
+                  "Other nondurable goods") ~ "Nondurable Goods",
+      type %in% c("Housing and utilities",
+                  "Health care",
+                  "Transportation services",
+                  "Recreation services",
+                  "Food services and accommodations",
+                  "Financial services and insurance",
+                  "Other services") ~ "Services"
+    )
+  )
+
+#load data for covid by states
+read_data_function = function(file_df) {
+  
+  state_df2 = 
+    read_csv(file_df, skip = 2)
+  
+  return(state_df2)
+}
+# create a data frame containing all participants
+state_2020 =
+  tibble(
+    files = list.files("./data/state_covid_separate")
+  ) %>% 
+  mutate(
+    path = map(.x = files, ~paste("./data/state_covid_separate", ., sep = "/"))
+  ) %>%                                                             # add path
+  mutate(
+    observations = map(path, read_data_function))
+
+state_2020_tidy =
+  state_2020 %>% 
+  unnest(cols = "observations") %>% 
+  janitor::clean_names() %>% 
+  filter(date == "Dec 31 2020") %>%
+  select(state, total_cases, total_case_rate_per_100k)
+
+covid_state_df = left_join(state_2020_tidy, postal_code, by = "state") %>%
+  drop_na()
+
+jointly_df = 
+  left_join(state_df, covid_state_df, by = c("state", "code"))
 
 g = list(
   scope = 'usa',
@@ -85,7 +197,7 @@ g = list(
 Personal Consumption Expenditures by State
 ===================================== 
 
-Column {.sidebar}
+Column {.sidebar data-width=200}
 -----------------------------------------------------------------------
 
 ```{r for_sidebar}
@@ -109,14 +221,14 @@ radioButtons(
 
 selectInput(
   "year_choice",
-  label = h3("Select Year"),
+  label = h4("Select Year"),
   choices = year_choices,
   selected = "2020"
 )
 
 selectInput(
   "type_choice",
-  label = h3("Select Type of Product"),
+  label = h4("Select Type of Product"),
   choices = type_choices,
   selected = "Total"
 )
@@ -129,7 +241,7 @@ radioButtons(
 )
 ```
 
-Column {.tabset}
+Column {.tabset data-width=600}
 -----------------------------------------------------------------------
 
 ### US Map
@@ -171,20 +283,53 @@ renderPlotly({
 })
 ```
 
-### Description
-**PCE by state** is the state counterpart of the nation's personal consumption expenditures (PCE). PCE by state measures the goods and services purchased by or on behalf of households and the net expenditures of nonprofit institutions serving households by state of residence for the 50 states and the District of Columbia. PCE by state reflects spending on activities that are attributable to the residents of a state, even when those activities take place outside of the state.
 
-**Per capita PCE by state** measures average PCE spending per person in a state, and it is calculated as PCE in a state divided by the population of the state.
+### PCE with Covid by State
+
+Generally, there is an apparent negative correlation between per capita PCE and Covid Rate.
+
+```{r}
+renderPlotly({
+  
+  jointly_df %>% 
+    filter(type == "Total", t_p == "Per Capita", year == 2020, if_change == "Crude") %>% 
+    arrange(total_case_rate_per_100k) %>% 
+    mutate(state = fct_reorder(state, total_case_rate_per_100k)) %>% 
+    plot_ly(x = ~state) %>% 
+    add_trace(y = ~pce, type = "scatter", mode = "lines",name = "Per Capita PCE", yaixs = "y") %>% 
+    add_trace(y = ~total_case_rate_per_100k, type = "bar", name = "Covid Cases(per 100k)", 
+              yaxis = "y2", opacity = 0.6, marker = list(color = 'rgb(158,202,225)'))  %>% 
+    layout(title = "Per Capita PCE with Covid Cases, 2020",
+           xaxis = list(title = "State"),
+           yaxis = list(title = "PCE", side = "left"),
+           yaxis2 = list(title = "Covid Cases Rate", side = "right", overlaying = "y"),
+           showlegend = TRUE,
+           legend = list(xanchor = "center", x = 0.93))
+  
+})
+```
+
+
+Column {data-width=400}
+-----------------------------------------------------------------------
+
+### Description
+
+**PCE by state** (millions of current dollars) is the state counterpart of the nation's personal consumption expenditures (PCE). PCE by state measures the goods and services purchased by or on behalf of households and the net expenditures of nonprofit institutions serving households by state of residence for the 50 states and the District of Columbia. PCE by state reflects spending on activities that are attributable to the residents of a state, even when those activities take place outside of the state.
+
+**Per capita PCE by state** (dollars) measures average PCE spending per person in a state, and it is calculated as PCE in a state divided by the population of the state.
 
 **Relationship of PCE by state to national PCE.** The U.S. PCE by state differs slightly from the PCE in the national accounts because PCE by state excludes the net expenditures abroad by U.S. residents, which consist of government and private employees’ expenditures abroad less personal remittances in kind to nonresidents. PCE by state, however, does include the travel expenditures abroad by U.S. residents.
 
+<br />
+
 The PCE by state estimates were impacted by the response to the spread of COVID-19, as governments issued and lifted "stay-at-home" orders. This led to rapid changes in demand and consumers canceled, restricted, or redirected their spending. 
 
-State personal consumption expenditures (PCE) decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia. 
-
-PCE increased in only four states, Idaho, Utah, Montana, and Arkansas.
+State PCE decreased 2.6 percent in 2020 after increasing 3.7 percent in 2019, according to statistics released today by the U.S. Bureau of Economic Analysis (BEA). The percent change in PCE across all 50 states and the District of Columbia ranged from 1.2 percent in Idaho and Utah to –5.8 percent in the District of Columbia. 
 
 Across all states and the District of Columbia, per capita PCE was $42,635. Per capita PCE by state ranged from a high of $52,001 in Massachusetts to a low of $32,358 in Mississippi. Per capita PCE in the District of Columbia was $65,169. 
+
+PCE increased in only four states, Idaho, Utah, Montana, and Arkansas. Nationally, expenditures on housing and utilities increased 3.8 percent and was the leading contributor to the increases in Idaho, Utah, and Montana. 
 
 Expenditures on food services and accommodations, recreation services, and health care were the leading contributors to the decrease nationally:
 
@@ -194,23 +339,97 @@ Expenditures on food services and accommodations, recreation services, and healt
 
 • Health care decreased 6.1 percent nationally and was the largest contributor to decreases in 12 states including Alaska.
 
-Covid Cases by State
+In 2019, expenditures on motor vehicles and parts decreased or remained flat in most of the states; while in 2020, the expenditures increased significantly in most of the states, with the highest growing rate 16.2% in Arizona.
+
+Expenditures on furnishings and durable household equipment, recreational goods and vehicles, and food and beverages purchased for off-premises consumption all increased significantly compared to 2019.
+
+
+Trend by States
 ===================================== 
 
 Column {.sidebar}
 -----------------------------------------------------------------------
 
 ```{r}
+state_choices = 
+  state_df %>% 
+  distinct(state) %>% 
+  pull()
 
+majortype_choices = 
+  state_df %>% 
+  filter(major_type != "Total") %>% 
+  distinct(major_type) %>% 
+  pull()
+
+selectInput(
+  "state_choice",
+  label = h3("Select State"),
+  choices = state_choices,
+  selected = "Alabama"
+)
+
+selectInput(
+  "major_type_choice",
+  label = h3("Select Major Type"),
+  choices = majortype_choices,
+  selected = "Durable Goods"
+)
 ```
 
 Column {.tabset}
 -----------------------------------------------------------------------
 
-### US Map
+### Line Chart
 
 ```{r}
-
+renderPlotly({
+  
+  state_df %>% 
+    filter(
+      state == input[["state_choice"]],
+      type != "Total",
+      major_type == input[["major_type_choice"]],
+      t_p == "Total",
+      if_change == "Crude"
+    ) %>% 
+    group_by(type) %>% 
+    plot_ly(x = ~year) %>% 
+    add_trace(y = ~pce, type = "scatter", mode = "lines", yaixs = "y", color = ~type) %>% 
+    layout(title = "PCE Trend by States",
+           xaxis = list(title = "Year", dtick = 1),
+           yaxis = list(title = "PCE", side = "left"),
+           showlegend = TRUE
+           )
+  
+})
 ```
 
-### Description
+### Bar Chart
+
+```{r}
+renderPlotly({
+  
+  state_df %>% 
+    filter(
+      state == input[["state_choice"]],
+      type != "Total",
+      major_type == input[["major_type_choice"]],
+      t_p == "Total",
+      if_change == "Percent Change",
+      year == "2019" | year == "2020"
+    ) %>% 
+    mutate(year = factor(year)) %>% 
+    plot_ly() %>% 
+    add_bars(
+      x = ~type,
+      y = ~pce,
+      color = ~year,
+      alpha = .3,
+      colors = c("black", "grey")
+    ) %>% 
+    layout(barmode = "overlay")
+  
+})
+```
+
