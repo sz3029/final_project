@@ -96,6 +96,8 @@ Even though cases keep rising, as restrictions keep lifting, the rate of vaccina
 
 The total consumption expenditure is even larger by now comparing with that before the pandemic. This can be partially explained by inflation and government's stimulus plan. 
 
+&nbsp;
+
 ## Consumption of Goods
 
 ```{r, message = FALSE, warning = FALSE}
@@ -162,6 +164,8 @@ The small peak in the second quarter in 2020 in the consumption of `food and bev
 
 `Other nondurable goods` includes medical products, recreational items, household supplies, personal care products, tobacco, and magazines/newspapers. Similar to that of food and beverages, the total consumption of this category keep increasing and exceeds the value before the pandemic.
 
+&nbsp;
+
 ## Consumption of Services 
 
 The consumption of services is calculated with two categories: household consumption expenditures for services, and final consumption expenditures of nonprofit institutions serving households (nonprofit consumption). We can see the consumption value of nonprofit institutions remain steady comparing with household services from 2019 till now. 
@@ -172,7 +176,7 @@ Since we are focusing on consumer behavior analysis in our project, we only anal
 subfig_2 = plot_ly(general_2, x = ~time, y = ~household, type = "bar", name = "Household", marker = list(color = 'rgb(49,130,189)')) %>% 
   add_trace(y = ~nonprofit_consumption, name = "Nonprofit Consumption", marker = list(color = 'rgb(204,204,204)')) %>% 
   layout(title = "Decomposition of Consumption in Services ",
-         yaixs = list(title = "Consumption"), barmode = "stack",
+         yaxis = list(title = "Consumption"), barmode = "stack",
          legend = list(orientation = 'h', x = 0, y = -0.2))
 
 subfig_2
@@ -202,6 +206,37 @@ Consumption of `Health care` reduced significantly in the second quarter of 2020
 `Recreation service` mainly consists of the fees of the activities for fun such as sport, museum, gambling, package tour etc. The value of consumption reduced significantly in the second quarter of 2020 due to social-distancing. 
 
 Different to other consumption categories, `housing and utilities`(which mainly includes housing rental and the fees for the resources at home such as electricity and gas) and `financial service and insurance` (which mainly includes life and health insurance and commissions in banks) increased.
+
+&nbsp;
+
+## Engel Coefficient
+
+"The poorer is a family, the greater is the proportion of the total outgo [family expenditures] which must be used for food. ...The proportion of the outgo used for food, other things being equal is the best measure of the material standard of living of a population." 
+
+The following chart displays the changing trend in Engel Coefficient ever since Covid-19 outbreak.
+
+```{r, message = FALSE, warning = FALSE}
+total = consumption_product %>% 
+  filter(products == "Personal consumption expenditures")
+
+engel = nondurable_goods %>% 
+  filter(functions == "Food and beverages purchased for off-premises consumption") %>% 
+  left_join(total, by = 'time') %>% 
+  select(time, consumption.x, consumption.y)
+
+colnames(engel) = c("time", "food", "total")
+
+engel = engel %>% 
+  mutate(engel_coef = as.numeric(food)/as.numeric(total))
+
+plot_ly(engel, x = ~time, y = ~engel_coef, type = 'scatter', mode = 'lines') %>% 
+  layout(title = "Changes in Engel Coefficient",
+         yaxis = list(title = "Engel Coefficient"))
+```
+
+From the changing trend we can see: although the engel coefficient has dropped from the highest level when the pandemic started, we are still at a much higher level compared with that before the pandemic. 
+
+&nbsp;
 
 ## Consumption Structure Analysis
 
