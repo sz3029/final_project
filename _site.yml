@@ -17,7 +17,7 @@ navbar:
     - text: "Project Report"
       href: project_report.html
     - icon: fa-youtube
-      href: https://www.youtube.com/
+      href: https://youtu.be/t9xICt_fU6U
     - icon: fa-github fa-lg
       href: https://github.com/sz3029/final_project
 output:
