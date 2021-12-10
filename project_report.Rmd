@@ -1,5 +1,5 @@
 ---
-title: "Analysis of Consumer Behavior in the Time of Covid-19"
+title: "Analysis of Consumer Behavior in Covid-19"
 output: 
   html_document:
     code_folding: hide
