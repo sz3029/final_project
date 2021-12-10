@@ -35,15 +35,17 @@ We utilized consumption expenditure/personal income and savings data retrieved f
 
 # Website Overview
 
-In the Exploratory Data Analyses tab, you will find:  
-• Analyses of Covid-19 data, through visualizations,  
-• Analyses of consumer behaviors data, through visualizations; and,
+In the Exploratory Data Analysis section, you will find:  
 
-In the Regression Analyses tab, you will find:  
-• Multiple Linear Regression model investigating associations between personal incomes and personal consumption expenditures,  
-• Testing on the difference between PCE in 2019, 2020 and our prediction data.
+• Visualizations and analysis of Covid-19 data; \
+• Visualizations and analysis of consumer behaviors data based on consumption categories.
 
-The Regional Data tab will lead you to a dashboard that includes interactive maps and bar charts of PCE by state in chosen years, types of products and methods of calculating. You can also explore the individual PCE trends of any chosen state.
+In the Regression Analysis section, you will find:  
+
+• Regression model investigating associations between personal income and personal consumption expenditure; \
+• Analysis of the difference between PCE in 2019, 2020 and our future prediction.
+
+The Regional Data tab will lead you to a dashboard that includes interactive maps and bar charts of PCE by state in chosen years, types of products and methods of calculating. 
 
 &nbsp;
 
