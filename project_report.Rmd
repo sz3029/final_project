@@ -342,6 +342,7 @@ There are some limitations in our study: the personal consumption expenditure (P
 ### Future Implication
 
 Based on analysis of consumption structure, we observed that the consumer behaviors are gradually returning to the level before the COVID. Even though life is getting back to normal, the new variant Omicron is now coming, and several related cases have been confirmed in the United States. The future is hard to predict, we are still uncertain what is waiting for us in the coming new year. There might be another significant wave of changes economic changes due to the new outbreak. Thus, the changing pattern we analyzed can be used as reference for residents and businesses to get better prepared for future changes.
+
 <center>
 <img src="./images/omicron.jpg" style="width:60%" class="center">
 <br>Image source: [Google](https://www.google.com/imghp?hl=en&ogbl)
