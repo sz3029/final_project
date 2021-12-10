@@ -11,6 +11,11 @@ output:
 
 Ever since the spring of 2020, the COVID-19 pandemic has drastically altered the everyday lives of billions of people. Besides the way of living and working, the pandemic is slowly changing our way of consumption. 
 
+<center>
+<img src="./images/covid_people_image.jpg" style="width:80%" class="center">
+<br>Image source: [Google](https://www.google.com/imghp?hl=en&ogbl)
+</center>
+
 As people were working from home and went out less due to restrictions on gatherings and social activities, we infer there might be a collapse in consumption mainly in the services sector, while consumption in indoor entertainment, household supplies etc. may increase as a result of the more time at home. We can get a brief sense of how our behaviors of consumption is changing from the changes in Engel Coefficient ever since the pandemic started. 
 
 <center>
@@ -337,6 +342,10 @@ There are some limitations in our study: the personal consumption expenditure (P
 ### Future Implication
 
 Based on analysis of consumption structure, we observed that the consumer behaviors are gradually returning to the level before the COVID. Even though life is getting back to normal, the new variant Omicron is now coming, and several related cases have been confirmed in the United States. The future is hard to predict, we are still uncertain what is waiting for us in the coming new year. There might be another significant wave of changes economic changes due to the new outbreak. Thus, the changing pattern we analyzed can be used as reference for residents and businesses to get better prepared for future changes.
+<center>
+<img src="./images/omicron.jpg" style="width:80%" class="center">
+<br>Image source: [Google](https://www.google.com/imghp?hl=en&ogbl)
+</center>
 
 &nbsp;
 
