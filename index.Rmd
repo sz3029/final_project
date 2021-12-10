@@ -52,7 +52,7 @@ The Regional Data tab will lead you to a dashboard that includes interactive map
 # Video Guide
 
 <center>
-<iframe width="840" height="472" src="https://youtu.be/t9xICt_fU6U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="840" height="472" src="https://youtube.com/embed/t9xICt_fU6U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
 &nbsp;
 
